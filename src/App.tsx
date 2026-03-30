@@ -321,6 +321,42 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
               <div className="text-6xl font-bold">৳{course.price}</div>
               <div className="text-xs text-gray-400">One-time payment • Lifetime access</div>
 
+              <div className="mt-8 space-y-3 pb-8 border-b border-white/10">
+                <div className="flex items-start gap-3 text-sm">
+                  <span className="text-emerald-400 mt-1">✅</span>
+                  <span>100+ bite-sized recorded classes (organized archive)</span>
+                </div>
+                <div className="flex items-start gap-3 text-sm">
+                  <span className="text-emerald-400 mt-1">🎥</span>
+                  <span>4 Mega Live Classes</span>
+                </div>
+                <div className="flex items-start gap-3 text-sm">
+                  <span className="text-emerald-400 mt-1">📝</span>
+                  <span>4 Practical Assignments</span>
+                </div>
+                <div className="flex items-start gap-3 text-sm">
+                  <span className="text-emerald-400 mt-1">🧩</span>
+                  <span>12 Structured Modules</span>
+                </div>
+                <div className="flex items-start gap-3 text-sm">
+                  <span className="text-emerald-400 mt-1">👥</span>
+                  <span>Private Community Support</span>
+                </div>
+                <div className="flex items-start gap-3 text-sm">
+                  <span className="text-emerald-400 mt-1">🎯</span>
+                  <span>Course Foundation</span>
+                </div>
+              </div>
+
+              <div className="mt-8 pb-8 border-b border-white/10">
+                <div className="text-xs text-emerald-400 font-semibold mb-3">INDUSTRY-RECOGNIZED STANDARDS</div>
+                <div className="space-y-2 text-xs text-gray-300">
+                  <div>• CEH (Certified Ethical Hacker)</div>
+                  <div>• OSCP (Offensive Security Certified Professional)</div>
+                  <div>• CompTIA Security+</div>
+                </div>
+              </div>
+
               <button onClick={() => onEnroll(course.id)} className="mt-8 w-full py-6 bg-white text-black rounded-2xl font-bold text-lg btn-hover border border-transparent">
                 ENROLL NOW
               </button>
