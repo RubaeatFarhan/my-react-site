@@ -32,15 +32,15 @@ interface Testimonial {
 const courses: Course[] = [
   {
     id: 1,
-    title: "CCEH 101 : Certified Ethical Hacking (Basic/Beginner)",
+    title: "Cyber Security and Ethical Hacking (CCEH 101)",
     description: "Perfect starting point for absolute beginners. Learn core ethical hacking concepts, tools, and methodologies.",
     price: 2999,
-    duration: "8 weeks",
+    duration: "4 Months",
     level: "Beginner",
     category: "Certified Ethical Hacking",
     image: "./images/course1.jpg",
-    modules: 18,
-    students: "1243",
+    modules: 12,
+    students: "122",
     rating: 4.9,
   },
   {
@@ -52,8 +52,8 @@ const courses: Course[] = [
     level: "Advanced",
     category: "Certified Ethical Hacking",
     image: "./images/course2.jpg",
-    modules: 26,
-    students: "437",
+    modules: 12,
+    students: "0",
     rating: 5.0,
     available: false,
   },
@@ -66,8 +66,8 @@ const courses: Course[] = [
     level: "Intermediate",
     category: "Certified Ethical Hacking",
     image: "./images/course3.jpg",
-    modules: 22,
-    students: "892",
+    modules: 10,
+    students: "0",
     rating: 4.8,
     available: false,
   },
@@ -81,7 +81,7 @@ const courses: Course[] = [
     category: "Operating Systems",
     image: "./images/course4.jpg",
     modules: 15,
-    students: "673",
+    students: "0",
     rating: 4.7,
     available: false,
   },
@@ -95,7 +95,7 @@ const courses: Course[] = [
     category: "Networking",
     image: "./images/course1.jpg",
     modules: 21,
-    students: "319",
+    students: "0",
     rating: 4.6,
     available: false,
   },
@@ -109,7 +109,7 @@ const courses: Course[] = [
     category: "Programming",
     image: "./images/course2.jpg",
     modules: 17,
-    students: "1241",
+    students: "0",
     rating: 4.9,
     available: false,
   },
@@ -126,7 +126,7 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: "Sam Chen",
+    name: "Rani Chawdhory",
     role: "Bug Bounty Hunter",
     content: "Made my first $15k bounty 6 weeks into the course. The instructors are legends in the industry.",
     avatar: "https://randomuser.me/api/portraits/women/44.jpg",
@@ -373,9 +373,9 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                 <img src="./images/instructor.jpg" alt="Instructor" className="w-64 h-64 object-cover rounded-3xl" />
                 <div>
                   <div className="text-emerald-400">LEAD INSTRUCTOR</div>
-                  <div className="text-4xl font-bold mt-3">Md. Rakib Hasan</div>
-                  <div className="text-emerald-400 mt-1">OSCP • CEH • 12+ Years Experience</div>
-                  <p className="mt-8 text-gray-300">Former Red Team Lead at a government organization. Has trained over 2,400 students across Bangladesh and helped many get jobs in cybersecurity firms.</p>
+                  <div className="text-4xl font-bold mt-3">Rubaeat Farhan</div>
+                  <div className="text-emerald-400 mt-1">OSCP • CEH • 3+ Years Experience</div>
+                  <p className="mt-8 text-gray-300"><Freelancer>Rubaeat Farhan is a seasoned cybersecurity professional with over 3 years of experience in ethical hacking and penetration testing. He has worked with various organizations to strengthen their security posture and has trained hundreds of students in the field.</Freelancer></p>
                   <div className="mt-12 grid grid-cols-3 gap-8 text-center">
                     <div>
                       <div className="text-4xl font-bold text-emerald-400">2400+</div>
