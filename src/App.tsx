@@ -365,9 +365,26 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                 <Calendar className="w-4 h-4" /> BOOK LIVE SESSION
               </button>
 
-              <a href="#" onClick={(e) => { e.preventDefault(); alert('Syllabus PDF downloaded!'); }} className="mt-3 w-full py-4 border border-white/30 hover:bg-white/5 rounded-2xl text-sm flex items-center justify-center gap-2">
-                📥 DOWNLOAD SYLLABUS
-              </a>
+              <motion.a 
+                href="#" 
+                onClick={(e) => { e.preventDefault(); alert('Syllabus PDF downloaded!'); }} 
+                className="mt-3 w-full py-4 border border-white/30 hover:bg-white/5 rounded-2xl text-sm flex items-center justify-center gap-2 relative overflow-hidden group"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-emerald-400/0 via-emerald-400/20 to-emerald-400/0"
+                  animate={{ x: ['100%', '-100%'] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <motion.span
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 0.6, repeat: Infinity }}
+                >
+                  📥
+                </motion.span>
+                <span className="relative z-10">DOWNLOAD SYLLABUS</span>
+              </motion.a>
 
               <div className="mt-12">
                 <div className="text-xs text-gray-400 mb-4">SAMPLE CERTIFICATE</div>
@@ -380,19 +397,102 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
         </div>
 
         {/* Demo Video & FAQ */}
-        <div className="mt-24 grid md:grid-cols-2 gap-8">
-          <div className="bg-zinc-900 rounded-3xl p-10">
-            <h3 className="text-2xl font-semibold mb-6">Course Preview Video</h3>
-            <div className="aspect-video bg-black rounded-2xl flex items-center justify-center relative overflow-hidden">
-              <div className="text-center">
-                <div onClick={() => alert('Demo video playing... (placeholder)')} className="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition">
-                  <Play className="w-9 h-9 text-black ml-1" />
-                </div>
-                <div className="text-xs text-gray-400 mt-6">1:42 / Introduction to Ethical Hacking</div>
+        <div className="mt-24 space-y-12">
+          {/* Course Preview Video - Full Width and Prominent */}
+          <motion.div 
+            className="bg-gradient-to-br from-emerald-900/20 to-zinc-900 rounded-3xl p-10 border border-emerald-500/20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <motion.h3 
+              className="text-3xl font-semibold mb-8 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent"
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              🎬 Course Preview Video
+            </motion.h3>
+            <motion.div 
+              className="aspect-[16/9] bg-black rounded-2xl flex items-center justify-center relative overflow-hidden group shadow-2xl"
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="text-center relative z-10">
+                <motion.div 
+                  onClick={() => alert('Demo video playing... (placeholder)')} 
+                  className="w-28 h-28 mx-auto bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center cursor-pointer group hover:shadow-2xl hover:shadow-emerald-500/50 transition-all"
+                  whileHover={{ scale: 1.15, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.div
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <Play className="w-12 h-12 text-black ml-2" />
+                  </motion.div>
+                </motion.div>
+                <motion.div 
+                  className="text-sm text-gray-300 mt-8 font-medium"
+                  animate={{ opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  1:42 / Introduction to Ethical Hacking
+                </motion.div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+            <p className="text-gray-400 text-center mt-6 text-sm">Click the play button to watch an overview of the course content and learning structure.</p>
+          </motion.div>
 
+          {/* How to Buy This Course Video */}
+          <motion.div 
+            className="bg-gradient-to-br from-amber-900/20 to-zinc-900 rounded-3xl p-10 border border-amber-500/20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <motion.h3 
+              className="text-3xl font-semibold mb-8 bg-gradient-to-r from-amber-400 to-amber-300 bg-clip-text text-transparent"
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              🛍️ How to Buy This Course
+            </motion.h3>
+            <motion.div 
+              className="aspect-[16/9] bg-black rounded-2xl flex items-center justify-center relative overflow-hidden group shadow-2xl"
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="text-center relative z-10">
+                <motion.div 
+                  onClick={() => alert('YouTube video will be embedded here')} 
+                  className="w-28 h-28 mx-auto bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center cursor-pointer hover:shadow-2xl hover:shadow-amber-500/50 transition-all"
+                  whileHover={{ scale: 1.15, rotate: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.div
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <Play className="w-12 h-12 text-black ml-2" />
+                  </motion.div>
+                </motion.div>
+                <motion.div 
+                  className="text-sm text-gray-300 mt-8 font-medium"
+                  animate={{ opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  Step-by-step guide to enroll in the course
+                </motion.div>
+              </div>
+            </motion.div>
+            <p className="text-gray-400 text-center mt-6 text-sm">Learn how to purchase the course, payment methods, and instant access to all learning materials.</p>
+          </motion.div>
+
+          {/* FAQ Section */}
           <div className="bg-zinc-900 rounded-3xl p-10">
             <h3 className="text-2xl font-semibold mb-8">Frequently Asked Questions</h3>
             {faqs.map((faq, i) => (
