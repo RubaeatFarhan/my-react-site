@@ -38,7 +38,7 @@ const courses: Course[] = [
     duration: "8 weeks",
     level: "Beginner",
     category: "Certified Ethical Hacking",
-    image: "/images/course1.jpg",
+    image: "./images/course1.jpg",
     modules: 18,
     students: "1243",
     rating: 4.9,
@@ -51,7 +51,7 @@ const courses: Course[] = [
     duration: "12 weeks",
     level: "Advanced",
     category: "Certified Ethical Hacking",
-    image: "/images/course2.jpg",
+    image: "./images/course2.jpg",
     modules: 26,
     students: "437",
     rating: 5.0,
@@ -65,7 +65,7 @@ const courses: Course[] = [
     duration: "10 weeks",
     level: "Intermediate",
     category: "Certified Ethical Hacking",
-    image: "/images/course3.jpg",
+    image: "./images/course3.jpg",
     modules: 22,
     students: "892",
     rating: 4.8,
@@ -79,7 +79,7 @@ const courses: Course[] = [
     duration: "6 weeks",
     level: "Beginner",
     category: "Operating Systems",
-    image: "/images/course4.jpg",
+    image: "./images/course4.jpg",
     modules: 15,
     students: "673",
     rating: 4.7,
@@ -93,7 +93,7 @@ const courses: Course[] = [
     duration: "10 weeks",
     level: "Intermediate",
     category: "Networking",
-    image: "/images/course1.jpg",
+    image: "./images/course1.jpg",
     modules: 21,
     students: "319",
     rating: 4.6,
@@ -107,7 +107,7 @@ const courses: Course[] = [
     duration: "8 weeks",
     level: "Beginner",
     category: "Programming",
-    image: "/images/course2.jpg",
+    image: "./images/course2.jpg",
     modules: 17,
     students: "1241",
     rating: 4.9,
@@ -264,7 +264,7 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
 
             {activeTab === 'instructor' && (
               <div className="flex flex-col md:flex-row gap-10">
-                <img src="/images/instructor.jpg" alt="Instructor" className="w-64 h-64 object-cover rounded-3xl" />
+                <img src="./images/instructor.jpg" alt="Instructor" className="w-64 h-64 object-cover rounded-3xl" />
                 <div>
                   <div className="text-emerald-400">LEAD INSTRUCTOR</div>
                   <div className="text-4xl font-bold mt-3">Md. Rakib Hasan</div>
@@ -367,7 +367,7 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
 
               <motion.a 
                 href="#" 
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => { e.preventDefault(); alert('Syllabus PDF downloaded!'); }} 
+                onClick={(e) => { e.preventDefault(); alert('Syllabus PDF downloaded!'); }} 
                 className="mt-3 w-full py-4 border border-white/30 hover:bg-white/5 rounded-2xl text-sm flex items-center justify-center gap-2 relative overflow-hidden group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -388,7 +388,7 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
 
               <div className="mt-12">
                 <div className="text-xs text-gray-400 mb-4">SAMPLE CERTIFICATE</div>
-                <img src="/images/certificate.jpg" alt="Certificate" className="rounded-3xl shadow-2xl w-full" />
+                <img src="./images/certificate.jpg" alt="Certificate" className="rounded-3xl shadow-2xl w-full" />
               </div>
 
               <div className="text-xs text-center text-gray-500 mt-12">30-day money-back guarantee</div>
@@ -799,7 +799,7 @@ function App() {
         <div className="absolute inset-0 bg-[radial-gradient(#22ff8830_1px,transparent_1px)] bg-[length:40px_40px]"></div>
         
         <img 
-          src="/images/hero.jpg" 
+          src="./images/hero.jpg" 
           alt="Cyber Security" 
           className="absolute inset-0 w-full h-full object-cover opacity-40"
         />
