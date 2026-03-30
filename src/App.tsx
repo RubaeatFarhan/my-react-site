@@ -229,19 +229,18 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
             </div>
 
             {activeTab === 'overview' && (
-              <div className="space-y-12">
+              <div className="space-y-10">
                 {/* Main Description */}
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-br from-emerald-900/20 to-zinc-900 border border-emerald-500/20 rounded-3xl p-8"
+                  className="bg-gradient-to-br from-emerald-900/10 to-zinc-900/5 border border-emerald-500/10 rounded-2xl p-6"
                 >
-                  <h2 className="text-2xl font-bold text-emerald-400 mb-4">📚 কোর্স সম্পর্কে / About This Course</h2>
-                  <p className="text-gray-300 leading-relaxed mb-4">
-                    CCEH (Cyber Cracker Ethical Hacking) 101 হলো Cyber Cracker Academy-এর একটি beginner-friendly ethical hacking কোর্স, যেখানে তুমি cybersecurity ও penetration testing-এর শক্ত foundation তৈরি করতে পারবে।
+                  <h2 className="text-2xl font-bold text-white mb-3">About This Course</h2>
+                  <p className="text-gray-300 leading-relaxed">
+                    CCEH (Cyber Cracker Ethical Hacking) 101 হলো একটি beginner-friendly ethical hacking কোর্স যা cybersecurity ও penetration testing-এর শক্ত ভিত্তি তৈরি করে। শিল্প মান অনুযায়ী ডিজাইন করা এই কোর্সে আপনি হ্যান্ডস-অন ল্যাব এবং বাস্তব-বিশ্বের প্রকল্প নিয়ে কাজ করবেন।
                   </p>
-                  <p className="text-gray-400 text-sm italic">Designed for absolute beginners | Industry-Aligned | Hands-on Labs</p>
                 </motion.div>
 
                 {/* What You'll Learn */}
@@ -251,29 +250,26 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 }}
                 >
-                  <h3 className="text-2xl font-semibold mb-6 flex items-center gap-3">
-                    <span className="text-2xl">🎯</span>
-                    <span>এই কোর্সে তুমি শিখবে / You Will Learn</span>
-                  </h3>
+                  <h3 className="text-xl font-semibold mb-5">Course Highlights</h3>
                   <div className="grid md:grid-cols-2 gap-4">
                     {[
-                      { icon: '🌐', text: 'Networking ও cybersecurity-এর basics' },
-                      { icon: '⚔️', text: 'বিভিন্ন ধরনের cyber attack ও সেগুলোর working process' },
-                      { icon: '🔧', text: 'Ethical hacking tools ও real-world techniques' },
-                      { icon: '🛡️', text: 'কীভাবে attacker ভাবে এবং কীভাবে systems secure করতে হয়' }
+                      { icon: <Shield className="w-5 h-5" />, text: 'Networking & Cybersecurity Fundamentals' },
+                      { icon: <Zap className="w-5 h-5" />, text: 'Cyber Attack Techniques & Mechanisms' },
+                      { icon: <Terminal className="w-5 h-5" />, text: 'Ethical Hacking Tools & Real-world Techniques' },
+                      { icon: <Lock className="w-5 h-5" />, text: 'System Hardening & Defense Strategies' }
                     ].map((item, i) => (
                       <motion.div 
                         key={i} 
-                        className="flex items-start gap-4 bg-zinc-900/50 border border-emerald-500/10 p-6 rounded-2xl hover:border-emerald-500/30 hover:bg-zinc-900/80 transition-all"
-                        whileHover={{ x: 5 }}
+                        className="flex items-start gap-4 bg-zinc-900/40 border border-white/5 p-5 rounded-xl hover:border-emerald-500/20 hover:bg-zinc-900/60 transition-all"
+                        whileHover={{ y: -2 }}
                       >
-                        <div className="text-3xl shrink-0">{item.icon}</div>
-                        <div className="text-gray-300">{item.text}</div>
+                        <div className="text-emerald-400 mt-1 shrink-0">{item.icon}</div>
+                        <div className="text-sm text-gray-300 leading-tight">{item.text}</div>
                       </motion.div>
                     ))}
                   </div>
-                  <p className="text-sm text-gray-400 mt-6 text-center italic">
-                    কোর্সটি industry concepts-এর সাথে aligned: <span className="text-emerald-400 font-semibold">EC-Council CEH</span> এবং <span className="text-emerald-400 font-semibold">CompTIA Security+</span>
+                  <p className="text-sm text-gray-400 mt-4">
+                    Industry-aligned with: <span className="text-emerald-400">EC-Council CEH,</span> <span className="text-emerald-400">OSCP,</span> <span className="text-emerald-400">CompTIA Security+</span>
                   </p>
                 </motion.div>
 
@@ -283,31 +279,27 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
-                  className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 border border-blue-500/20 rounded-3xl p-8"
                 >
-                  <h3 className="text-2xl font-semibold mb-8 flex items-center gap-3">
-                    <span className="text-2xl">🚀</span>
-                    <span>Learning Path</span>
-                  </h3>
-                  <div className="space-y-4">
+                  <h3 className="text-xl font-semibold mb-5">Your Learning Path</h3>
+                  <div className="space-y-3">
                     {[
-                      { level: 'CCEH 101', title: 'Beginner Level', desc: 'Foundation (এখানে আছ)', color: 'from-emerald-400' },
-                      { level: 'CCEH 201', title: 'Intermediate Level', desc: 'Deeper Techniques', color: 'from-blue-400' },
-                      { level: 'CCEH 301', title: 'Advanced / Real-world', desc: 'Professional Hacking', color: 'from-purple-400' }
+                      { level: 'CCEH 101', title: 'Beginner', desc: 'Foundation & Core Concepts', color: 'emerald' },
+                      { level: 'CCEH 201', title: 'Intermediate', desc: 'Advanced Exploitation', color: 'blue' },
+                      { level: 'CCEH 301', title: 'Professional', desc: 'Real-world & Career Ready', color: 'purple' }
                     ].map((item, i) => (
                       <motion.div 
                         key={i}
-                        className="flex items-center gap-6"
-                        whileHover={{ x: 10 }}
+                        className="flex items-center gap-4"
+                        whileHover={{ x: 5 }}
                       >
-                        <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.color} to-transparent flex items-center justify-center font-bold text-black shrink-0`}>
+                        <div className={`w-10 h-10 rounded-lg bg-${item.color}-500/20 border border-${item.color}-500/30 flex items-center justify-center font-bold text-${item.color}-400 shrink-0 text-sm`}>
                           {i + 1}
                         </div>
-                        <div className="flex-1 bg-zinc-900/50 rounded-xl p-4 border border-white/5">
-                          <div className="font-semibold text-white">{item.level}: {item.title}</div>
+                        <div className="flex-1 bg-zinc-900/30 rounded-lg p-3 border border-white/5">
+                          <div className="font-medium text-white text-sm">{item.level}: {item.title}</div>
                           <div className="text-xs text-gray-400 mt-1">{item.desc}</div>
                         </div>
-                        {i < 2 && <div className="text-2xl text-emerald-400 shrink-0">→</div>}
+                        {i < 2 && <div className="text-emerald-400/40 text-lg shrink-0">→</div>}
                       </motion.div>
                     ))}
                   </div>
@@ -320,29 +312,20 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
                 >
-                  <h3 className="text-2xl font-semibold mb-6 flex items-center gap-3">
-                    <span className="text-2xl">🎯</span>
-                    <span>কোর্স শেষে তুমি যা করতে পারবে / Outcomes</span>
-                  </h3>
-                  <div className="space-y-3">
+                  <h3 className="text-xl font-semibold mb-5">Course Outcomes</h3>
+                  <div className="grid md:grid-cols-3 gap-3">
                     {[
-                      'Ethical hacking-এর strong base তৈরি করতে পারবে',
-                      'Real-world attack concept বুঝতে পারবে',
-                      'Advanced level (CCEH 201 & 301)-এ যাওয়ার জন্য ready হবে'
+                      { icon: <CheckCircle className="w-5 h-5" />, text: 'Strong Foundation in Ethical Hacking' },
+                      { icon: <CheckCircle className="w-5 h-5" />, text: 'Real-world Attack Understanding' },
+                      { icon: <CheckCircle className="w-5 h-5" />, text: 'Ready for Advanced Levels' }
                     ].map((outcome, i) => (
                       <motion.div
                         key={i}
-                        className="flex items-center gap-4 bg-emerald-900/10 border border-emerald-500/20 rounded-xl p-4 hover:border-emerald-500/40 transition-all"
-                        whileHover={{ x: 8 }}
+                        className="flex items-start gap-3 bg-emerald-500/5 border border-emerald-500/20 rounded-lg p-4 hover:border-emerald-500/40 transition-all"
+                        whileHover={{ y: -2 }}
                       >
-                        <motion.div 
-                          className="text-2xl shrink-0"
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
-                        >
-                          ✨
-                        </motion.div>
-                        <span className="text-gray-200 font-medium">{outcome}</span>
+                        <div className="text-emerald-400 mt-0.5 shrink-0">{outcome.icon}</div>
+                        <span className="text-sm text-gray-300">{outcome.text}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -545,140 +528,114 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
           </div>
         </div>
 
-        {/* Demo Video & FAQ */}
-        <div className="mt-24 space-y-12">
-          {/* Course Preview Video - Full Width and Prominent */}
-          <motion.div 
-            className="bg-gradient-to-br from-emerald-900/20 to-zinc-900 rounded-3xl p-10 border border-emerald-500/20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <motion.h3 
-              className="text-3xl font-semibold mb-8 bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent"
-              animate={{ scale: [1, 1.02, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              🎬 Course Preview Video
-            </motion.h3>
+        {/* Video & FAQ Section */}
+        <div className="mt-20">
+          {/* Video & FAQ Side by Side */}
+          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+            {/* Course Preview Video */}
             <motion.div 
-              className="aspect-[16/9] bg-black rounded-2xl flex items-center justify-center relative overflow-hidden group shadow-2xl"
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.3 }}
+              className="bg-gradient-to-br from-emerald-900/15 to-zinc-900/5 rounded-2xl p-6 border border-emerald-500/10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="text-center relative z-10">
-                <motion.div 
-                  onClick={() => alert('Demo video playing... (placeholder)')} 
-                  className="w-28 h-28 mx-auto bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center cursor-pointer group hover:shadow-2xl hover:shadow-emerald-500/50 transition-all"
-                  whileHover={{ scale: 1.15, rotate: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.div
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+              <h3 className="text-lg font-semibold mb-4 text-white">Course Overview Video</h3>
+              <motion.div 
+                className="aspect-video bg-black rounded-xl flex items-center justify-center relative overflow-hidden group"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="text-center relative z-10">
+                  <motion.div 
+                    onClick={() => alert('Demo video playing... (placeholder)')} 
+                    className="w-16 h-16 mx-auto bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center cursor-pointer hover:shadow-xl hover:shadow-emerald-500/40 transition-all"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Play className="w-12 h-12 text-black ml-2" />
+                    <motion.div
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <Play className="w-8 h-8 text-black ml-1" />
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-                <motion.div 
-                  className="text-sm text-gray-300 mt-8 font-medium"
-                  animate={{ opacity: [0.7, 1, 0.7] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  1:42 / Introduction to Ethical Hacking
-                </motion.div>
+                </div>
+              </motion.div>
+              <p className="text-gray-400 text-center mt-3 text-xs">Introduction to Ethical Hacking</p>
+            </motion.div>
+
+            {/* FAQ Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-emerald-900/15 to-zinc-900/5 rounded-2xl p-6 border border-emerald-500/10"
+            >
+              <h3 className="text-lg font-semibold mb-4 text-white">Quick FAQs</h3>
+              <div className="space-y-2 max-h-80 overflow-y-auto">
+                {faqs.slice(0, 4).map((faq, i) => (
+                  <motion.details
+                    key={i}
+                    className="group bg-zinc-900/40 border border-white/5 rounded-lg overflow-hidden hover:border-emerald-500/20 transition-all"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: i * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <summary className="flex justify-between items-center cursor-pointer p-3 font-medium text-white hover:text-emerald-400 transition-colors list-none text-sm">
+                      <span>{faq.q}</span>
+                      <span className="text-xs text-emerald-400">+</span>
+                    </summary>
+                    <p className="text-gray-400 text-xs px-3 pb-3 border-t border-white/5 pt-2 leading-relaxed">
+                      {faq.a}
+                    </p>
+                  </motion.details>
+                ))}
               </div>
             </motion.div>
-            <p className="text-gray-400 text-center mt-6 text-sm">Click the play button to watch an overview of the course content and learning structure.</p>
-          </motion.div>
+          </div>
 
-          {/* FAQ & Syllabus Section */}
+          {/* Course Syllabus Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="grid lg:grid-cols-5 gap-8 items-start"
           >
-            {/* Left Column - Syllabus Sheets */}
-            <div className="lg:col-span-2 space-y-4">
-              <h3 className="text-2xl font-semibold mb-6">📄 Course Syllabus</h3>
-              <div className="space-y-4">
-                {[1, 2, 3].map((page) => (
-                  <motion.div
-                    key={page}
-                    className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
-                    whileHover={{ scale: 1.02, y: -5 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="aspect-[8.5/11] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/10 to-transparent" />
-                      <div className="text-center z-10">
-                        <div className="text-5xl font-bold text-gray-400 mb-2">{page}</div>
-                        <div className="text-sm text-gray-600 font-medium">Syllabus</div>
-                        <div className="text-xs text-gray-500 mt-2">A4 Sheet</div>
-                      </div>
-                      {/* Decorative corner */}
-                      <div className="absolute top-0 right-0 w-8 h-8 bg-emerald-400/20 transform -translate-y-1 translate-x-1"></div>
+            <h3 className="text-2xl font-semibold mb-6 text-white">Course Syllabus</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+              {[1, 2, 3, 4, 5, 6].map((page) => (
+                <motion.div
+                  key={page}
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="aspect-[8.5/11] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/5 to-transparent" />
+                    <div className="text-center z-10">
+                      <div className="text-4xl font-bold text-gray-300 mb-1">{page}</div>
+                      <div className="text-xs text-gray-500 font-medium">Syllabus</div>
                     </div>
-                    <div className="p-4 bg-gray-50 border-t border-gray-200">
-                      <p className="text-xs text-gray-600 font-medium">Sheet {page} of 3</p>
-                      <p className="text-xs text-gray-500 mt-1">Module Breakdown</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-              <motion.button
-                onClick={() => alert('Downloading syllabus PDF...')}
-                className="w-full mt-6 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white py-3 rounded-xl font-semibold transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                📥 Download Full Syllabus
-              </motion.button>
+                    <div className="absolute top-0 right-0 w-6 h-6 bg-emerald-400/15"></div>
+                  </div>
+                  <div className="p-3 bg-gray-50 border-t border-gray-200">
+                    <p className="text-xs text-gray-600 font-medium">Sheet {page} of 6</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-
-            {/* Right Column - FAQs */}
-            <div className="lg:col-span-3">
-              <h3 className="text-2xl font-semibold mb-8 flex items-center gap-2">
-                <span>❓</span> Frequently Asked Questions
-              </h3>
-              <div className="space-y-3">
-                {faqs.map((faq, i) => (
-                  <motion.details
-                    key={i}
-                    className="group bg-zinc-900/50 border border-white/10 rounded-xl overflow-hidden hover:border-emerald-500/30 transition-all duration-300"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.05 }}
-                    viewport={{ once: true }}
-                  >
-                    <summary className="flex justify-between items-center cursor-pointer p-4 font-medium font-semibold text-gray-200 hover:text-emerald-400 transition-colors list-none">
-                      <span className="text-sm">{faq.q}</span>
-                      <motion.span
-                        className="text-xl text-emerald-400 shrink-0 ml-4"
-                        animate={{ rotate: 0 }}
-                        whileHover={{ rotate: 90 }}
-                      >
-                        ＋
-                      </motion.span>
-                    </summary>
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <p className="text-gray-400 text-sm px-4 pb-4 border-t border-white/5 pt-4 leading-relaxed">
-                        {faq.a}
-                      </p>
-                    </motion.div>
-                  </motion.details>
-                ))}
-              </div>
-            </div>
+            <motion.button
+              onClick={() => alert('Downloading syllabus PDF...')}
+              className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white py-3 rounded-lg font-semibold transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              📥 Download Full Syllabus
+            </motion.button>
           </motion.div>
         </div>
 
