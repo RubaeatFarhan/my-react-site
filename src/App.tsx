@@ -367,7 +367,7 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
 
               <motion.a 
                 href="#" 
-                onClick={(e) => { e.preventDefault(); alert('Syllabus PDF downloaded!'); }} 
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => { e.preventDefault(); alert('Syllabus PDF downloaded!'); }} 
                 className="mt-3 w-full py-4 border border-white/30 hover:bg-white/5 rounded-2xl text-sm flex items-center justify-center gap-2 relative overflow-hidden group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
