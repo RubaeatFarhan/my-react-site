@@ -154,7 +154,7 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
   onEnroll: (id: number) => void; 
   onBack: () => void; 
 }) => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'curriculum' | 'instructor' | 'reviews'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'curriculum' | 'instructor' | 'requirements'>('overview');
 
   const curriculum = [
     "Module 0: Lab Setup – Environment configuration and tool installation",
@@ -168,11 +168,6 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
     "Module 08: Sniffing – MAC attacks, DHCP attacks, ARP poisoning and packet analysis",
     "Module 09: Social Engineering – Phishing, identity theft and human-level vulnerabilities",
     "Module 10: Denial-of-Service (DoS) – DoS/DDoS attacks, botnets and protection measures"
-  ];
-
-  const reviews = [
-    { name: "Rahim Khan", role: "Cyber Security Analyst, Dhaka", text: "This course completely changed my career. The practical labs are excellent and instructors are very supportive.", rating: 5 },
-    { name: "Fatima Ahmed", role: "Penetration Tester, Chittagong", text: "Best ethical hacking course in Bangladesh. I got my first job after completing this course.", rating: 5 },
   ];
 
   const faqs = [
@@ -214,7 +209,7 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
 
             {/* TABS */}
             <div className="flex gap-8 border-b border-white/10 mt-12 mb-8 text-sm">
-              {(['overview', 'curriculum', 'instructor', 'reviews'] as const).map((tab) => (
+              {(['overview', 'curriculum', 'instructor', 'requirements'] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
@@ -223,7 +218,7 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                   {tab === 'overview' && 'Overview'}
                   {tab === 'curriculum' && 'Curriculum'}
                   {tab === 'instructor' && 'Instructor'}
-                  {tab === 'reviews' && 'Reviews & Ratings'}
+                  {tab === 'requirements' && 'Requirements'}
                 </button>
               ))}
             </div>
@@ -375,7 +370,7 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                   <div className="text-emerald-400">LEAD INSTRUCTOR</div>
                   <div className="text-4xl font-bold mt-3">Rubaeat Farhan</div>
                   <div className="text-emerald-400 mt-1">OSCP • CEH • 3+ Years Experience</div>
-                  <p className="mt-8 text-gray-300"><Freelancer>Rubaeat Farhan is a seasoned cybersecurity professional with over 3 years of experience in ethical hacking and penetration testing. He has worked with various organizations to strengthen their security posture and has trained hundreds of students in the field.</Freelancer></p>
+                  <p className="mt-8 text-gray-300">Rubaeat Farhan is a seasoned cybersecurity professional with over 3 years of experience in ethical hacking and penetration testing. He has worked with various organizations to strengthen their security posture and has trained hundreds of students in the field.</p>
                   <div className="mt-12 grid grid-cols-3 gap-8 text-center">
                     <div>
                       <div className="text-4xl font-bold text-emerald-400">2400+</div>
@@ -394,28 +389,41 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
               </div>
             )}
 
-            {activeTab === 'reviews' && (
+            {activeTab === 'requirements' && (
               <div>
-                <div className="flex items-end gap-6 mb-10">
-                  <div className="text-[92px] font-light leading-none text-emerald-400">4.9</div>
-                  <div>
-                    <div className="text-2xl">Average Rating</div>
-                    <div className="text-gray-400">Based on 87 reviews</div>
-                  </div>
-                </div>
-
-                {reviews.map((r, i) => (
-                  <div key={i} className="bg-zinc-900 rounded-3xl p-8 mb-6">
-                    <div className="flex gap-4">
-                      <div className="text-4xl">⭐</div>
-                      <div className="flex-1">
-                        <div className="font-medium">{r.name}</div>
-                        <div className="text-xs text-gray-400">{r.role}</div>
-                        <p className="mt-6 text-gray-300">"{r.text}"</p>
+                <h3 className="text-2xl font-semibold mb-8">Course Requirements</h3>
+                <div className="bg-zinc-900 rounded-3xl p-8">
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <div className="text-emerald-400 text-2xl mt-1">💻</div>
+                      <div>
+                        <div className="font-semibold text-lg">Laptop PC Required</div>
+                        <div className="text-gray-400">A personal computer or laptop is essential for hands-on labs and practice</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <div className="text-emerald-400 text-2xl mt-1">🧠</div>
+                      <div>
+                        <div className="font-semibold text-lg">4 GB Minimum RAM</div>
+                        <div className="text-gray-400">At least 4GB of RAM is required to run virtual machines and tools smoothly</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <div className="text-emerald-400 text-2xl mt-1">💾</div>
+                      <div>
+                        <div className="font-semibold text-lg">128 GB Minimum Storage</div>
+                        <div className="text-gray-400">Minimum 128GB storage space for installing tools, VMs, and course materials</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <div className="text-emerald-400 text-2xl mt-1">🚫</div>
+                      <div>
+                        <div className="font-semibold text-lg">No Other Subscriptions Needed</div>
+                        <div className="text-gray-400">No need for TryHackMe, Hack The Box, or any other paid platforms - everything is included</div>
                       </div>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
             )}
           </div>
@@ -606,7 +614,7 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-semibold mb-6 text-white">Course Syllabus</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-6 gap-2 mb-6">
               {[1, 2, 3, 4, 5, 6].map((page) => (
                 <motion.div
                   key={page}
@@ -617,12 +625,12 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                   <div className="aspect-[8.5/11] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/5 to-transparent" />
                     <div className="text-center z-10">
-                      <div className="text-4xl font-bold text-gray-300 mb-1">{page}</div>
+                      <div className="text-2xl font-bold text-gray-300 mb-1">{page}</div>
                       <div className="text-xs text-gray-500 font-medium">Syllabus</div>
                     </div>
-                    <div className="absolute top-0 right-0 w-6 h-6 bg-emerald-400/15"></div>
+                    <div className="absolute top-0 right-0 w-4 h-4 bg-emerald-400/15"></div>
                   </div>
-                  <div className="p-3 bg-gray-50 border-t border-gray-200">
+                  <div className="p-2 bg-gray-50 border-t border-gray-200">
                     <p className="text-xs text-gray-600 font-medium">Sheet {page} of 6</p>
                   </div>
                 </motion.div>
@@ -636,6 +644,48 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
             >
               📥 Download Full Syllabus
             </motion.button>
+          </motion.div>
+
+          {/* Certification Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="mt-16"
+          >
+            <h3 className="text-2xl font-semibold mb-8 text-white">Certifications & Recognition</h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-zinc-900 rounded-3xl p-6 border border-white/10">
+                <div className="text-center mb-4">
+                  <div className="text-emerald-400 text-sm font-medium">SAMPLE CERTIFICATE</div>
+                </div>
+                <img src="./images/certificate.jpg" alt="Certificate Demo" className="rounded-2xl shadow-2xl w-full" />
+              </div>
+              <div className="bg-zinc-900 rounded-3xl p-6 border border-white/10">
+                <div className="text-center mb-6">
+                  <div className="text-emerald-400 text-sm font-medium">INDUSTRY RECOGNITION</div>
+                </div>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center">
+                    <img src="./images/ec-council.png" alt="EC Council" className="w-16 h-16 mx-auto mb-2 rounded-lg bg-white p-2" />
+                    <div className="text-xs text-gray-400">EC Council</div>
+                  </div>
+                  <div className="text-center">
+                    <img src="./images/oscp.png" alt="OSCP" className="w-16 h-16 mx-auto mb-2 rounded-lg bg-white p-2" />
+                    <div className="text-xs text-gray-400">OSCP</div>
+                  </div>
+                  <div className="text-center">
+                    <img src="./images/comptia.png" alt="CompTIA" className="w-16 h-16 mx-auto mb-2 rounded-lg bg-white p-2" />
+                    <div className="text-xs text-gray-400">CompTIA</div>
+                  </div>
+                  <div className="text-center">
+                    <img src="./images/ort.png" alt="ORT" className="w-16 h-16 mx-auto mb-2 rounded-lg bg-white p-2" />
+                    <div className="text-xs text-gray-400">ORT</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
 
@@ -770,6 +820,265 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
               <span>View All Courses</span>
               <ArrowRight className="w-5 h-5" />
             </motion.button>
+          </motion.div>
+        </motion.div>
+
+        {/* Massive Reviews Section */}
+        <motion.div 
+          className="mt-32 pt-20 border-t border-white/10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <div className="text-center mb-16">
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold mb-4"
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              🌟 What Our Students Say
+            </motion.h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Real stories from real hackers who transformed their careers with our courses
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {/* Review 1 - Text + Image */}
+            <motion.div
+              className="bg-zinc-900 rounded-3xl p-8 border border-white/10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="flex-1">
+                  <div className="flex items-center gap-4 mb-6">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student" className="w-16 h-16 rounded-2xl" />
+                    <div>
+                      <div className="font-semibold text-lg">Rahim Khan</div>
+                      <div className="text-emerald-400 text-sm">Cyber Security Analyst, Dhaka</div>
+                      <div className="flex text-yellow-400 mt-1">★★★★★</div>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 text-lg leading-relaxed">
+                    "This course completely changed my career. The practical labs are excellent and instructors are very supportive. 
+                    I went from knowing nothing about hacking to landing a job at a top security firm in just 6 months!"
+                  </p>
+                </div>
+                <div className="md:w-80">
+                  <img src="./images/review1.jpg" alt="Review image" className="rounded-2xl w-full h-48 object-cover" />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Review 2 - Video Review */}
+            <motion.div
+              className="bg-zinc-900 rounded-3xl p-8 border border-white/10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="flex-1">
+                  <div className="flex items-center gap-4 mb-6">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Student" className="w-16 h-16 rounded-2xl" />
+                    <div>
+                      <div className="font-semibold text-lg">Fatima Ahmed</div>
+                      <div className="text-emerald-400 text-sm">Penetration Tester, Chittagong</div>
+                      <div className="flex text-yellow-400 mt-1">★★★★★</div>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 text-lg leading-relaxed">
+                    "Best ethical hacking course in Bangladesh. I got my first job after completing this course. 
+                    The community support is amazing - always someone to help when you're stuck."
+                  </p>
+                </div>
+                <div className="md:w-80">
+                  <div className="aspect-video bg-black rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent" />
+                    <motion.div
+                      onClick={() => alert('Playing review video...')}
+                      className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <Play className="w-8 h-8 text-black ml-1" />
+                    </motion.div>
+                    <div className="absolute bottom-4 left-4 text-white text-sm">Watch Fatima's Story</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Review 3 - Text Only */}
+            <motion.div
+              className="bg-zinc-900 rounded-3xl p-8 border border-white/10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Student" className="w-16 h-16 rounded-2xl" />
+                <div>
+                  <div className="font-semibold text-lg">Alex Rivera</div>
+                  <div className="text-emerald-400 text-sm">Security Engineer @ Google</div>
+                  <div className="flex text-yellow-400 mt-1">★★★★★</div>
+                </div>
+              </div>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                "The hands-on labs completely transformed my career. Landed my dream job within 3 months of completing the program. 
+                The instructors are legends in the industry and the community is incredibly supportive."
+              </p>
+            </motion.div>
+
+            {/* Review 4 - Multiple Images */}
+            <motion.div
+              className="bg-zinc-900 rounded-3xl p-8 border border-white/10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex flex-col lg:flex-row gap-8">
+                <div className="flex-1">
+                  <div className="flex items-center gap-4 mb-6">
+                    <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Student" className="w-16 h-16 rounded-2xl" />
+                    <div>
+                      <div className="font-semibold text-lg">Jordan Patel</div>
+                      <div className="text-emerald-400 text-sm">Bug Bounty Hunter</div>
+                      <div className="flex text-yellow-400 mt-1">★★★★★</div>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 text-lg leading-relaxed">
+                    "Made my first $15k bounty 6 weeks into the course. The instructors are legends in the industry. 
+                    This course gave me the confidence to start bug hunting professionally."
+                  </p>
+                </div>
+                <div className="lg:w-80">
+                  <div className="grid grid-cols-2 gap-2">
+                    <img src="./images/review2.jpg" alt="Review image 1" className="rounded-lg w-full h-24 object-cover" />
+                    <img src="./images/review3.jpg" alt="Review image 2" className="rounded-lg w-full h-24 object-cover" />
+                    <img src="./images/review4.jpg" alt="Review image 3" className="rounded-lg w-full h-24 object-cover" />
+                    <img src="./images/review5.jpg" alt="Review image 4" className="rounded-lg w-full h-24 object-cover" />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Review 5 - Video + Text */}
+            <motion.div
+              className="bg-zinc-900 rounded-3xl p-8 border border-white/10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="flex-1">
+                  <div className="flex items-center gap-4 mb-6">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Student" className="w-16 h-16 rounded-2xl" />
+                    <div>
+                      <div className="font-semibold text-lg">Marcus Chen</div>
+                      <div className="text-emerald-400 text-sm">CTO @ Fintech Startup</div>
+                      <div className="flex text-yellow-400 mt-1">★★★★★</div>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 text-lg leading-relaxed">
+                    "Best cybersecurity education I've experienced. The community alone is worth the investment. 
+                    I've hired 3 graduates from this program and they all exceeded expectations."
+                  </p>
+                </div>
+                <div className="md:w-80">
+                  <div className="aspect-video bg-black rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent" />
+                    <motion.div
+                      onClick={() => alert('Playing testimonial video...')}
+                      className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <Play className="w-8 h-8 text-black ml-1" />
+                    </motion.div>
+                    <div className="absolute bottom-4 left-4 text-white text-sm">Marcus's Success Story</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* More Reviews Grid */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                {
+                  name: "Sarah Kim",
+                  role: "Security Consultant",
+                  text: "The course structure is perfect for busy professionals. I completed it while working full-time.",
+                  avatar: "https://randomuser.me/api/portraits/women/28.jpg",
+                  rating: 5
+                },
+                {
+                  name: "David Wong",
+                  role: "Network Administrator",
+                  text: "Finally understood how hackers think. This course opened my eyes to real security issues.",
+                  avatar: "https://randomuser.me/api/portraits/men/52.jpg",
+                  rating: 5
+                },
+                {
+                  name: "Lisa Thompson",
+                  role: "IT Manager",
+                  text: "Worth every penny. The practical skills I gained are directly applicable to my job.",
+                  avatar: "https://randomuser.me/api/portraits/women/33.jpg",
+                  rating: 5
+                },
+                {
+                  name: "Carlos Rodriguez",
+                  role: "DevSecOps Engineer",
+                  text: "The community support is incredible. Got help within minutes whenever I was stuck.",
+                  avatar: "https://randomuser.me/api/portraits/men/41.jpg",
+                  rating: 5
+                }
+              ].map((review, idx) => (
+                <motion.div
+                  key={idx}
+                  className="bg-zinc-900 rounded-2xl p-6 border border-white/10"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + idx * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <img src={review.avatar} alt={review.name} className="w-12 h-12 rounded-xl" />
+                    <div>
+                      <div className="font-semibold">{review.name}</div>
+                      <div className="text-emerald-400 text-xs">{review.role}</div>
+                    </div>
+                  </div>
+                  <div className="flex text-yellow-400 mb-3">
+                    {'★'.repeat(review.rating)}
+                  </div>
+                  <p className="text-gray-300 text-sm leading-relaxed">"{review.text}"</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Load More Reviews */}
+          <motion.div 
+            className="mt-16 text-center"
+            animate={{ y: [0, -3, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <button
+              onClick={() => alert('Loading more reviews...')}
+              className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-400 hover:from-emerald-600 hover:to-cyan-500 rounded-2xl font-bold text-white inline-flex items-center gap-2 transition-all duration-300"
+            >
+              <span>Load More Reviews</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </motion.div>
         </motion.div>
       </div>
