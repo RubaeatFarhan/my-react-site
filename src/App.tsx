@@ -330,7 +330,22 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                 <div className="mt-8 pt-8 border-t border-white/10">
                   <h3 className="text-2xl font-semibold mb-8">What You Will Learn (Curriculum Highlights)</h3>
                   <div className="grid md:grid-cols-2 gap-4">
-                    {curriculum.slice(0, 6).map((item, i) => (
+                    {[
+                      "নেটওয়ার্ক কীভাবে কাজ করে, IP, Ports ও Protocols সম্পর্কে পরিষ্কার ধারণা পাবে",
+                      "নিজের কম্পিউটারে একটি সম্পূর্ণ hacking lab setup করতে শিখবে",
+                      "Windows ও Linux এর বেসিক এবং Kali Linux ব্যবহার শিখবে",
+                      "Target সম্পর্কে তথ্য সংগ্রহ (OSINT) করে hacking শুরু করতে শিখবে",
+                      "Network scan করে system-এর দুর্বলতা খুঁজে বের করতে পারবে",
+                      "System থেকে গুরুত্বপূর্ণ তথ্য (users, services) extract করার techniques শিখবে",
+                      "Vulnerability খুঁজে বের করে analysis করতে পারবে",
+                      "Password hacking ও cracking techniques practically শিখবে",
+                      "Linux system-এ privilege escalation করে full control নিতে পারবে",
+                      "Windows system-এ admin access gain করার methods শিখবে",
+                      "Malware কীভাবে কাজ করে এবং analyse করতে হয় তা বুঝবে",
+                      "Network sniffing ও MITM attack সম্পর্কে বাস্তব ধারণা পাবে",
+                      "Social engineering attack ও human psychology ব্যবহার শিখবে",
+                      "DoS/DDoS attack ও এর prevention techniques শিখবে"
+                    ].map((item, i) => (
                       <motion.div 
                         key={i} 
                         className="flex items-start gap-4 bg-zinc-900 p-6 rounded-2xl hover:bg-zinc-900/80 transition-colors"
@@ -504,7 +519,7 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
 
               <div className="mt-8">
                 <div className="text-xs text-gray-400 mb-4">SAMPLE CERTIFICATE</div>
-                <img src="./images/certificate.jpg" alt="Certificate" className="rounded-3xl shadow-2xl w-full" />
+                <img src="./images/Certificate.jpg" alt="Certificate" className="rounded-3xl shadow-2xl w-full" />
               </div>
 
               {/* How to Buy - Compact */}
@@ -660,7 +675,7 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                 <div className="text-center mb-4">
                   <div className="text-emerald-400 text-sm font-medium">SAMPLE CERTIFICATE</div>
                 </div>
-                <img src="./images/certificate.jpg" alt="Certificate Demo" className="rounded-2xl shadow-2xl w-full" />
+                <img src="./images/Certificate.jpg" alt="Certificate Demo" className="rounded-2xl shadow-2xl w-full" />
               </div>
               <div className="bg-zinc-900 rounded-3xl p-6 border border-white/10">
                 <div className="text-center mb-6">
@@ -680,8 +695,8 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                     <div className="text-xs text-gray-400">CompTIA</div>
                   </div>
                   <div className="text-center">
-                    <img src="./images/ort.png" alt="ORT" className="w-16 h-16 mx-auto mb-2 rounded-lg bg-white p-2" />
-                    <div className="text-xs text-gray-400">ORT</div>
+                    <img src="./images/cissp.png" alt="CISSP" className="w-16 h-16 mx-auto mb-2 rounded-lg bg-white p-2" />
+                    <div className="text-xs text-gray-400">CISSP</div>
                   </div>
                 </div>
               </div>
@@ -823,6 +838,114 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
           </motion.div>
         </motion.div>
 
+        {/* Career Paths Section */}
+        <motion.div 
+          className="mt-32 pt-20 border-t border-white/10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <div className="text-center mb-16">
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold mb-4"
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              After Completing This Course, You Can Go Into
+            </motion.h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Multiple career paths await you in the cybersecurity industry. Choose your specialization and build a rewarding career.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <Shield className="w-8 h-8" />,
+                title: "Ethical Hacking / Penetration Testing",
+                description: "System, network ও web app hack করে vulnerability খুঁজে বের করা",
+                color: "emerald"
+              },
+              {
+                icon: <Lock className="w-8 h-8" />,
+                title: "Cyber Security Analyst",
+                description: "Threat detect, monitor ও security improve করা",
+                color: "blue"
+              },
+              {
+                icon: <Search className="w-8 h-8" />,
+                title: "Bug Bounty Hunting",
+                description: "Website/app-এ vulnerability খুঁজে income করা",
+                color: "purple"
+              },
+              {
+                icon: <Terminal className="w-8 h-8" />,
+                title: "Network Security",
+                description: "Network secure রাখা ও attacks prevent করা",
+                color: "cyan"
+              },
+              {
+                icon: <Users className="w-8 h-8" />,
+                title: "Digital Forensics & OSINT",
+                description: "Investigation, tracking ও data analysis করা",
+                color: "orange"
+              },
+              {
+                icon: <Zap className="w-8 h-8" />,
+                title: "Vulnerability Assessment",
+                description: "System scan করে risk identify করা",
+                color: "red"
+              },
+              {
+                icon: <Shield className="w-8 h-8" />,
+                title: "Malware Analysis (Basic Level)",
+                description: "Malware কীভাবে কাজ করে তা বুঝা ও analyse করা",
+                color: "pink"
+              }
+            ].map((career, idx) => (
+              <motion.div
+                key={idx}
+                className={`group bg-gradient-to-br from-${career.color}-900/10 to-zinc-900/5 border border-${career.color}-500/10 rounded-2xl p-6 hover:border-${career.color}-500/30 transition-all duration-300`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5, scale: 1.02 }}
+              >
+                <div className={`w-16 h-16 bg-${career.color}-500/10 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-${career.color}-500/20 transition-colors`}>
+                  <div className={`text-${career.color}-400 group-hover:text-${career.color}-300 transition-colors`}>
+                    {career.icon}
+                  </div>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-emerald-400 transition-colors">
+                  {career.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {career.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div 
+            className="mt-16 text-center"
+            animate={{ y: [0, -3, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <p className="text-gray-400 mb-6">Ready to start your cybersecurity career?</p>
+            <motion.button
+              onClick={() => alert('Get career guidance')}
+              className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 rounded-2xl font-bold text-white inline-flex items-center gap-2 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span>Get Career Guidance</span>
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+          </motion.div>
+        </motion.div>
+
         {/* Massive Reviews Section */}
         <motion.div 
           className="mt-32 pt-20 border-t border-white/10"
@@ -869,7 +992,9 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                   </p>
                 </div>
                 <div className="md:w-80">
-                  <img src="./images/review1.jpg" alt="Review image" className="rounded-2xl w-full h-48 object-cover" />
+                  <div className="rounded-2xl w-full h-48 bg-gradient-to-br from-emerald-500/20 to-zinc-900/50 flex items-center justify-center border border-white/10">
+                    <span className="text-gray-400 text-sm">Review Image</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -961,10 +1086,18 @@ const CourseDetail = ({ course, onEnroll, onBack }: {
                 </div>
                 <div className="lg:w-80">
                   <div className="grid grid-cols-2 gap-2">
-                    <img src="./images/review2.jpg" alt="Review image 1" className="rounded-lg w-full h-24 object-cover" />
-                    <img src="./images/review3.jpg" alt="Review image 2" className="rounded-lg w-full h-24 object-cover" />
-                    <img src="./images/review4.jpg" alt="Review image 3" className="rounded-lg w-full h-24 object-cover" />
-                    <img src="./images/review5.jpg" alt="Review image 4" className="rounded-lg w-full h-24 object-cover" />
+                    <div className="rounded-lg w-full h-24 bg-gradient-to-br from-emerald-500/20 to-zinc-900/50 flex items-center justify-center border border-white/10">
+                      <span className="text-gray-400 text-xs">Image 1</span>
+                    </div>
+                    <div className="rounded-lg w-full h-24 bg-gradient-to-br from-emerald-500/20 to-zinc-900/50 flex items-center justify-center border border-white/10">
+                      <span className="text-gray-400 text-xs">Image 2</span>
+                    </div>
+                    <div className="rounded-lg w-full h-24 bg-gradient-to-br from-emerald-500/20 to-zinc-900/50 flex items-center justify-center border border-white/10">
+                      <span className="text-gray-400 text-xs">Image 3</span>
+                    </div>
+                    <div className="rounded-lg w-full h-24 bg-gradient-to-br from-emerald-500/20 to-zinc-900/50 flex items-center justify-center border border-white/10">
+                      <span className="text-gray-400 text-xs">Image 4</span>
+                    </div>
                   </div>
                 </div>
               </div>
