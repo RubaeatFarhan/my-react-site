@@ -1757,7 +1757,7 @@ function App() {
       {/* ABOUT */}
       <section id="about" className="bg-zinc-950 py-24 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] items-start">
+          <div className="grid gap-16 lg:grid-cols-[1.2fr_0.8fr] items-start">
             <div>
               <div className="inline text-xs uppercase tracking-[3px] text-emerald-400 border border-emerald-500/20 px-4 py-1 rounded-full">ABOUT CYBER CRACKER</div>
               <h2 className="text-5xl font-semibold tracking-tighter mt-6">Who We Are</h2>
@@ -1769,7 +1769,7 @@ function App() {
               </p>
 
               <div className="mt-12 grid gap-6 sm:grid-cols-2">
-                <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
+                <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8 shadow-xl shadow-black/20">
                   <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Our Mission</div>
                   <p className="text-gray-300 leading-7">
                     Our mission is to help Bangladeshi students and beginners gain practical cybersecurity knowledge that actually works in real-life situations.
@@ -1777,7 +1777,7 @@ function App() {
                   </p>
                 </div>
 
-                <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
+                <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8 shadow-xl shadow-black/20">
                   <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Why We Started</div>
                   <p className="text-gray-300 leading-7">
                     In Bangladesh, many students learn cybersecurity only from theory or scattered online content. But when it comes to real-world practice, they struggle.
@@ -1788,53 +1788,70 @@ function App() {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8 shadow-xl shadow-black/20">
-                <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Our Programs</div>
-                <div className="text-white text-2xl font-semibold mb-4">Two core programs designed for real skills.</div>
-                <div className="space-y-4 text-gray-300">
+              <div className="bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden shadow-xl shadow-black/20">
+                <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] items-center p-8">
                   <div>
-                    <div className="font-semibold">CCEH (Cyber Cracker Ethical Hacking)</div>
-                    <div className="text-sm text-gray-400 mt-1">Learn ethical hacking from beginner to advanced level with practical labs and real attack scenarios.</div>
+                    <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Our Programs</div>
+                    <div className="text-white text-2xl font-semibold mb-4">Two core programs designed for real skills.</div>
+                    <div className="space-y-4 text-gray-300">
+                      <div>
+                        <div className="font-semibold">CCEH (Cyber Cracker Ethical Hacking)</div>
+                        <div className="text-sm text-gray-400 mt-1">Learn ethical hacking from beginner to advanced level with practical labs and real attack scenarios.</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">CCSE (Cyber Cracker Security Expert)</div>
+                        <div className="text-sm text-gray-400 mt-1">Build strong defensive skills, including system security, monitoring, and protection techniques.</div>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-semibold">CCSE (Cyber Cracker Security Expert)</div>
-                    <div className="text-sm text-gray-400 mt-1">Build strong defensive skills, including system security, monitoring, and protection techniques.</div>
-                  </div>
+                  <img src="/images/instructor.jpg" alt="Cybersecurity team" className="w-full rounded-3xl object-cover h-72 shadow-2xl shadow-black/30" />
                 </div>
               </div>
 
-              <div className="grid gap-4">
-                <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
-                  <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Our Team</div>
-                  <p className="text-gray-300 leading-7 mb-4">
-                    Cyber Cracker Academy is built by a dedicated and specialized team of cybersecurity learners and professionals.
-                    Our team focuses on ethical hacking, web security, network security, and practical skill development.
-                  </p>
-                  <div className="space-y-2 text-gray-400 text-sm">
-                    <div>✔ Ethical hacking</div>
-                    <div>✔ Web security</div>
-                    <div>✔ Network security</div>
-                    <div>✔ Practical skill development</div>
+              <div className="bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden shadow-xl shadow-black/20">
+                <div className="grid gap-6 lg:grid-cols-2 items-end p-8">
+                  <div>
+                    <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Trusted by learners</div>
+                    <p className="text-gray-300 leading-7 mb-6">
+                      Our community and program design are built around trust, practical outcomes, and student-first support.
+                    </p>
+                    <button
+                      onClick={() => joinCommunity()}
+                      className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-400 px-6 py-4 text-black font-semibold shadow-lg shadow-emerald-500/20 transition-transform duration-300 hover:-translate-y-1 hover:scale-105"
+                    >
+                      Join the Community
+                    </button>
                   </div>
-                </div>
-
-                <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
-                  <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Community & Presence</div>
-                  <p className="text-gray-300 leading-7 mb-4">
-                    We are actively building a strong cybersecurity community in Bangladesh. Through our social media platforms, we share tips, spread awareness, and help students stay updated.
-                  </p>
-                  <div className="space-y-2 text-gray-400 text-sm">
-                    <div>✔ Share cybersecurity tips and tutorials</div>
-                    <div>✔ Spread awareness about online safety</div>
-                    <div>✔ Help students stay updated with latest trends</div>
-                  </div>
+                  <img src="/images/hero.jpg" alt="Learning community" className="w-full rounded-3xl object-cover h-72 shadow-2xl shadow-black/30" />
                 </div>
               </div>
             </div>
           </div>
 
           <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
+            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8 shadow-xl shadow-black/20">
+              <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Our Team</div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-3xl overflow-hidden bg-zinc-800 shadow-inner shadow-black/20">
+                  <img src="/images/instructor.jpg" alt="Team member" className="w-full h-48 object-cover" />
+                </div>
+                <div className="text-gray-300 leading-7">
+                  Our team is a blend of ethical hackers, cybersecurity engineers, and real practitioners who keep the content fresh and career-focused.
+                </div>
+              </div>
+            </div>
+            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8 shadow-xl shadow-black/20">
+              <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Community & Presence</div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-3xl overflow-hidden bg-zinc-800 shadow-inner shadow-black/20">
+                  <img src="/images/course1.jpg" alt="Community workshops" className="w-full h-48 object-cover" />
+                </div>
+                <div className="text-gray-300 leading-7">
+                  We build trust with students across Bangladesh through tutorials, live sessions, and support that helps learners stay current.
+                </div>
+              </div>
+            </div>
+            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8 shadow-xl shadow-black/20">
               <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Why Trust Us</div>
               <ul className="space-y-3 text-gray-300 text-sm">
                 <li>✔ Focus on practical, real-world skills</li>
@@ -1843,25 +1860,12 @@ function App() {
                 <li>✔ Continuous learning support</li>
               </ul>
             </div>
-            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
-              <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Learning Path</div>
-              <ul className="space-y-3 text-gray-300 text-sm">
-                <li>✔ Beginner-friendly to advanced roadmap</li>
-                <li>✔ Step-by-step learning path</li>
-                <li>✔ Hands-on practice</li>
-                <li>✔ Real-world use cases</li>
-              </ul>
-            </div>
-            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
-              <div className="text-emerald-400 uppercase text-xs tracking-[2px] font-semibold mb-4">Student First</div>
-              <p className="text-gray-300 leading-7">We continuously improve our content to ensure students get updated and relevant knowledge.</p>
-            </div>
-            <div className="bg-emerald-500/10 border border-emerald-400/10 rounded-3xl p-8">
+            <div className="bg-emerald-500/10 border border-emerald-400/10 rounded-3xl p-8 shadow-xl shadow-black/20">
               <div className="text-white text-xl font-semibold mb-4">Start Your Journey</div>
               <p className="text-gray-300 leading-7 mb-6">If you are serious about learning and building a career, Cyber Cracker Academy is here to guide you step by step.</p>
               <button
                 onClick={() => document.getElementById('courses')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full py-4 rounded-2xl bg-emerald-500 text-black font-semibold hover:bg-emerald-400 transition-all"
+                className="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-400 text-black font-semibold shadow-lg shadow-emerald-500/20 transition-transform duration-300 hover:-translate-y-1 hover:scale-105"
               >
                 Join Today
               </button>
