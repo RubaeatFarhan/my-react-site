@@ -1437,7 +1437,7 @@ function App() {
           <div className="hidden md:flex items-center gap-10 text-sm font-medium">
             <a href="#courses" className="hover:text-emerald-400 transition-colors">Programs</a>
             <a href="#live" className="hover:text-emerald-400 transition-colors">Live Classes</a>
-            <a href="/community.html" className="hover:text-emerald-400 transition-colors">Community</a>
+            <a href="#community" className="hover:text-emerald-400 transition-colors">Community</a>
             <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
           </div>
 
@@ -1905,60 +1905,289 @@ function App() {
 
       {/* COMMUNITY */}
       <section id="community" className="bg-black py-24 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="text-emerald-400 text-xs tracking-widest">THE UNDERGROUND NETWORK</div>
-              <h2 className="text-6xl font-bold tracking-[-2px] mt-5 leading-none">Join 10,000+<br />Cybersecurity<br />Professionals</h2>
-              
-              <div className="mt-12 space-y-8">
-                <div className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-3xl">💬</div>
-                  <div>
-                    <div className="font-medium">Active Discord</div>
-                    <div className="text-gray-400">Daily discussions, job leads, and vulnerability disclosures</div>
-                  </div>
+        <div className="max-w-7xl mx-auto px-6 space-y-24">
+          <div className="rounded-[2rem] border border-white/10 bg-zinc-950/90 p-12 shadow-2xl shadow-black/40">
+            <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-center">
+              <div className="space-y-8">
+                <div className="inline-flex items-center gap-3 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-xs uppercase tracking-[0.25em] text-emerald-300">
+                  Community Hub
                 </div>
-                <div className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-3xl">🏆</div>
-                  <div>
-                    <div className="font-medium">Monthly CTFs</div>
-                    <div className="text-gray-400">Win cash prizes and earn bragging rights</div>
-                  </div>
+                <div>
+                  <h2 className="text-5xl font-semibold tracking-tighter leading-tight">Join Our Cybersecurity Community</h2>
+                  <p className="mt-6 text-xl text-gray-300 max-w-3xl leading-9">Connect, learn, and grow with Cyber Cracker Academy. Explore active groups, job networks, and collaboration platforms built for security professionals and beginners.</p>
                 </div>
-                <div className="flex gap-6">
-                  <div className="shrink-0 w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-3xl">👥</div>
-                  <div>
-                    <div className="font-medium">Mentorship Program</div>
-                    <div className="text-gray-400">Get matched with experienced professionals</div>
+                <div className="flex flex-wrap gap-4">
+                  <button
+                    onClick={joinCommunity}
+                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-cyan-400 px-8 py-4 text-black font-semibold shadow-xl shadow-emerald-500/30 transition-transform duration-300 hover:-translate-y-1"
+                  >
+                    Join Community
+                  </button>
+                  <a href="#group-list" className="inline-flex items-center justify-center rounded-full border border-white/10 px-8 py-4 text-sm font-semibold text-white/90 transition hover:bg-white/5">Explore Groups</a>
+                </div>
+              </div>
+              <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-slate-900 via-slate-950 to-zinc-950 border border-white/10 shadow-2xl shadow-black/40">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.14),transparent_30%)]" />
+                <div className="relative p-8 flex flex-col gap-6">
+                  <div className="rounded-3xl bg-black/50 border border-white/10 p-6 backdrop-blur-xl">
+                    <div className="text-emerald-400 uppercase text-xs tracking-[0.3em] font-semibold mb-4">Featured Activity</div>
+                    <div className="text-white text-2xl font-semibold">Live workshop: Incident response sprint</div>
+                    <p className="mt-3 text-gray-400">Join top learners for a hands-on session on real attack analysis and mitigation.</p>
+                  </div>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-3xl bg-black/50 border border-white/10 p-5 backdrop-blur-xl">
+                      <div className="text-sm uppercase tracking-[0.25em] text-emerald-400">Discord</div>
+                      <div className="mt-3 text-white font-semibold">Live mentor rooms</div>
+                    </div>
+                    <div className="rounded-3xl bg-black/50 border border-white/10 p-5 backdrop-blur-xl">
+                      <div className="text-sm uppercase tracking-[0.25em] text-emerald-400">Groups</div>
+                      <div className="mt-3 text-white font-semibold">8 admin-run communities</div>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <motion.button 
-                onClick={joinCommunity}
-                whileHover={{ scale: 1.04 }}
-                className="mt-12 px-14 py-6 bg-gradient-to-r from-emerald-500 to-cyan-400 text-black font-bold rounded-2xl inline-flex items-center gap-4 text-lg"
-              >
-                JOIN THE DISCORD
-                <Users className="w-6 h-6" />
-              </motion.button>
+          <div className="space-y-16">
+            <div id="group-list" className="space-y-6">
+              <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-emerald-400 uppercase text-xs tracking-[0.25em] mb-3">Community Groups</div>
+                  <h3 className="text-4xl font-semibold">Active Facebook communities run by our team</h3>
+                </div>
+                <a href="#jobs" className="text-sm text-emerald-400 hover:text-white transition">Jump to job groups →</a>
+              </div>
+
+              <div className="grid gap-6 xl:grid-cols-3 lg:grid-cols-2">
+                {[{
+                  img: '/images/course1.jpg',
+                  title: 'Bangladesh Cyber Learners',
+                  description: 'Practice labs, exploit walkthroughs, and peer discussions for real learning.',
+                  members: '12.4K members'
+                }, {
+                  img: '/images/course2.jpg',
+                  title: 'Red Team Bangladesh',
+                  description: 'Attack techniques, CTF support, and exploit research shared daily.',
+                  members: '8.7K members'
+                }, {
+                  img: '/images/hero.jpg',
+                  title: 'Ethical Hacking Hub',
+                  description: 'Vulnerability reports, collaboration threads, and community mentorship.',
+                  members: '10.1K members'
+                }].map((group) => (
+                  <motion.article
+                    key={group.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="card overflow-hidden group"
+                  >
+                    <div className="card-media">
+                      <img src={group.img} alt={group.title} />
+                    </div>
+                    <div className="card-body p-8">
+                      <div className="card-tag">Facebook Group</div>
+                      <h4 className="card-title">{group.title}</h4>
+                      <p className="card-copy">{group.description}</p>
+                    </div>
+                    <div className="card-footer p-8 pt-0">
+                      <span className="card-pill">{group.members}</span>
+                      <button className="card-button">Join Group</button>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
             </div>
 
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              className="relative rounded-3xl overflow-hidden aspect-video border border-white/10"
-            >
-              <div className="absolute inset-0 bg-[linear-gradient(45deg,#111_25%,#1a1a1a_25%,#1a1a1a_50%,#111_50%,#111_75%,#1a1a1a_75%)] bg-[length:60px_60px]"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-7xl font-mono font-black text-white/10 tracking-[-6px]">10K</div>
-                  <div className="text-emerald-400 text-sm -mt-3">MEMBERS ONLINE RIGHT NOW</div>
+            <div id="jobs" className="space-y-6">
+              <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-emerald-400 uppercase text-xs tracking-[0.25em] mb-3">Job & Career Groups</div>
+                  <h3 className="text-4xl font-semibold">Career-focused cybersecurity networks</h3>
+                </div>
+                <a href="#platforms" className="text-sm text-emerald-400 hover:text-white transition">See collaboration platforms →</a>
+              </div>
+
+              <div className="grid gap-6 xl:grid-cols-3 lg:grid-cols-2">
+                {[{
+                  title: 'Cyber Career Network',
+                  description: 'Find entry-level and advanced security roles shared by recruiters and mentors.',
+                  icon: '💼'
+                }, {
+                  title: 'Security Internship Board',
+                  description: 'Access internships, apprenticeships, and training opportunities for learners.',
+                  icon: '🧑‍💻'
+                }, {
+                  title: 'Talent & Hiring Circle',
+                  description: 'Connect with hiring teams, talent scouts, and company insiders.',
+                  icon: '🔍'
+                }].map((job) => (
+                  <motion.article
+                    key={job.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="card p-8"
+                  >
+                    <div className="text-4xl mb-5">{job.icon}</div>
+                    <h4 className="card-title">{job.title}</h4>
+                    <p className="card-copy">{job.description}</p>
+                    <div className="card-footer pt-6 p-0">
+                      <button className="card-button">Join Group</button>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
+
+            <div id="platforms" className="space-y-6">
+              <div className="section-header">
+                <div>
+                  <div className="text-emerald-400 uppercase text-xs tracking-[0.25em] mb-3">Collaboration Platforms</div>
+                  <h3 className="text-4xl font-semibold">Partners and platforms we collaborate with</h3>
                 </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black to-transparent"></div>
-            </motion.div>
+
+              <div className="grid gap-6 xl:grid-cols-4 lg:grid-cols-2">
+                {[{
+                  label: 'Facebook',
+                  copy: 'Admin-managed groups and announcements.'
+                }, {
+                  label: 'Discord',
+                  copy: 'Live chat rooms, mentor sessions, and event hubs.'
+                }, {
+                  label: 'YouTube',
+                  copy: 'Workshop replays, tutorials, and security briefings.'
+                }, {
+                  label: 'Telegram',
+                  copy: 'Fast alerts, community posts, and job news.'
+                }].map((platform) => (
+                  <motion.div
+                    key={platform.label}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="platform-card"
+                  >
+                    <div className="platform-icon">{platform.label.charAt(0)}</div>
+                    <div>
+                      <strong>{platform.label}</strong>
+                      <p className="card-copy mt-2">{platform.copy}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div id="gallery" className="space-y-6">
+              <div className="section-header">
+                <div>
+                  <div className="text-emerald-400 uppercase text-xs tracking-[0.25em] mb-3">Community Gallery</div>
+                  <h3 className="text-4xl font-semibold">Group activities, workshops, and sessions</h3>
+                </div>
+              </div>
+
+              <div className="gallery-grid">
+                {[{
+                  img: '/images/course1.jpg',
+                  label: 'Live Workshops'
+                }, {
+                  img: '/images/course2.jpg',
+                  label: 'Online Sessions'
+                }, {
+                  img: '/images/course3.jpg',
+                  label: 'Group Collaboration'
+                }, {
+                  img: '/images/course4.jpg',
+                  label: 'Hackathon Highlights'
+                }].map((item) => (
+                  <motion.article
+                    key={item.label}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.25 }}
+                    className="gallery-item"
+                  >
+                    <img src={item.img} alt={item.label} />
+                    <div className="gallery-overlay"></div>
+                    <div className="gallery-label">{item.label}</div>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
+
+            <div id="benefits" className="space-y-6">
+              <div className="section-header">
+                <div>
+                  <div className="text-emerald-400 uppercase text-xs tracking-[0.25em] mb-3">Why Join Our Community</div>
+                  <h3 className="text-4xl font-semibold">Support, networking, jobs, and practical learning</h3>
+                </div>
+              </div>
+
+              <div className="feature-grid">
+                {[{
+                  icon: '📚',
+                  title: 'Learning Support',
+                  copy: 'Access mentors, tutorials, and daily guidance for practical security skills.'
+                }, {
+                  icon: '👥',
+                  title: 'Networking',
+                  copy: 'Connect with peers, security professionals, and career-minded students.'
+                }, {
+                  icon: '🏆',
+                  title: 'Job Opportunities',
+                  copy: 'Find internships and roles shared directly inside the community.'
+                }, {
+                  icon: '🧠',
+                  title: 'Real-world Knowledge',
+                  copy: 'Learn through real exercises, incident response challenges, and workshops.'
+                }, {
+                  icon: '🌍',
+                  title: 'Trusted Network',
+                  copy: 'Join a verified community built for safe collaboration and learning.'
+                }, {
+                  icon: '🔒',
+                  title: 'Secure Collaboration',
+                  copy: 'Share insights and work on projects in moderated, secure channels.'
+                }].map((feature) => (
+                  <motion.article
+                    key={feature.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="feature-card"
+                  >
+                    <div className="feature-icon">{feature.icon}</div>
+                    <h4 className="feature-title">{feature.title}</h4>
+                    <p className="feature-copy">{feature.copy}</p>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="final-cta bg-zinc-950/95 border border-white/10">
+            <div className="final-cta-content">
+              <div>
+                <h2>Be Part of the Cyber Cracker Community</h2>
+                <p className="mt-6 text-gray-400 max-w-2xl">Join the hub where emerging cybersecurity talent meets real opportunities, career support, and active learning.</p>
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={joinCommunity}
+                  className="btn-primary"
+                >
+                  Join Now
+                </button>
+                <a href="#platforms" className="ghost-btn">Explore Platforms</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
