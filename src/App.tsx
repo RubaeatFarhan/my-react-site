@@ -1,8 +1,8 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Shield, Lock, Terminal, Users, Calendar, 
-  Play, ArrowRight, CheckCircle, Zap, Search, Filter
+  Play, ArrowRight, CheckCircle, Zap, Search
 } from 'lucide-react';
 
 interface Course {
@@ -73,45 +73,57 @@ const courses: Course[] = [
   },
   {
     id: 4,
-    title: "Linux 101",
-    description: "Master Linux operating system from basics to advanced command line and server administration.",
-    price: 1499,
-    duration: "6 weeks",
+    title: "CCSE 101 : Cybersecurity Engineering Fundamentals",
+    description: "Start your cybersecurity engineering journey with essential defense concepts, network security, and system hardening.",
+    price: 2699,
+    duration: "8 weeks",
     level: "Beginner",
-    category: "Operating Systems",
+    category: "Cybersecurity Engineering",
     image: "./images/course4.jpg",
-    modules: 15,
+    modules: 14,
     students: "0",
-    rating: 4.7,
-    available: false,
+    rating: 4.8,
   },
   {
     id: 5,
-    title: "CCNE 101 : Certified Network Engineer",
-    description: "Become a certified network engineer. Learn networking fundamentals, security, and infrastructure.",
-    price: 2499,
+    title: "CCSE 201 : Cybersecurity Engineering Intermediate",
+    description: "Build on the fundamentals with incident response, secure architecture, and system monitoring techniques.",
+    price: 2799,
     duration: "10 weeks",
     level: "Intermediate",
-    category: "Networking",
+    category: "Cybersecurity Engineering",
     image: "./images/course1.jpg",
-    modules: 21,
+    modules: 18,
     students: "0",
-    rating: 4.6,
-    available: false,
+    rating: 4.9,
   },
   {
     id: 6,
-    title: "Python 101 for Hackers",
-    description: "Learn Python programming specifically tailored for ethical hackers and security professionals.",
-    price: 1799,
-    duration: "8 weeks",
-    level: "Beginner",
-    category: "Programming",
+    title: "CCSE 301 : Cybersecurity Engineering Professional",
+    description: "Master advanced cybersecurity engineering practices, threat modeling, and enterprise defense strategies.",
+    price: 2999,
+    duration: "12 weeks",
+    level: "Professional",
+    category: "Cybersecurity Engineering",
     image: "./images/course2.jpg",
-    modules: 17,
+    modules: 20,
     students: "0",
-    rating: 4.9,
-    available: false,
+    rating: 5.0,
+  },
+];
+
+const programGroups = [
+  {
+    id: "CCEH",
+    name: "CCEH Program",
+    description: "Ethical hacking pathway with three levels from 101 to 301.",
+    courses: courses.filter((course) => course.title.startsWith("CCEH")),
+  },
+  {
+    id: "CCSE",
+    name: "CCSE Program",
+    description: "Cybersecurity engineering pathway with three levels from 101 to 301.",
+    courses: courses.filter((course) => course.title.startsWith("CCSE")),
   },
 ];
 
@@ -1327,10 +1339,6 @@ function App() {
     hours: 14,
     minutes: 37,
   });
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedLevel, setSelectedLevel] = useState("All");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [sortBy, setSortBy] = useState<"popular" | "price-low" | "price-high" | "newest">("popular");
   const [view, setView] = useState<'landing' | 'detail' | 'checkout'>('landing');
   const [currentCourseId, setCurrentCourseId] = useState<number | null>(null);
   const [showQuiz, setShowQuiz] = useState(false);
@@ -1392,7 +1400,6 @@ function App() {
   const backToHome = () => {
     setView('landing');
     setCurrentCourseId(null);
-    setSearchTerm("");
   };
 
   const joinCommunity = () => {
@@ -1402,60 +1409,6 @@ function App() {
   const bookConsultation = () => {
     window.open("https://www.facebook.com/CyberCrackerAcademy", "_blank");
   };
-
-  // Filter and sort courses
-  const filteredCourses = useMemo(() => {
-    let result = [...courses];
-
-    // Search filter
-    if (searchTerm.trim()) {
-      const term = searchTerm.toLowerCase().trim();
-      result = result.filter(course => 
-        course.title.toLowerCase().includes(term) || 
-        course.description.toLowerCase().includes(term) ||
-        course.category.toLowerCase().includes(term)
-      );
-    }
-
-    // Level filter
-    if (selectedLevel !== "All") {
-      result = result.filter(course => {
-        const levelMatch = course.level.toLowerCase();
-        if (selectedLevel === "Beginner") return levelMatch.includes("beginner") || levelMatch === "all levels";
-        if (selectedLevel === "Intermediate") return levelMatch.includes("intermediate") || levelMatch === "all levels";
-        if (selectedLevel === "Advanced") return levelMatch.includes("advanced");
-        return true;
-      });
-    }
-
-    // Category filter
-    if (selectedCategory !== "All") {
-      result = result.filter(course => course.category === selectedCategory);
-    }
-
-    // Sort
-    switch (sortBy) {
-      case "price-low":
-        result.sort((a, b) => a.price - b.price);
-        break;
-      case "price-high":
-        result.sort((a, b) => b.price - a.price);
-        break;
-      case "newest":
-        result.sort((a, b) => b.id - a.id);
-        break;
-      case "popular":
-      default:
-        result.sort((a, b) => parseFloat(b.students.replace('k', '')) - parseFloat(a.students.replace('k', '')));
-        break;
-    }
-
-    return result;
-  }, [searchTerm, selectedLevel, selectedCategory, sortBy]);
-
-  const categories = ["All", "Ethical Hacking", "Penetration Testing", "Defense", "Analysis", "Forensics"];
-
-  const levels = ["All", "Beginner", "Intermediate", "Advanced"];
 
   return (
     <div className="bg-[#0a0a0a] text-white overflow-x-hidden">
@@ -1475,7 +1428,7 @@ function App() {
           </div>
 
           <div className="hidden md:flex items-center gap-10 text-sm font-medium">
-            <a href="#courses" className="hover:text-emerald-400 transition-colors">Courses</a>
+            <a href="#courses" className="hover:text-emerald-400 transition-colors">Programs</a>
             <a href="#live" className="hover:text-emerald-400 transition-colors">Live Classes</a>
             <a href="#community" className="hover:text-emerald-400 transition-colors">Community</a>
             <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
@@ -1628,188 +1581,69 @@ function App() {
         </div>
       </section>
 
-      {/* COURSES MARKETPLACE */}
+      {/* PROGRAMS MARKETPLACE */}
       <section id="courses" className="bg-zinc-950 py-24 border-t border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
             <div>
               <div className="uppercase text-xs tracking-[3px] text-emerald-400 mb-3">ACADEMY MARKETPLACE</div>
-              <h2 className="text-6xl font-bold tracking-tighter">All Courses</h2>
-              <p className="text-gray-400 mt-3 max-w-md">10 expertly crafted programs. Real skills. Lifetime access. Money-back guarantee.</p>
+              <h2 className="text-6xl font-bold tracking-tighter">Programs</h2>
+              <p className="text-gray-400 mt-3 max-w-md">Two programs with six core courses, each pathway covering levels 101 through 301.</p>
             </div>
-            
+
             <div className="flex items-center gap-3 text-sm">
               <div className="bg-zinc-900 px-5 py-2.5 rounded-3xl flex items-center gap-2 border border-white/10">
-                <span className="text-emerald-400 font-mono">{filteredCourses.length}</span>
+                <span className="text-emerald-400 font-mono">{programGroups.length}</span>
+                <span className="text-gray-400">programs</span>
+              </div>
+              <div className="bg-zinc-900 px-5 py-2.5 rounded-3xl flex items-center gap-2 border border-white/10">
+                <span className="text-emerald-400 font-mono">{courses.length}</span>
                 <span className="text-gray-400">courses</span>
               </div>
-              <button 
-                onClick={() => {
-                  setSearchTerm("");
-                  setSelectedLevel("All");
-                  setSelectedCategory("All");
-                  setSortBy("popular");
-                }}
-                className="text-xs px-5 py-2.5 border border-white/20 hover:border-white/40 rounded-3xl flex items-center gap-1.5 transition-colors"
-              >
-                RESET FILTERS
-              </button>
             </div>
           </div>
 
-          {/* SEARCH AND FILTERS */}
-          <div className="flex flex-col lg:flex-row gap-4 mb-10 sticky top-20 z-40 bg-zinc-950 py-5 border-b border-white/10">
-            {/* Search */}
-            <div className="relative flex-1 max-w-md">
-              <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400">
-                <Search className="w-5 h-5" />
-              </div>
-              <input
-                type="text"
-                placeholder="Search courses, skills or topics..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-black border border-white/20 focus:border-emerald-400 pl-14 pr-6 py-4 rounded-3xl outline-none text-white placeholder:text-gray-500"
-              />
-            </div>
+          <div className="grid gap-8 lg:grid-cols-2">
+            {programGroups.map((program, index) => (
+              <motion.div
+                key={program.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-zinc-900 border border-white/10 rounded-3xl p-8"
+              >
+                <div className="flex items-center justify-between gap-4 mb-6">
+                  <div>
+                    <div className="text-xs uppercase tracking-[2px] text-emerald-400 mb-2">{program.id}</div>
+                    <h3 className="text-3xl font-bold">{program.name}</h3>
+                  </div>
+                  <div className="text-sm text-gray-400 max-w-[180px]">{program.courses.length} courses</div>
+                </div>
 
-            {/* Category Tabs */}
-            <div className="flex flex-wrap gap-2 lg:ml-auto">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-6 py-2.5 text-sm rounded-3xl transition-all whitespace-nowrap ${
-                    selectedCategory === cat 
-                      ? 'bg-emerald-500 text-black font-medium shadow-lg shadow-emerald-500/30' 
-                      : 'bg-zinc-900 hover:bg-zinc-800 border border-white/10'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
+                <p className="text-gray-400 mb-8">{program.description}</p>
 
-            {/* Level & Sort */}
-            <div className="flex items-center gap-3 ml-auto">
-              <div className="relative">
-                <select
-                  value={selectedLevel}
-                  onChange={(e) => setSelectedLevel(e.target.value)}
-                  className="bg-black border border-white/20 text-sm rounded-3xl px-6 py-3.5 outline-none appearance-none pr-10 cursor-pointer"
-                >
-                  {levels.map(lvl => (
-                    <option key={lvl} value={lvl}>{lvl}</option>
+                <div className="space-y-4">
+                  {program.courses.map((course) => (
+                    <button
+                      key={course.id}
+                      onClick={() => openCourseDetail(course.id)}
+                      className="w-full text-left bg-black/50 border border-white/10 rounded-3xl p-5 hover:border-emerald-500/30 transition-all flex flex-col gap-3"
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="font-semibold text-lg leading-tight">{course.title}</div>
+                        <div className="text-emerald-400 font-bold">৳{course.price}</div>
+                      </div>
+                      <div className="flex flex-wrap gap-2 text-xs text-gray-400">
+                        <span className="px-3 py-2 bg-white/5 rounded-full">{course.level}</span>
+                        <span className="px-3 py-2 bg-white/5 rounded-full">{course.duration}</span>
+                      </div>
+                      <p className="text-sm text-gray-400 line-clamp-2">{course.description}</p>
+                    </button>
                   ))}
-                </select>
-                <Filter className="w-4 h-4 absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400" />
-              </div>
-              
-              <div className="relative">
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as any)}
-                  className="bg-black border border-white/20 text-sm rounded-3xl px-6 py-3.5 outline-none appearance-none pr-10 cursor-pointer"
-                >
-                  <option value="popular">Most Popular</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="newest">Newest First</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          {/* RESULTS GRID */}
-          {filteredCourses.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredCourses.map((course, index) => {
-                const isAvailable = course.available !== false;
-                return (
-                <motion.div
-                  key={course.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: Math.min(index * 0.035, 0.6) }}
-                  whileHover={isAvailable ? { y: -6 } : {}}
-                  onClick={() => isAvailable && openCourseDetail(course.id)}
-                  className={`group bg-black border border-white/10 rounded-3xl overflow-hidden flex flex-col transition-all ${isAvailable ? 'cursor-pointer hover:border-emerald-400/60' : 'cursor-default opacity-75'}`}
-                >
-                  <div className="relative h-52 overflow-hidden">
-                    <img 
-                      src={course.image} 
-                      alt={course.title} 
-                      className="absolute inset-0 w-full h-full object-cover transition-all group-hover:scale-110 duration-700" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black/90"></div>
-                    
-                    <div className="absolute top-6 left-6 px-3 py-0.5 text-[10px] bg-black/80 text-emerald-400 rounded font-mono tracking-widest border border-emerald-500/30">
-                      {course.category}
-                    </div>
-                    
-                    <div className="absolute top-6 right-6 px-4 py-1 text-xs bg-black/70 backdrop-blur rounded-full border border-white/20 flex items-center gap-1">
-                      <span>★</span> {course.rating}
-                    </div>
-
-                    {!isAvailable && (
-                      <div className="absolute bottom-6 left-6 px-6 py-1 text-xs bg-amber-400 text-black font-bold rounded-full">
-                        COMING SOON
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div className="p-7 flex-1 flex flex-col">
-                    <div className="font-semibold text-[22px] tracking-[-0.5px] leading-none mb-4 line-clamp-2">{course.title}</div>
-                    
-                    <p className="text-gray-400 text-[14.5px] line-clamp-3 mb-6 flex-1">{course.description}</p>
-                    
-                    <div className="flex items-center justify-between text-xs border-t border-white/10 pt-6 mt-auto">
-                      <div className="flex items-center gap-4">
-                        <div>
-                          <div className="font-mono text-emerald-400 text-2xl font-semibold tracking-tighter">৳{course.price}</div>
-                        </div>
-                        <div className="text-[10px] text-gray-500 leading-none">
-                          {course.duration}<br />{course.modules} modules
-                        </div>
-                      </div>
-                      
-                      <div className="text-emerald-400 text-right text-[11px] font-medium">
-                        {course.students} students
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="h-1 bg-gradient-to-r from-transparent via-emerald-400 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform"></div>
-                </motion.div>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="text-center py-20">
-              <div className="mx-auto w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-6">
-                <Search className="w-8 h-8 text-gray-400" />
-              </div>
-              <div className="text-2xl font-medium">No courses found</div>
-              <p className="text-gray-400 mt-3">Try adjusting your filters or search term</p>
-              <button 
-                onClick={() => {
-                  setSearchTerm("");
-                  setSelectedLevel("All");
-                  setSelectedCategory("All");
-                }}
-                className="mt-8 px-8 py-3 text-sm border border-white/30 hover:bg-white/5 rounded-2xl"
-              >
-                CLEAR ALL FILTERS
-              </button>
-            </div>
-          )}
-
-          <div className="mt-16 border border-dashed border-white/10 rounded-3xl p-8 text-center bg-black/40">
-            <div className="text-emerald-400 text-sm tracking-widest mb-1">NOT SURE WHERE TO START?</div>
-            <div className="text-2xl font-medium">Take our 1-minute Cybersecurity Skills Assessment</div>
-            <button onClick={() => setShowQuiz(true)} className="mt-6 text-sm border border-white px-8 py-3.5 rounded-2xl hover:bg-white hover:text-black transition-colors inline-flex items-center gap-2">
-              START FREE ASSESSMENT <ArrowRight className="w-4 h-4" />
-            </button>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -2053,7 +1887,7 @@ function App() {
               onClick={() => document.getElementById('courses')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-white text-black font-semibold py-6 px-16 rounded-2xl text-lg active:scale-[0.985] transition-transform"
             >
-              EXPLORE COURSES
+              EXPLORE PROGRAMS
             </button>
             <button 
               onClick={bookConsultation}
@@ -2090,7 +1924,7 @@ function App() {
           <div className="md:col-span-2">
             <div className="uppercase text-xs mb-6 text-gray-400">PLATFORM</div>
             <div className="space-y-3 text-sm">
-              <div className="cursor-pointer hover:text-white">Courses</div>
+              <div className="cursor-pointer hover:text-white">Programs</div>
               <div className="cursor-pointer hover:text-white">Live Events</div>
               <div className="cursor-pointer hover:text-white">Learning Paths</div>
               <div className="cursor-pointer hover:text-white">Resources</div>
