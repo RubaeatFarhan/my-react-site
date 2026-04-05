@@ -1437,7 +1437,7 @@ function App() {
           <div className="hidden md:flex items-center gap-10 text-sm font-medium">
             <a href="#courses" className="hover:text-emerald-400 transition-colors">Programs</a>
             <a href="#live" className="hover:text-emerald-400 transition-colors">Live Classes</a>
-            <a href="#community" className="hover:text-emerald-400 transition-colors">Community</a>
+            <a href="/community.html" className="hover:text-emerald-400 transition-colors">Community</a>
             <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
           </div>
 
