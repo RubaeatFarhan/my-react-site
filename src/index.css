@@ -14,3 +14,14 @@
   border: 2px solid rgb(16 185 129) !important;
   box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
 }
+
+.btn-hover-emerald {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-hover-emerald:hover {
+  background: transparent !important;
+  color: #10b981 !important;
+  border-color: rgb(16 185 129) !important;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}

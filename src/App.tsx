@@ -130,10 +130,10 @@ const programGroups = [
 ];
 
 const courseCardVariants = [
-  'bg-gradient-to-r from-emerald-700 via-zinc-950 to-emerald-900 border-emerald-400/20',
-  'bg-gradient-to-r from-sky-700 via-zinc-950 to-indigo-900 border-sky-400/20',
-  'bg-gradient-to-r from-violet-700 via-zinc-950 to-fuchsia-900 border-fuchsia-400/20',
-  'bg-gradient-to-r from-amber-700 via-zinc-950 to-orange-900 border-amber-400/20',
+  'bg-zinc-900 border-l-4 border-emerald-500/40 ring-1 ring-emerald-500/10',
+  'bg-zinc-900 border-l-4 border-sky-400/40 ring-1 ring-sky-400/10',
+  'bg-zinc-900 border-l-4 border-violet-400/40 ring-1 ring-violet-400/10',
+  'bg-zinc-900 border-l-4 border-amber-400/40 ring-1 ring-amber-400/10',
 ];
 
 const testimonials: Testimonial[] = [
@@ -1427,7 +1427,7 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="/logo.jpg" alt="Cyber Cracker Academy" className="w-10 h-10 rounded-full object-cover border border-white/10 shadow-lg shadow-black/30" />
+            <img src="/images/logo.jpg" alt="Cyber Cracker Academy" className="w-10 h-10 rounded-full object-cover border border-white/10 shadow-lg shadow-black/30" />
             <div>
               <div className="font-bold text-2xl tracking-tighter">CYBER CRACKER</div>
               <div className="text-[10px] text-emerald-400 -mt-1 tracking-[2px]">ACADEMY</div>
@@ -1651,7 +1651,7 @@ function App() {
                           onClick={() => openCourseDetail(course.id)}
                           whileHover={{ y: -6, scale: 1.01 }}
                           transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-                          className={`w-full text-left ${variantClass} border rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
+                          className={`w-full text-left ${variantClass} rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
                         >
                           <div className="flex items-start justify-between gap-4 mb-3">
                             <div className="font-semibold text-lg leading-tight text-white">{course.title}</div>
@@ -1667,7 +1667,7 @@ function App() {
 
                           <div className="flex items-center justify-between gap-4">
                             <span className="text-emerald-200 font-semibold text-sm uppercase tracking-[1px]">Course Path</span>
-                            <span className="inline-flex items-center justify-center rounded-full border border-emerald-300/40 bg-emerald-600 text-white px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-emerald-700">
+                            <span className="inline-flex items-center justify-center rounded-full border border-emerald-300/40 bg-emerald-500 text-white px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-emerald-700 hover:border-emerald-700 btn-hover-emerald">
                               View Details
                             </span>
                           </div>
