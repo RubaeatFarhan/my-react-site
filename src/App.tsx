@@ -117,13 +117,15 @@ const programGroups = [
     id: "CCEH",
     name: "CCEH Program",
     description: "Ethical hacking pathway with three levels from 101 to 301.",
-    courses: courses.filter((course) => course.title.startsWith("CCEH")),
+    image: "./images/course1.jpg",
+    courses: courses.filter((course) => course.title.includes("CCEH")),
   },
   {
     id: "CCSE",
     name: "CCSE Program",
     description: "Cybersecurity engineering pathway with three levels from 101 to 301.",
-    courses: courses.filter((course) => course.title.startsWith("CCSE")),
+    image: "./images/course4.jpg",
+    courses: courses.filter((course) => course.title.includes("CCSE")),
   },
 ];
 
@@ -1609,38 +1611,52 @@ function App() {
                 key={program.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -10, scale: 1.01 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-zinc-900 border border-white/10 rounded-3xl p-8"
+                className="bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden shadow-xl shadow-black/25"
               >
-                <div className="flex items-center justify-between gap-4 mb-6">
-                  <div>
+                <div className="relative overflow-hidden h-56">
+                  <img
+                    src={program.image}
+                    alt={program.name}
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute left-6 bottom-6">
                     <div className="text-xs uppercase tracking-[2px] text-emerald-400 mb-2">{program.id}</div>
-                    <h3 className="text-3xl font-bold">{program.name}</h3>
+                    <h3 className="text-4xl font-bold text-white leading-tight">{program.name}</h3>
                   </div>
-                  <div className="text-sm text-gray-400 max-w-[180px]">{program.courses.length} courses</div>
                 </div>
 
-                <p className="text-gray-400 mb-8">{program.description}</p>
+                <div className="p-8 border-t border-white/10 bg-zinc-950/90">
+                  <div className="flex items-center justify-between gap-4 mb-4">
+                    <div className="text-sm text-gray-400 max-w-[180px]">{program.courses.length} courses</div>
+                    <div className="text-xs uppercase tracking-[2px] text-emerald-400 font-semibold">Program Path</div>
+                  </div>
+                  <p className="text-gray-400 mb-8">{program.description}</p>
 
-                <div className="space-y-4">
-                  {program.courses.map((course) => (
-                    <button
-                      key={course.id}
-                      onClick={() => openCourseDetail(course.id)}
-                      className="w-full text-left bg-black/50 border border-white/10 rounded-3xl p-5 hover:border-emerald-500/30 transition-all flex flex-col gap-3"
-                    >
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="font-semibold text-lg leading-tight">{course.title}</div>
-                        <div className="text-emerald-400 font-bold">৳{course.price}</div>
-                      </div>
-                      <div className="flex flex-wrap gap-2 text-xs text-gray-400">
-                        <span className="px-3 py-2 bg-white/5 rounded-full">{course.level}</span>
-                        <span className="px-3 py-2 bg-white/5 rounded-full">{course.duration}</span>
-                      </div>
-                      <p className="text-sm text-gray-400 line-clamp-2">{course.description}</p>
-                    </button>
-                  ))}
+                  <div className="space-y-4">
+                    {program.courses.map((course) => (
+                      <motion.button
+                        key={course.id}
+                        onClick={() => openCourseDetail(course.id)}
+                        whileHover={{ x: 4, scale: 1.02 }}
+                        transition={{ type: 'spring', stiffness: 220, damping: 18 }}
+                        className="w-full text-left bg-black/50 border border-white/10 rounded-3xl p-5 hover:border-emerald-500/30 transition-all flex flex-col gap-3"
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="font-semibold text-lg leading-tight">{course.title}</div>
+                          <div className="text-emerald-400 font-bold">৳{course.price}</div>
+                        </div>
+                        <div className="flex flex-wrap gap-2 text-xs text-gray-400">
+                          <span className="px-3 py-2 bg-white/5 rounded-full">{course.level}</span>
+                          <span className="px-3 py-2 bg-white/5 rounded-full">{course.duration}</span>
+                        </div>
+                        <p className="text-sm text-gray-400 line-clamp-2">{course.description}</p>
+                      </motion.button>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}
