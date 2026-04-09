@@ -120,6 +120,17 @@ const programGroups = [
     image: "./images/course1.jpg",
     team: "Red Teaming",
     badge: "/images/CCEH101.png",
+    jobs: [
+      "Ethical Hacker",
+      "Penetration Tester",
+      "Bug Bounty Hunter",
+      "Security Analyst",
+    ],
+    certifications: [
+      "CEH (Certified Ethical Hacker)",
+      "eJPT",
+      "CompTIA Security+",
+    ],
     courses: courses.filter((course) => course.title.includes("CCEH")),
   },
   {
@@ -129,6 +140,17 @@ const programGroups = [
     image: "./images/course4.jpg",
     team: "Blue Teaming",
     badge: null,
+    jobs: [
+      "Security Engineer",
+      "SOC Analyst",
+      "Network Security Specialist",
+      "Cybersecurity Consultant",
+    ],
+    certifications: [
+      "OSCP",
+      "CISSP (Associate Level)",
+      "CompTIA CySA+",
+    ],
     courses: courses.filter((course) => course.title.includes("CCSE")),
   },
 ];
@@ -1656,6 +1678,25 @@ function App() {
                     <div className="text-xs uppercase tracking-[2px] text-emerald-400 font-semibold">Program Path</div>
                   </div>
                   <p className="text-gray-400 mb-8">{program.description}</p>
+
+                  <div className="program-info-grid mb-8">
+                    <div className="program-info-card">
+                      <h4>Jobs</h4>
+                      <ul>
+                        {program.jobs.map((job) => (
+                          <li key={job}>{job}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="program-info-card">
+                      <h4>Certifications</h4>
+                      <ul>
+                        {program.certifications.map((cert) => (
+                          <li key={cert}>{cert}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
 
                   <div className="space-y-4">
                     {program.courses.map((course, courseIndex) => {
