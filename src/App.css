@@ -107,9 +107,30 @@
 
 .program-info-card .grid {
   margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.program-info-item {
+  font-size: 0.65rem;
+  padding: 0.4rem !important;
+}
+
+.program-info-item .w-4 {
+  width: 3px;
+  height: 3px;
+}
+
+.program-info-item span {
+  font-size: 0.65rem !important;
+}
+
+.view-details-btn {
+  width: 100%;
+  padding: 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .read-the-docs {

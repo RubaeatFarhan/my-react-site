@@ -1680,25 +1680,25 @@ function App() {
                   </div>
                   <p className="text-gray-400 mb-8">{program.description}</p>
 
-                  <div className="program-info-grid mb-8">
+                  <div className="grid grid-cols-2 gap-6 mb-8">
                     <div className="program-info-card">
                       <h4>Jobs</h4>
-                      <div className="grid gap-3">
+                      <div className="grid gap-2">
                         {program.jobs.map((job) => (
-                          <div key={job} className="flex items-center gap-3 bg-zinc-800/50 border border-white/5 rounded-lg p-3 hover:border-emerald-500/30 transition-colors">
-                            <Briefcase className="w-4 h-4 text-emerald-400 shrink-0" />
-                            <span className="text-sm text-gray-300">{job}</span>
+                          <div key={job} className="program-info-item flex items-center gap-2 bg-zinc-800/50 border border-white/5 rounded p-1 hover:border-emerald-500/30 transition-colors">
+                            <Briefcase className="w-3 h-3 text-emerald-400 shrink-0" />
+                            <span className="text-xs text-gray-300">{job}</span>
                           </div>
                         ))}
                       </div>
                     </div>
                     <div className="program-info-card">
                       <h4>Certifications</h4>
-                      <div className="grid gap-3">
+                      <div className="grid gap-2">
                         {program.certifications.map((cert) => (
-                          <div key={cert} className="flex items-center gap-3 bg-zinc-800/50 border border-white/5 rounded-lg p-3 hover:border-sky-500/30 transition-colors">
-                            <Award className="w-4 h-4 text-sky-400 shrink-0" />
-                            <span className="text-sm text-gray-300">{cert}</span>
+                          <div key={cert} className="program-info-item flex items-center gap-2 bg-zinc-800/50 border border-white/5 rounded p-1 hover:border-sky-500/30 transition-colors">
+                            <Award className="w-3 h-3 text-sky-400 shrink-0" />
+                            <span className="text-xs text-gray-300">{cert}</span>
                           </div>
                         ))}
                       </div>
@@ -1729,10 +1729,10 @@ function App() {
                       })}
                     </div>
 
-                    <div className="mt-8 flex justify-center">
+                    <div className="mt-8">
                       <button
                         onClick={() => openCourseDetail(program.courses[0].id)}
-                        className="inline-flex items-center justify-center rounded-full border border-emerald-300/40 bg-emerald-500 text-white px-6 py-3 text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-emerald-700 hover:border-emerald-700 btn-hover-emerald"
+                        className="view-details-btn rounded-full border border-emerald-300/40 bg-emerald-500 text-white transition-all duration-300 hover:bg-white hover:text-emerald-700 hover:border-emerald-700 btn-hover-emerald"
                       >
                         View Details
                       </button>
