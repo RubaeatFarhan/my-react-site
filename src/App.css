@@ -107,12 +107,14 @@
 
 .program-info-card ul {
   margin: 0;
-  padding-left: 1.1rem;
+  padding-left: 0;
   display: grid;
   gap: 0.7rem;
 }
 
 .program-info-card li {
+  display: flex;
+  align-items: center;
   color: #cbd5e1;
   line-height: 1.6;
 }

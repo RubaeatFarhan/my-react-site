@@ -2,7 +2,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Shield, Lock, Terminal, Users, Calendar, 
-  Play, ArrowRight, CheckCircle, Zap, Search
+  Play, ArrowRight, CheckCircle, Zap, Search,
+  Briefcase, Award
 } from 'lucide-react';
 
 interface Course {
@@ -1684,7 +1685,7 @@ function App() {
                       <h4>Jobs</h4>
                       <ul>
                         {program.jobs.map((job) => (
-                          <li key={job}>{job}</li>
+                          <li key={job}><Briefcase className="w-4 h-4 mr-2 text-emerald-400" />{job}</li>
                         ))}
                       </ul>
                     </div>
@@ -1692,7 +1693,7 @@ function App() {
                       <h4>Certifications</h4>
                       <ul>
                         {program.certifications.map((cert) => (
-                          <li key={cert}>{cert}</li>
+                          <li key={cert}><Award className="w-4 h-4 mr-2 text-sky-400" />{cert}</li>
                         ))}
                       </ul>
                     </div>
