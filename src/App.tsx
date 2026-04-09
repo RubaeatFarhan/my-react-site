@@ -1705,39 +1705,38 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="space-y-4">
-                    {program.courses.map((course, courseIndex) => {
-                      const variantClass = courseCardVariants[courseIndex % courseCardVariants.length];
+                  <div className="mt-8">
+                    <h4 className="text-lg font-semibold text-white mb-4">Courses</h4>
+                    <div className="grid gap-4">
+                      {program.courses.map((course, courseIndex) => {
+                        const variantClass = courseCardVariants[courseIndex % courseCardVariants.length];
 
-                      return (
-                        <motion.button
-                          key={course.id}
-                          onClick={() => openCourseDetail(course.id)}
-                          whileHover={{ y: -6, scale: 1.01 }}
-                          transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-                          className={`w-full text-left ${variantClass} rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
-                        >
-                          <div className="flex items-start justify-between gap-4 mb-3">
-                            <div className="font-semibold text-lg leading-tight text-white">{course.title}</div>
-                            <div className="text-xs uppercase tracking-[1px] text-white/80 bg-white/10 rounded-full px-3 py-1">{course.level}</div>
+                        return (
+                          <div key={course.id} className={`w-full text-left ${variantClass} rounded-3xl p-5`}>
+                            <div className="flex items-start justify-between gap-4 mb-3">
+                              <div className="font-semibold text-lg leading-tight text-white">{course.title}</div>
+                              <div className="text-xs uppercase tracking-[1px] text-white/80 bg-white/10 rounded-full px-3 py-1">{course.level}</div>
+                            </div>
+
+                            <div className="flex flex-wrap gap-2 text-xs text-white/80 mb-4">
+                              <span className="px-3 py-2 bg-white/10 rounded-full">{course.duration}</span>
+                              <span className="px-3 py-2 bg-white/10 rounded-full">{course.category}</span>
+                            </div>
+
+                            <p className="text-sm text-white/80 line-clamp-2 mb-5">{course.description}</p>
                           </div>
+                        );
+                      })}
+                    </div>
 
-                          <div className="flex flex-wrap gap-2 text-xs text-white/80 mb-4">
-                            <span className="px-3 py-2 bg-white/10 rounded-full">{course.duration}</span>
-                            <span className="px-3 py-2 bg-white/10 rounded-full">{course.category}</span>
-                          </div>
-
-                          <p className="text-sm text-white/80 line-clamp-2 mb-5">{course.description}</p>
-
-                          <div className="flex items-center justify-between gap-4">
-                            <span className="text-emerald-200 font-semibold text-sm uppercase tracking-[1px]">Course Path</span>
-                            <span className="inline-flex items-center justify-center rounded-full border border-emerald-300/40 bg-emerald-500 text-white px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-emerald-700 hover:border-emerald-700 btn-hover-emerald">
-                              View Details
-                            </span>
-                          </div>
-                        </motion.button>
-                      );
-                    })}
+                    <div className="mt-8 flex justify-center">
+                      <button
+                        onClick={() => openCourseDetail(program.courses[0].id)}
+                        className="inline-flex items-center justify-center rounded-full border border-emerald-300/40 bg-emerald-500 text-white px-6 py-3 text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-emerald-700 hover:border-emerald-700 btn-hover-emerald"
+                      >
+                        View Details
+                      </button>
+                    </div>
                   </div>
                 </div>
               </motion.div>
