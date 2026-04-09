@@ -1683,19 +1683,25 @@ function App() {
                   <div className="program-info-grid mb-8">
                     <div className="program-info-card">
                       <h4>Jobs</h4>
-                      <ul>
+                      <div className="grid gap-3">
                         {program.jobs.map((job) => (
-                          <li key={job}><Briefcase className="w-4 h-4 mr-2 text-emerald-400" />{job}</li>
+                          <div key={job} className="flex items-center gap-3 bg-zinc-800/50 border border-white/5 rounded-lg p-3 hover:border-emerald-500/30 transition-colors">
+                            <Briefcase className="w-4 h-4 text-emerald-400 shrink-0" />
+                            <span className="text-sm text-gray-300">{job}</span>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                     <div className="program-info-card">
                       <h4>Certifications</h4>
-                      <ul>
+                      <div className="grid gap-3">
                         {program.certifications.map((cert) => (
-                          <li key={cert}><Award className="w-4 h-4 mr-2 text-sky-400" />{cert}</li>
+                          <div key={cert} className="flex items-center gap-3 bg-zinc-800/50 border border-white/5 rounded-lg p-3 hover:border-sky-500/30 transition-colors">
+                            <Award className="w-4 h-4 text-sky-400 shrink-0" />
+                            <span className="text-sm text-gray-300">{cert}</span>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                   </div>
 
@@ -1737,35 +1743,6 @@ function App() {
               </motion.div>
             ))}
           </div>
-
-          {/* CAREER PATHS & CERTIFICATIONS */}
-          <section className="mt-16">
-            <h3 className="text-4xl font-bold tracking-tighter mb-8">Career Paths & Certifications</h3>
-            <div className="grid gap-8 lg:grid-cols-2">
-              <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
-                <h4 className="text-2xl font-semibold mb-6 text-emerald-400">Jobs</h4>
-                <div className="grid gap-4">
-                  {programGroups.flatMap(program => program.jobs).map((job, index) => (
-                    <div key={index} className="flex items-center gap-3 bg-zinc-800/50 border border-white/5 rounded-lg p-4 hover:border-emerald-500/30 transition-colors">
-                      <Briefcase className="w-5 h-5 text-emerald-400 shrink-0" />
-                      <span className="text-gray-300">{job}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
-                <h4 className="text-2xl font-semibold mb-6 text-sky-400">Certifications</h4>
-                <div className="grid gap-4">
-                  {programGroups.flatMap(program => program.certifications).map((cert, index) => (
-                    <div key={index} className="flex items-center gap-3 bg-zinc-800/50 border border-white/5 rounded-lg p-4 hover:border-sky-500/30 transition-colors">
-                      <Award className="w-5 h-5 text-sky-400 shrink-0" />
-                      <span className="text-gray-300">{cert}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
         </div>
       </section>
 

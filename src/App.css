@@ -105,18 +105,8 @@
   color: #7dd3fc;
 }
 
-.program-info-card ul {
+.program-info-card .grid {
   margin: 0;
-  padding-left: 0;
-  display: grid;
-  gap: 0.7rem;
-}
-
-.program-info-card li {
-  display: flex;
-  align-items: center;
-  color: #cbd5e1;
-  line-height: 1.6;
 }
 
 .read-the-docs {
