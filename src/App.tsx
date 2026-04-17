@@ -1680,6 +1680,16 @@ function App() {
                   </div>
                   <p className="text-gray-400 mb-8">{program.description}</p>
 
+                  <div className="mb-8">
+                    <motion.button
+                      onClick={() => openCourseDetail(program.courses[0].id)}
+                      whileHover={{ scale: 1.05 }}
+                      className="view-details-btn rounded-full border border-emerald-300/40 bg-emerald-500 text-white transition-all duration-300 hover:bg-white hover:text-emerald-700 hover:border-emerald-700"
+                    >
+                      View Details
+                    </motion.button>
+                  </div>
+
                   <div className="grid grid-cols-2 gap-6 mb-8">
                     <div className="program-info-card">
                       <h4>Jobs</h4>
@@ -1730,12 +1740,13 @@ function App() {
                     </div>
 
                     <div className="mt-8">
-                      <button
+                      <motion.button
                         onClick={() => openCourseDetail(program.courses[0].id)}
-                        className="view-details-btn rounded-full border border-emerald-300/40 bg-emerald-500 text-white transition-all duration-300 hover:bg-white hover:text-emerald-700 hover:border-emerald-700 btn-hover-emerald"
+                        whileHover={{ scale: 1.05 }}
+                        className="view-details-btn rounded-full border border-sky-300/40 bg-sky-500 text-white transition-all duration-300 hover:bg-white hover:text-sky-700 hover:border-sky-700"
                       >
-                        View Details
-                      </button>
+                        Enroll Now
+                      </motion.button>
                     </div>
                   </div>
                 </div>
