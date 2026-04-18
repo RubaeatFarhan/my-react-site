@@ -1683,10 +1683,25 @@ function App() {
                   <div className="mb-8">
                     <motion.button
                       onClick={() => openCourseDetail(program.courses[0].id)}
-                      whileHover={{ scale: 1.05 }}
-                      className="view-details-btn rounded-full border border-emerald-300/40 bg-emerald-500 text-white transition-all duration-300 hover:bg-white hover:text-emerald-700 hover:border-emerald-700"
+                      whileHover={{ scale: 1.08, y: -4 }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 100,
+                        damping: 12,
+                        mass: 1.2
+                      }}
+                      className="cta-button-glow cta-button-emerald cta-button-shimmer pulse inline-flex"
                     >
-                      View Details
+                      <span>View Details</span>
+                      <motion.div
+                        animate={{ x: [0, 6, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <ArrowRight className="w-5 h-5" />
+                      </motion.div>
                     </motion.button>
                   </div>
 
@@ -1742,10 +1757,25 @@ function App() {
                     <div className="mt-8">
                       <motion.button
                         onClick={() => openCourseDetail(program.courses[0].id)}
-                        whileHover={{ scale: 1.05 }}
-                        className="view-details-btn rounded-full border border-sky-300/40 bg-sky-500 text-white transition-all duration-300 hover:bg-white hover:text-sky-700 hover:border-sky-700"
+                        whileHover={{ scale: 1.08, y: -4 }}
+                        whileTap={{ scale: 0.95 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 100,
+                          damping: 12,
+                          mass: 1.2
+                        }}
+                        className="cta-button-glow cta-button-sky cta-button-shimmer pulse inline-flex"
                       >
-                        Enroll Now
+                        <span>Enroll Now</span>
+                        <motion.div
+                          animate={{ x: [0, 6, 0] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                          <ArrowRight className="w-5 h-5" />
+                        </motion.div>
                       </motion.button>
                     </div>
                   </div>
