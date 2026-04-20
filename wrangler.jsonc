@@ -1,0 +1,11 @@
+{
+  "name": "cybercrackeracademy",
+  "compatibility_date": "2026-04-20",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
