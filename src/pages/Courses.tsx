@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Shield, Award, Zap, Users, ArrowRight, Star, BookOpen, Target, Code, Lock, Rocket } from 'lucide-react';
 
 export const Courses = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-[#0a0a0a] text-white overflow-x-hidden pt-24">
       {/* FEATURED COURSES - BUG BOUNTY & TRENDING */}
@@ -198,7 +200,7 @@ export const Courses = () => {
 
                   <div className="flex gap-3 w-full sm:w-auto">
                     <motion.button
-                      onClick={() => alert('Redirecting to course details...')}
+                      onClick={() => navigate('/course/bug-bounty')}
                       whileHover={{ scale: 1.05, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, y: 20 }}
@@ -212,7 +214,7 @@ export const Courses = () => {
                     </motion.button>
 
                     <motion.button
-                      onClick={() => alert('Redirecting to enrollment...')}
+                      onClick={() => navigate('/enroll/bug-bounty')}
                       whileHover={{ scale: 1.05, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, y: 20 }}
@@ -382,7 +384,7 @@ export const Courses = () => {
 
                   <div className="flex gap-3 w-full sm:w-auto">
                     <motion.button
-                      onClick={() => alert('Redirecting to course details...')}
+                      onClick={() => navigate('/course/malware-development')}
                       whileHover={{ scale: 1.05, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, y: 20 }}
@@ -396,7 +398,7 @@ export const Courses = () => {
                     </motion.button>
 
                     <motion.button
-                      onClick={() => alert('Redirecting to enrollment...')}
+                      onClick={() => navigate('/enroll/malware-development')}
                       whileHover={{ scale: 1.05, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, y: 20 }}
@@ -746,7 +748,7 @@ export const Courses = () => {
                     {/* Action Buttons */}
                     <div className="space-y-3 mt-auto">
                       <motion.button
-                        onClick={() => alert(`Viewing details for ${course.title}...`)}
+                        onClick={() => navigate(`/course/${course.title.toLowerCase().replace(/\s+/g, '-').substring(0, 30)}`)}
                         whileHover={{ scale: 1.02, x: 2 }}
                         whileTap={{ scale: 0.98 }}
                         className="w-full py-2.5 border-2 border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 group/btn"
@@ -756,7 +758,7 @@ export const Courses = () => {
                       </motion.button>
 
                       <motion.button
-                        onClick={() => alert(`Enrolling in ${course.title}...`)}
+                        onClick={() => navigate(`/enroll/${course.title.toLowerCase().replace(/\s+/g, '-').substring(0, 30)}`)}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className={`w-full py-2.5 bg-gradient-to-r ${course.color} text-white rounded-xl font-bold text-sm transition-all shadow-lg hover:shadow-xl hover:shadow-cyan-500/20`}

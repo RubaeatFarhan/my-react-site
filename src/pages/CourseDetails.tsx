@@ -1,0 +1,399 @@
+import { motion } from 'framer-motion';
+import { useParams, useNavigate } from 'react-router-dom';
+import { ArrowLeft, Star, Users, Clock, BookOpen, Award, CheckCircle, Zap, Code } from 'lucide-react';
+
+const courseDatabase: Record<string, any> = {
+  'bug-bounty': {
+    id: 'bug-bounty',
+    title: 'Bug Bounty Hunting Masterclass',
+    description: 'Learn how to find vulnerabilities on real-world applications and earn money through bug bounty programs.',
+    price: 1999,
+    duration: '8 Weeks',
+    modules: 16,
+    students: 340,
+    rating: 4.9,
+    level: 'Intermediate',
+    image: './images/course1.jpg',
+    instructor: 'John Security Expert',
+    instructorBio: '10+ years in cybersecurity, worked with top companies and discovered 500+ vulnerabilities',
+    aboutCourse: `This comprehensive masterclass teaches you the art and science of bug bounty hunting. You'll learn from top bounty hunters who have earned thousands of dollars finding and reporting vulnerabilities. The course covers real-world techniques, tools, and methodologies used by professional security researchers.
+
+    By the end of this course, you'll be able to:
+    • Identify vulnerabilities in web applications
+    • Perform security assessments professionally
+    • Write compelling bug reports
+    • Earn consistent income through bug bounty programs`,
+    modules: [
+      { id: 1, name: 'Introduction to Bug Bounty Programs', duration: '2 hours', lessons: 8 },
+      { id: 2, name: 'Web Application Fundamentals', duration: '3 hours', lessons: 12 },
+      { id: 3, name: 'Reconnaissance & Information Gathering', duration: '4 hours', lessons: 15 },
+      { id: 4, name: 'Web Vulnerability Scanning', duration: '3 hours', lessons: 10 },
+      { id: 5, name: 'API Security Testing', duration: '4 hours', lessons: 14 },
+      { id: 6, name: 'Authentication & Authorization Flaws', duration: '3 hours', lessons: 11 },
+      { id: 7, name: 'Business Logic Vulnerabilities', duration: '2 hours', lessons: 9 },
+      { id: 8, name: 'Mobile App Testing', duration: '3 hours', lessons: 12 },
+      { id: 9, name: 'Report Writing Excellence', duration: '2 hours', lessons: 8 },
+      { id: 10, name: 'Earning Your First Bounty', duration: '2 hours', lessons: 7 },
+      { id: 11, name: 'Advanced Exploitation Techniques', duration: '4 hours', lessons: 16 },
+      { id: 12, name: 'Case Studies & Real Bounties', duration: '3 hours', lessons: 10 },
+      { id: 13, name: 'Building a Bug Bounty Portfolio', duration: '2 hours', lessons: 9 },
+      { id: 14, name: 'Tools & Automation', duration: '3 hours', lessons: 11 },
+      { id: 15, name: 'Legal & Ethical Considerations', duration: '1 hour', lessons: 5 },
+      { id: 16, name: 'Capstone Project', duration: '8 hours', lessons: 1 },
+    ],
+    learningOutcomes: [
+      'Master vulnerability detection and exploitation',
+      'Write professional security reports',
+      'Identify and exploit OWASP Top 10 vulnerabilities',
+      'Use industry-standard security tools',
+      'Earn money through legitimate bug bounty platforms',
+      'Build a career in cybersecurity'
+    ],
+    requirements: [
+      'Basic understanding of web technologies',
+      'Familiarity with Linux command line',
+      'Python or JavaScript knowledge',
+      'Curious mindset and passion for security'
+    ],
+    reviews: [
+      { name: 'Ahmed Hassan', rating: 5, comment: 'Found my first bug worth $2000 after week 6!' },
+      { name: 'Sarah Johnson', rating: 5, comment: 'Best cybersecurity course I have ever taken' },
+      { name: 'Mike Chen', rating: 4.9, comment: 'Instructors are incredibly knowledgeable and responsive' }
+    ]
+  },
+  'malware-development': {
+    id: 'malware-development',
+    title: 'Malware Development Advanced',
+    description: 'Master advanced malware analysis, reverse engineering, and threat intelligence. Learn from security researchers.',
+    price: 3499,
+    duration: '10 Weeks',
+    modules: 14,
+    students: 187,
+    rating: 4.8,
+    level: 'Professional',
+    image: './images/course1.jpg',
+    instructor: 'Dr. Security Researcher',
+    instructorBio: '15+ years in threat intelligence, published multiple security papers, former SOC manager',
+    aboutCourse: `Deep dive into advanced malware analysis and reverse engineering. This expert-level course teaches you how to analyze sophisticated malware, understand attacker methodologies, and build custom analysis tools. Perfect for security researchers and threat intelligence professionals.
+
+    By the end of this course, you'll be able to:
+    • Analyze complex malware samples
+    • Reverse engineer binary code
+    • Develop custom analysis tools
+    • Contribute to threat intelligence`,
+    modules: [
+      { id: 1, name: 'Malware Analysis Fundamentals', duration: '3 hours', lessons: 10 },
+      { id: 2, name: 'Binary Analysis Basics', duration: '4 hours', lessons: 14 },
+      { id: 3, name: 'Assembly Language Deep Dive', duration: '5 hours', lessons: 18 },
+      { id: 4, name: 'Reverse Engineering Tools', duration: '3 hours', lessons: 12 },
+      { id: 5, name: 'Dynamic Analysis Techniques', duration: '4 hours', lessons: 15 },
+      { id: 6, name: 'Malware Behavior Analysis', duration: '3 hours', lessons: 11 },
+      { id: 7, name: 'Unpacking & Obfuscation Techniques', duration: '4 hours', lessons: 13 },
+      { id: 8, name: 'API Hooking & Interception', duration: '3 hours', lessons: 12 },
+      { id: 9, name: 'Network Analysis for Malware', duration: '3 hours', lessons: 10 },
+      { id: 10, name: 'Exploit Analysis', duration: '4 hours', lessons: 14 },
+      { id: 11, name: 'Ransomware Analysis Case Studies', duration: '3 hours', lessons: 9 },
+      { id: 12, name: 'Building Custom Analysis Tools', duration: '5 hours', lessons: 16 },
+      { id: 13, name: 'Threat Intelligence Integration', duration: '2 hours', lessons: 8 },
+      { id: 14, name: 'Advanced Capstone Project', duration: '10 hours', lessons: 1 },
+    ],
+    learningOutcomes: [
+      'Perform sophisticated malware analysis',
+      'Reverse engineer binary code effectively',
+      'Develop custom malware analysis tools',
+      'Understand advanced attacker techniques',
+      'Contribute to threat intelligence operations',
+      'Become a subject matter expert in malware research'
+    ],
+    requirements: [
+      'Strong C/C++ programming skills',
+      'Advanced knowledge of operating systems',
+      'Assembly language proficiency',
+      'Prior malware analysis experience'
+    ],
+    reviews: [
+      { name: 'Dr. Michael', rating: 5, comment: 'Excellent deep technical content, industry best practices' },
+      { name: 'Security Manager', rating: 4.8, comment: 'My team learned more in this course than years of practice' }
+    ]
+  }
+};
+
+export const CourseDetails = () => {
+  const { courseId } = useParams();
+  const navigate = useNavigate();
+  const course = courseDatabase[courseId || 'bug-bounty'];
+
+  if (!course) {
+    return (
+      <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center pt-24">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Course Not Found</h1>
+          <button 
+            onClick={() => navigate('/courses')}
+            className="px-6 py-3 bg-cyan-500 text-white rounded-lg font-semibold"
+          >
+            Back to Courses
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden pt-24">
+      {/* Back Button */}
+      <motion.button
+        onClick={() => navigate('/courses')}
+        whileHover={{ x: -5 }}
+        className="ml-6 mb-4 flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        Back to Courses
+      </motion.button>
+
+      {/* Hero Section */}
+      <section className="max-w-7xl mx-auto px-6 mb-16">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Course Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative rounded-3xl overflow-hidden"
+          >
+            <img 
+              src={course.image} 
+              alt={course.title}
+              className="w-full h-96 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+            <div className="absolute bottom-6 left-6">
+              <div className="bg-cyan-500/20 border border-cyan-500/40 px-4 py-2 rounded-full">
+                <span className="text-cyan-300 font-bold">{course.level}</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Course Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                ))}
+              </div>
+              <span className="text-xl font-bold">{course.rating}</span>
+              <span className="text-gray-400">({course.students}+ students)</span>
+            </div>
+
+            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              {course.title}
+            </h1>
+
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              {course.description}
+            </p>
+
+            {/* Course Stats */}
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Clock className="w-5 h-5 text-cyan-400" />
+                  <span className="text-gray-400">Duration</span>
+                </div>
+                <p className="text-2xl font-bold">{course.duration}</p>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <BookOpen className="w-5 h-5 text-cyan-400" />
+                  <span className="text-gray-400">Modules</span>
+                </div>
+                <p className="text-2xl font-bold">{course.modules}</p>
+              </div>
+            </div>
+
+            {/* Pricing and CTA */}
+            <div className="flex flex-col sm:flex-row gap-4 items-start">
+              <div>
+                <p className="text-gray-400 mb-2">Investment</p>
+                <p className="text-4xl font-bold">৳{course.price.toLocaleString()}</p>
+              </div>
+              <motion.button
+                onClick={() => navigate(`/enroll/${courseId}`)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex-1 sm:flex-none px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-cyan-500/30 transition-all flex items-center justify-center gap-2"
+              >
+                <span>Enroll Now</span>
+                <Zap className="w-5 h-5" />
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* About Course */}
+      <section className="max-w-7xl mx-auto px-6 mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-br from-white/5 to-white/2 border border-white/10 rounded-3xl p-12"
+        >
+          <h2 className="text-3xl font-bold mb-6">About This Course</h2>
+          <p className="text-gray-300 text-lg leading-relaxed whitespace-pre-line mb-8">
+            {course.aboutCourse}
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Learning Outcomes */}
+            <div>
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                <CheckCircle className="w-6 h-6 text-cyan-400" />
+                What You'll Learn
+              </h3>
+              <ul className="space-y-3">
+                {course.learningOutcomes.map((outcome, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.05 }}
+                    viewport={{ once: true }}
+                    className="flex items-start gap-3 text-gray-300"
+                  >
+                    <span className="text-cyan-400 mt-1">✓</span>
+                    {outcome}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Requirements */}
+            <div>
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                <Code className="w-6 h-6 text-cyan-400" />
+                Requirements
+              </h3>
+              <ul className="space-y-3">
+                {course.requirements.map((req, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.05 }}
+                    viewport={{ once: true }}
+                    className="flex items-start gap-3 text-gray-300"
+                  >
+                    <span className="text-blue-400 mt-1">•</span>
+                    {req}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Instructor */}
+      <section className="max-w-7xl mx-auto px-6 mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-3xl p-12"
+        >
+          <div className="flex items-start gap-6">
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-3xl font-bold">
+              {course.instructor.charAt(0)}
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold mb-2">{course.instructor}</h3>
+              <p className="text-gray-300 text-lg mb-4">{course.instructorBio}</p>
+              <Award className="w-5 h-5 text-purple-400" />
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Modules */}
+      <section className="max-w-7xl mx-auto px-6 mb-16">
+        <h2 className="text-3xl font-bold mb-8">Course Modules</h2>
+        <div className="grid gap-4">
+          {course.modules.map((module, idx) => (
+            <motion.div
+              key={module.id}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.05 }}
+              viewport={{ once: true }}
+              className="bg-white/5 border border-white/10 rounded-xl p-6 hover:border-cyan-500/30 transition-all"
+            >
+              <div className="flex items-start justify-between">
+                <div>
+                  <h4 className="text-lg font-bold mb-2">Module {module.id}: {module.name}</h4>
+                  <p className="text-gray-400">{module.lessons} lessons • {module.duration}</p>
+                </div>
+                <BookOpen className="w-6 h-6 text-cyan-400" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section className="max-w-7xl mx-auto px-6 mb-16">
+        <h2 className="text-3xl font-bold mb-8">Student Reviews</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {course.reviews.map((review, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white/5 border border-white/10 rounded-xl p-6"
+            >
+              <div className="flex items-center gap-1 mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star 
+                    key={i} 
+                    className={`w-4 h-4 ${i < Math.floor(review.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-600'}`}
+                  />
+                ))}
+              </div>
+              <p className="text-gray-300 mb-4">{review.comment}</p>
+              <p className="font-bold">{review.name}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="max-w-7xl mx-auto px-6 mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-3xl p-12 text-center"
+        >
+          <h2 className="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
+          <p className="text-xl text-gray-300 mb-8">Join {course.students}+ students already learning. Get lifetime access to all course materials.</p>
+          <motion.button
+            onClick={() => navigate(`/enroll/${courseId}`)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-10 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-cyan-500/30 transition-all inline-flex items-center gap-2"
+          >
+            Enroll Now
+            <Zap className="w-5 h-5" />
+          </motion.button>
+        </motion.div>
+      </section>
+    </div>
+  );
+};
