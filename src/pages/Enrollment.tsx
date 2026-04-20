@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Check, CreditCard, Shield, Lock, Zap } from 'lucide-react';
 import { useState } from 'react';
+import { db } from '../config/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const courseDatabase: Record<string, any> = {
   'bug-bounty': {
@@ -34,6 +36,7 @@ export const Enrollment = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(1);
+  const [error, setError] = useState<string | null>(null);
 
   if (!course) {
     return (
@@ -59,12 +62,32 @@ export const Enrollment = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsLoading(false);
-    setStep(3); // Success page
+    try {
+      // Save enrollment data to Firebase
+      const enrollmentsRef = collection(db, 'enrollments');
+      await addDoc(enrollmentsRef, {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        country: formData.country,
+        paymentMethod: formData.paymentMethod,
+        courseName: course.title,
+        courseId: courseId,
+        coursePrice: course.price,
+        enrollmentDate: serverTimestamp(),
+        status: 'pending'
+      });
+      
+      setIsLoading(false);
+      setStep(3); // Success page
+    } catch (err) {
+      console.error('Error saving enrollment:', err);
+      setError('Failed to complete enrollment. Please try again.');
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -120,6 +143,17 @@ export const Enrollment = () => {
                 className="bg-gradient-to-br from-white/5 to-white/2 border border-white/10 rounded-3xl p-12"
               >
                 <h2 className="text-3xl font-bold mb-8">Your Information</h2>
+                
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6 text-red-300"
+                  >
+                    {error}
+                  </motion.div>
+                )}
+                
                 <form onSubmit={() => setStep(2)} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <motion.div
@@ -230,6 +264,17 @@ export const Enrollment = () => {
                 className="bg-gradient-to-br from-white/5 to-white/2 border border-white/10 rounded-3xl p-12"
               >
                 <h2 className="text-3xl font-bold mb-8">Payment Method</h2>
+                
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6 text-red-300"
+                  >
+                    {error}
+                  </motion.div>
+                )}
+                
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-4">
                     {['card', 'bkash', 'nagad', 'bank'].map((method, idx) => (

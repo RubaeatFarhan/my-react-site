@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Star, Users, Clock, BookOpen, Award, CheckCircle, Zap, Code } from 'lucide-react';
+import { ArrowLeft, Star, Clock, BookOpen, Award, CheckCircle, Zap, Code } from 'lucide-react';
 
 const courseDatabase: Record<string, any> = {
   'bug-bounty': {
@@ -9,7 +9,7 @@ const courseDatabase: Record<string, any> = {
     description: 'Learn how to find vulnerabilities on real-world applications and earn money through bug bounty programs.',
     price: 1999,
     duration: '8 Weeks',
-    modules: 16,
+    moduleCount: 16,
     students: 340,
     rating: 4.9,
     level: 'Intermediate',
@@ -67,7 +67,7 @@ const courseDatabase: Record<string, any> = {
     description: 'Master advanced malware analysis, reverse engineering, and threat intelligence. Learn from security researchers.',
     price: 3499,
     duration: '10 Weeks',
-    modules: 14,
+    moduleCount: 14,
     students: 187,
     rating: 4.8,
     level: 'Professional',
@@ -212,7 +212,7 @@ export const CourseDetails = () => {
                   <BookOpen className="w-5 h-5 text-cyan-400" />
                   <span className="text-gray-400">Modules</span>
                 </div>
-                <p className="text-2xl font-bold">{course.modules}</p>
+                <p className="text-2xl font-bold">{course.moduleCount}</p>
               </div>
             </div>
 
@@ -257,7 +257,7 @@ export const CourseDetails = () => {
                 What You'll Learn
               </h3>
               <ul className="space-y-3">
-                {course.learningOutcomes.map((outcome, idx) => (
+                {course.learningOutcomes.map((outcome: string, idx: number) => (
                   <motion.li
                     key={idx}
                     initial={{ opacity: 0, x: -10 }}
@@ -280,7 +280,7 @@ export const CourseDetails = () => {
                 Requirements
               </h3>
               <ul className="space-y-3">
-                {course.requirements.map((req, idx) => (
+                {course.requirements.map((req: string, idx: number) => (
                   <motion.li
                     key={idx}
                     initial={{ opacity: 0, x: -10 }}
@@ -324,7 +324,7 @@ export const CourseDetails = () => {
       <section className="max-w-7xl mx-auto px-6 mb-16">
         <h2 className="text-3xl font-bold mb-8">Course Modules</h2>
         <div className="grid gap-4">
-          {course.modules.map((module, idx) => (
+          {course.modules.map((module: any, idx: number) => (
             <motion.div
               key={module.id}
               initial={{ opacity: 0, x: -20 }}
@@ -349,7 +349,7 @@ export const CourseDetails = () => {
       <section className="max-w-7xl mx-auto px-6 mb-16">
         <h2 className="text-3xl font-bold mb-8">Student Reviews</h2>
         <div className="grid md:grid-cols-3 gap-6">
-          {course.reviews.map((review, idx) => (
+          {course.reviews.map((review: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
