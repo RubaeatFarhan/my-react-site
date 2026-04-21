@@ -11,9 +11,12 @@ window.addEventListener('error', (event) => {
   }
 });
 
-chrome?.runtime?.onMessage?.addListener(() => {
-  return true; // Keep channel open
-});
+// Handle chrome extension messages safely
+if (typeof (window as any).chrome !== 'undefined' && (window as any).chrome?.runtime) {
+  (window as any).chrome.runtime.onMessage.addListener(() => {
+    return true; // Keep channel open
+  });
+}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
