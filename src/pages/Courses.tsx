@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Shield, Award, Zap, Users, ArrowRight, Star, BookOpen, Target, Code, Lock, Rocket } from 'lucide-react';
+import { MetasploitCourseCard } from '../components/MetasploitCourseCard';
 
 export const Courses = () => {
   const navigate = useNavigate();
@@ -503,6 +504,33 @@ export const Courses = () => {
               <ArrowRight className="w-5 h-5" />
             </motion.button>
           </motion.div>
+        </div>
+      </section>
+
+      {/* METASPLOIT FRAMEWORK COURSE - SPECIAL FEATURE */}
+      <section className="bg-gradient-to-b from-slate-900/50 via-slate-900 to-slate-900/50 py-24 border-t border-slate-700/30">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <div className="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs tracking-[2px] px-4 py-2 rounded-full mb-6">
+              <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+              ADVANCED PENTESTING
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 bg-gradient-to-r from-purple-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              Metasploit Framework Mastery
+            </h2>
+            <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+              Complete hands-on course covering msfconsole from basics to advanced exploitation techniques with ethical focus
+            </p>
+          </motion.div>
+
+          <MetasploitCourseCard 
+            onEnroll={() => navigate('/course/metasploit-framework')}
+          />
         </div>
       </section>
 

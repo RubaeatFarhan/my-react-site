@@ -115,6 +115,71 @@ const courseDatabase: Record<string, any> = {
       { name: 'Dr. Michael', rating: 5, comment: 'Excellent deep technical content, industry best practices' },
       { name: 'Security Manager', rating: 4.8, comment: 'My team learned more in this course than years of practice' }
     ]
+  },
+  'metasploit-framework': {
+    id: 'metasploit-framework',
+    title: '🎓 Metasploit Framework (msfconsole) – Full Course Structure',
+    description: 'Master the Metasploit Framework from basics to advanced exploitation. Complete hands-on course with ethical pentesting focus and real-world lab environments.',
+    price: 2499,
+    duration: '12 Weeks',
+    moduleCount: 16,
+    students: 421,
+    rating: 4.85,
+    level: 'Intermediate to Advanced',
+    image: './images/course1.jpg',
+    instructor: 'Ethical Hacker Pro',
+    instructorBio: '12+ years in penetration testing, OSCP certified, worked with Fortune 500 companies',
+    aboutCourse: `Master Metasploit Framework from the ground up! This comprehensive course teaches you how to use msfconsole effectively for penetration testing in legal, ethical environments. Learn reconnaissance, exploitation, post-exploitation techniques, and complete attack workflows in controlled lab environments.
+
+By the end of this course, you'll be able to:
+• Use msfconsole with proficiency for security assessments
+• Execute complete attack lifecycles in ethical labs
+• Understand and deploy exploits and payloads
+• Perform post-exploitation and maintain access
+• Build professional penetration testing reports
+• Navigate the ethical and legal considerations of security testing
+
+⚠️ CRITICAL: This course emphasizes ETHICAL & LEGAL usage only. All labs are on intentionally vulnerable systems in isolated environments.`,
+    modules: [
+      { id: 1, name: 'Introduction to Metasploit', duration: '2 hours', lessons: 8, details: ['What is Metasploit Framework', 'Use cases in cybersecurity & penetration testing', 'Ethical vs illegal usage (VERY important)', 'Overview of msfconsole interface', 'Types of modules (high-level)'] },
+      { id: 2, name: 'Lab Setup (Safe Environment)', duration: '3 hours', lessons: 10, details: ['Installing Kali Linux / Parrot OS', 'Setting up Metasploit Framework', 'Creating a virtual lab (Attacker + Target)', 'Using vulnerable machines', 'Network configuration (NAT / Host-only)'] },
+      { id: 3, name: 'msfconsole Basics', duration: '2.5 hours', lessons: 9, details: ['Starting msfconsole', 'Understanding the CLI structure', 'help & search commands', 'use & info commands', 'back & exit commands', 'Navigating modules efficiently'] },
+      { id: 4, name: 'Working with Auxiliary Modules', duration: '3 hours', lessons: 12, details: ['Concept of auxiliary modules', 'Scanning & enumeration basics', 'Port scanning via Metasploit', 'Service detection', 'Practical lab: scanning a target system'] },
+      { id: 5, name: 'Exploits Fundamentals', duration: '3 hours', lessons: 11, details: ['What is an exploit', 'How vulnerabilities are used', 'Structure of an exploit module', 'Selecting and loading exploits', 'Matching exploit with target'] },
+      { id: 6, name: 'Payloads Deep Dive', duration: '3.5 hours', lessons: 13, details: ['What is a payload', 'Singles payload type', 'Stagers payload type', 'Stages payload type', 'Reverse vs bind connections', 'Setting payloads in msfconsole'] },
+      { id: 7, name: 'Exploit Execution Workflow', duration: '2.5 hours', lessons: 10, details: ['Setting target options (RHOSTS, RPORT)', 'Using set and setg commands', 'Running exploits (run / exploit)', 'Understanding output results', 'Troubleshooting common issues'] },
+      { id: 8, name: 'Sessions & Access Management', duration: '2 hours', lessons: 8, details: ['What is a session', 'Types of sessions', 'Interacting with sessions', 'Backgrounding sessions', 'Session management commands'] },
+      { id: 9, name: 'Post-Exploitation Basics', duration: '3 hours', lessons: 11, details: ['What is post-exploitation', 'Information gathering after access', 'Privilege levels (basic concept)', 'Running post modules', 'Maintaining access (concept only)'] },
+      { id: 10, name: 'Meterpreter Basics', duration: '3.5 hours', lessons: 14, details: ['What is Meterpreter', 'Key features overview', 'system info command', 'File navigation commands', 'Process viewing capabilities', 'Why it\'s powerful (conceptual)'] },
+      { id: 11, name: 'Encoders & Evasion Concepts', duration: '2.5 hours', lessons: 9, details: ['Why encoders exist', 'Basic working concept', 'Encoding vs encryption differences', 'Limitations of encoders', 'When to use encoders'] },
+      { id: 12, name: 'NOPs & Payload Stability', duration: '2 hours', lessons: 7, details: ['What is NOP (No Operation)', 'Why it\'s used in exploits', 'Concept of payload reliability', 'NOP sled technique', 'Stability considerations'] },
+      { id: 13, name: 'Plugins & Automation', duration: '2.5 hours', lessons: 10, details: ['What are plugins in Metasploit', 'Loading plugins', 'Automating repetitive tasks', 'Resource scripts (.rc files)', 'Creating custom automation'] },
+      { id: 14, name: 'Database Integration', duration: '3 hours', lessons: 11, details: ['Why Metasploit uses a database', 'Storing scan results', 'Managing hosts, services, vulnerabilities', 'Workflow improvement using database', 'Database queries and filtering'] },
+      { id: 15, name: 'Real-World Workflow Simulation', duration: '4 hours', lessons: 16, details: ['Full attack lifecycle (ethical lab)', 'Recon phase', 'Scan phase', 'Exploit phase (controlled lab)', 'Post-exploitation phase', 'Reporting mindset (very important)'] },
+      { id: 16, name: 'Reporting & Documentation', duration: '3 hours', lessons: 12, details: ['Why reporting matters', 'Target info documentation', 'Vulnerability details reporting', 'Impact assessment', 'Fix recommendations', 'Professional pentesting mindset'] }
+    ],
+    learningOutcomes: [
+      'Proficiently use Metasploit Framework (msfconsole)',
+      'Execute complete penetration testing workflows',
+      'Understand and deploy exploits and payloads',
+      'Perform post-exploitation and access management',
+      'Create professional penetration testing reports',
+      'Maintain ethical and legal standards in security testing',
+      'Set up and manage isolated lab environments',
+      'Understand meterpreter and session management'
+    ],
+    requirements: [
+      'Basic networking knowledge (TCP/IP basics)',
+      'Familiarity with Linux command line',
+      'Understanding of cybersecurity fundamentals',
+      'Virtual machine knowledge (VirtualBox/VMware)',
+      'Ethical mindset and commitment to legal testing'
+    ],
+    reviews: [
+      { name: 'Alex Penetration Tester', rating: 5, comment: 'Perfect foundation for OSCP prep! Lab environments are realistic and well-structured.' },
+      { name: 'Sarah Security Analyst', rating: 5, comment: 'Finally understood how Metasploit actually works. Instructor explains complex concepts clearly.' },
+      { name: 'John Red Teamer', rating: 4.85, comment: 'Excellent coverage of msfconsole from basics to advanced. Great emphasis on ethics and legality.' }
+    ]
   }
 };
 
