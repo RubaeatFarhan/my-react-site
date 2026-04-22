@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { ChevronDown, BookOpen, Clock, Users, Star, Zap, CheckCircle } from 'lucide-react';
+import { ChevronDown, BookOpen, Clock, Star, Zap, CheckCircle } from 'lucide-react';
 
 export const MetasploitCourseCard = ({ onEnroll }: { onEnroll?: () => void }) => {
   const [expandedModule, setExpandedModule] = useState<number | null>(null);
