@@ -528,8 +528,9 @@ export const Courses = () => {
             </p>
           </motion.div>
 
-          <MetasploitCourseCard 
-            onEnroll={() => navigate('/course/metasploit-framework')}
+          <MetasploitCourseCard
+            onDetails={() => navigate('/course/metasploit-framework')}
+            onEnroll={() => navigate('/enroll/metasploit-framework')}
           />
         </div>
       </section>

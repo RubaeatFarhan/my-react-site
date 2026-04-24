@@ -1,61 +1,18 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
-import { ChevronDown, BookOpen, Clock, Star, Zap, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Star, Zap } from 'lucide-react';
 
-export const MetasploitCourseCard = ({ onEnroll }: { onEnroll?: () => void }) => {
-  const [expandedModule, setExpandedModule] = useState<number | null>(null);
-  const [showAllModules, setShowAllModules] = useState(false);
-
+export const MetasploitCourseCard = ({ onEnroll, onDetails }: { onEnroll?: () => void; onDetails?: () => void }) => {
   const course = {
     title: '🎓 Metasploit Framework',
     subtitle: 'msfconsole - Full Course Structure',
     description: 'Master Metasploit Framework from basics to advanced exploitation. Complete hands-on course with ethical pentesting focus.',
+    thumbnail: '/images/metasploit-course-thumbnail.png',
+    icon: '/images/metasploit-course-icon.png',
     price: 2499,
     duration: '12 Weeks',
     students: 421,
     rating: 4.85,
     level: 'Intermediate to Advanced'
-  };
-
-  const modules = [
-    { id: 1, icon: '🔰', name: 'Introduction to Metasploit', duration: '2h', topics: ['What is Metasploit Framework', 'Use cases in cybersecurity & penetration testing', 'Ethical vs illegal usage (VERY important)', 'Overview of msfconsole interface', 'Types of modules (high-level)'] },
-    { id: 2, icon: '🖥️', name: 'Lab Setup (Safe Environment)', duration: '3h', topics: ['Installing Kali Linux / Parrot OS', 'Setting up Metasploit Framework', 'Creating a virtual lab (Attacker + Target)', 'Using vulnerable machines', 'Network configuration (NAT / Host-only)'] },
-    { id: 3, icon: '🧭', name: 'msfconsole Basics', duration: '2.5h', topics: ['Starting msfconsole', 'Understanding the CLI structure', 'Basic commands: help, search, use, info, back, exit', 'Navigating modules efficiently', 'Command workflow'] },
-    { id: 4, icon: '🔍', name: 'Working with Auxiliary Modules', duration: '3h', topics: ['Concept of auxiliary modules', 'Scanning & enumeration basics', 'Port scanning via Metasploit', 'Service detection', 'Practical lab: scanning a target system'] },
-    { id: 5, icon: '💥', name: 'Exploits Fundamentals', duration: '3h', topics: ['What is an exploit', 'How vulnerabilities are used', 'Structure of an exploit module', 'Selecting and loading exploits', 'Matching exploit with target'] },
-    { id: 6, icon: '📦', name: 'Payloads Deep Dive', duration: '3.5h', topics: ['What is a payload', 'Types: Singles, Stagers, Stages', 'Reverse vs bind connections (conceptual)', 'Setting payloads in msfconsole', 'Payload selection strategy'] },
-    { id: 7, icon: '⚙️', name: 'Exploit Execution Workflow', duration: '2.5h', topics: ['Setting target options: RHOSTS, RPORT', 'Using set and setg commands', 'Running exploits (run / exploit)', 'Understanding output results', 'Troubleshooting common issues'] },
-    { id: 8, icon: '🔗', name: 'Sessions & Access Management', duration: '2h', topics: ['What is a session', 'Types of sessions', 'Interacting with sessions', 'Backgrounding sessions', 'Session management commands'] },
-    { id: 9, icon: '🧠', name: 'Post-Exploitation Basics', duration: '3h', topics: ['What is post-exploitation', 'Information gathering after access', 'Privilege levels (basic concept)', 'Running post modules', 'Maintaining access (concept only)'] },
-    { id: 10, icon: '🧰', name: 'Meterpreter Basics', duration: '3.5h', topics: ['What is Meterpreter', 'Key features overview', 'Commands: system info, file navigation, process viewing', 'Session interaction', 'Why it\'s powerful (conceptual)'] },
-    { id: 11, icon: '🔐', name: 'Encoders & Evasion Concepts', duration: '2.5h', topics: ['Why encoders exist', 'Basic working concept (no bypass misuse)', 'Encoding vs encryption differences', 'Limitations of encoders', 'When to use encoders'] },
-    { id: 12, icon: '🧩', name: 'NOPs & Payload Stability', duration: '2h', topics: ['What is NOP (No Operation)', 'Why it\'s used in exploits', 'Concept of payload reliability', 'NOP sled technique', 'Stability considerations'] },
-    { id: 13, icon: '🔌', name: 'Plugins & Automation', duration: '2.5h', topics: ['What are plugins in Metasploit', 'Loading plugins', 'Automating repetitive tasks', 'Resource scripts (.rc files)', 'Custom automation creation'] },
-    { id: 14, icon: '🗄️', name: 'Database Integration', duration: '3h', topics: ['Why Metasploit uses a database', 'Storing scan results', 'Managing hosts, services, vulnerabilities', 'Workflow improvement', 'Database queries and filtering'] },
-    { id: 15, icon: '🌐', name: 'Real-World Workflow Simulation', duration: '4h', topics: ['Full attack lifecycle (ethical lab)', 'Recon → Scan → Exploit → Post-exploitation', 'Controlled lab environment', 'Attack sequencing', 'Reporting mindset (very important)'] },
-    { id: 16, icon: '📊', name: 'Reporting & Documentation', duration: '3h', topics: ['Why reporting matters', 'Target info documentation', 'Vulnerability details reporting', 'Impact assessment', 'Professional pentesting mindset'] }
-  ];
-
-  const visibleModules = showAllModules ? modules : modules.slice(0, 6);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: 'spring', stiffness: 100 },
-    },
   };
 
   return (
@@ -112,6 +69,31 @@ export const MetasploitCourseCard = ({ onEnroll }: { onEnroll?: () => void }) =>
             >
               {course.description}
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="mt-8 flex flex-col md:flex-row items-center justify-between gap-6"
+            >
+              <div className="flex items-center gap-4">
+                <img
+                  src={course.icon}
+                  alt="Metasploit course icon"
+                  className="w-16 h-16 rounded-2xl border border-cyan-500/30 bg-slate-950 object-cover"
+                />
+                <div>
+                  <p className="text-sm uppercase tracking-[1px] text-cyan-300 font-semibold">Metasploit Framework</p>
+                  <p className="text-sm text-gray-400">Safe, lab-based penetration testing training</p>
+                </div>
+              </div>
+
+              <img
+                src={course.thumbnail}
+                alt="Metasploit course thumbnail"
+                className="hidden lg:block w-48 h-28 rounded-3xl object-cover border border-white/10 shadow-xl"
+              />
+            </motion.div>
           </div>
 
           {/* Stats */}
@@ -151,130 +133,35 @@ export const MetasploitCourseCard = ({ onEnroll }: { onEnroll?: () => void }) =>
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}
-            className="flex flex-col sm:flex-row gap-4 items-start"
+            className="flex flex-col sm:flex-row sm:items-end gap-4 justify-between"
           >
             <div>
               <div className="text-gray-400 text-sm mb-1">Investment</div>
               <div className="text-3xl font-bold">৳{course.price.toLocaleString()}</div>
             </div>
-            <motion.button
-              onClick={onEnroll}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-cyan-500/50 transition-all flex items-center gap-2"
-            >
-              <span>Enroll Now</span>
-              <Zap className="w-5 h-5" />
-            </motion.button>
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              <motion.button
+                onClick={onDetails}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex-1 sm:flex-none px-8 py-3 border border-cyan-500/30 text-cyan-300 bg-slate-900 hover:bg-slate-800 rounded-xl transition-all"
+              >
+                View Details
+              </motion.button>
+              <motion.button
+                onClick={onEnroll}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex-1 sm:flex-none px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-cyan-500/50 transition-all flex items-center justify-center gap-2"
+              >
+                <span>Enroll Now</span>
+                <Zap className="w-5 h-5" />
+              </motion.button>
+            </div>
           </motion.div>
         </div>
       </motion.div>
 
-      {/* Modules Section */}
-      <div className="mb-12">
-        <motion.h2
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl font-bold mb-8 flex items-center gap-3"
-        >
-          <BookOpen className="w-8 h-8 text-cyan-400" />
-          Course Modules
-        </motion.h2>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
-        >
-          {visibleModules.map((module) => (
-            <motion.div
-              key={module.id}
-              variants={itemVariants}
-              className="group"
-            >
-              <motion.button
-                onClick={() => setExpandedModule(expandedModule === module.id ? null : module.id)}
-                className="w-full text-left relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 p-6"
-                whileHover={{ y: -4 }}
-              >
-                {/* Module Content */}
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between gap-4 mb-2">
-                    <div className="flex items-start gap-4 flex-1">
-                      <div className="text-3xl">{module.icon}</div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
-                          Module {module.id}: {module.name}
-                        </h3>
-                        <div className="flex items-center gap-2 text-gray-400 text-sm mt-1">
-                          <Clock className="w-4 h-4" />
-                          {module.duration}
-                        </div>
-                      </div>
-                    </div>
-                    <motion.div
-                      animate={{ rotate: expandedModule === module.id ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown className="w-6 h-6 text-cyan-400" />
-                    </motion.div>
-                  </div>
-                </div>
-
-                {/* Hover Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 to-blue-500/0 group-hover:from-cyan-500/5 group-hover:to-blue-500/5 transition-all duration-300" />
-              </motion.button>
-
-              {/* Expanded Content */}
-              <AnimatePresence>
-                {expandedModule === module.id && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 border-t-0 rounded-b-2xl p-6"
-                  >
-                    <div className="space-y-3">
-                      {module.topics.map((topic, idx) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.05 }}
-                          className="flex items-start gap-3"
-                        >
-                          <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-300">{topic}</span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Show More Button */}
-        {modules.length > 6 && (
-          <motion.button
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            onClick={() => setShowAllModules(!showAllModules)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="w-full py-4 border-2 border-cyan-500/30 hover:border-cyan-500 text-cyan-400 font-bold rounded-xl transition-all hover:bg-cyan-500/5"
-          >
-            {showAllModules ? '- Hide Modules' : `+ Show All 16 Modules`}
-          </motion.button>
-        )}
-      </div>
-
-      {/* Key Highlights */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

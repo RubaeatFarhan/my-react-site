@@ -126,7 +126,8 @@ const courseDatabase: Record<string, any> = {
     students: 421,
     rating: 4.85,
     level: 'Intermediate to Advanced',
-    image: './images/course1.jpg',
+    image: '/images/metasploit-course-thumbnail.png',
+    icon: '/images/metasploit-course-icon.png',
     instructor: 'Ethical Hacker Pro',
     instructorBio: '12+ years in penetration testing, OSCP certified, worked with Fortune 500 companies',
     aboutCourse: `Master Metasploit Framework from the ground up! This comprehensive course teaches you how to use msfconsole effectively for penetration testing in legal, ethical environments. Learn reconnaissance, exploitation, post-exploitation techniques, and complete attack workflows in controlled lab environments.
@@ -259,9 +260,20 @@ export const CourseDetails = () => {
               {course.title}
             </h1>
 
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              {course.description}
-            </p>
+            {course.icon && (
+              <div className="flex items-center gap-3 mb-6">
+                <img
+                  src={course.icon}
+                  alt="Metasploit course icon"
+                  className="w-16 h-16 rounded-2xl border border-cyan-500/30 bg-slate-950 object-cover"
+                />
+                <div>
+                  <p className="text-sm uppercase tracking-[1px] text-cyan-300 font-semibold">Metasploit Framework</p>
+                  <p className="text-sm text-gray-400">Safe, ethical hacking lab training with msfconsole.</p>
+                </div>
+              </div>
+            )}
+
 
             {/* Course Stats */}
             <div className="grid grid-cols-2 gap-4 mb-8">
@@ -398,13 +410,26 @@ export const CourseDetails = () => {
               viewport={{ once: true }}
               className="bg-white/5 border border-white/10 rounded-xl p-6 hover:border-cyan-500/30 transition-all"
             >
-              <div className="flex items-start justify-between">
+              <div className="flex items-start justify-between gap-4">
                 <div>
                   <h4 className="text-lg font-bold mb-2">Module {module.id}: {module.name}</h4>
                   <p className="text-gray-400">{module.lessons} lessons • {module.duration}</p>
                 </div>
                 <BookOpen className="w-6 h-6 text-cyan-400" />
               </div>
+              {module.details?.length > 0 && (
+                <div className="mt-5 text-gray-300">
+                  <p className="text-sm font-semibold text-cyan-300 mb-3">What this module covers</p>
+                  <ul className="grid gap-2 text-sm text-gray-300">
+                    {module.details.map((detail: string, detailIdx: number) => (
+                      <li key={detailIdx} className="flex items-start gap-3">
+                        <span className="mt-1 text-cyan-400">•</span>
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
