@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, ArrowRight, Zap, Shield, Target, Code } from 'lucide-react';
 
-const categoryTabs = ['Beginner', 'Intermediate', 'Advanced'];
-const seriesSections = ['Mastery Series', 'Pro Series', 'Job Series', 'Labs Series'];
-const languages = ['Bangla', 'English', 'Spanish'];
+const categoryTabs = ['All Levels', 'Beginner', 'Intermediate', 'Advanced'];
+const seriesSections = ['All Series', 'Mastery Series', 'Pro Series', 'Job Series', 'Labs Series'];
+const languages = ['All Languages', 'Bangla', 'English', 'Spanish'];
 const filterOptions = ['A to Z', 'Labs', 'Live Projects', 'Certification', 'Bootcamp'];
 
 const heroPackages = [
@@ -82,9 +82,9 @@ const courses = [
 
 export const Courses = () => {
   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState('Beginner');
-  const [selectedSeries, setSelectedSeries] = useState('Mastery Series');
-  const [selectedLanguage, setSelectedLanguage] = useState('English');
+  const [selectedCategory, setSelectedCategory] = useState('All Levels');
+  const [selectedSeries, setSelectedSeries] = useState('All Series');
+  const [selectedLanguage, setSelectedLanguage] = useState('All Languages');
   const [searchText, setSearchText] = useState('');
   const [activeFilters, setActiveFilters] = useState<string[]>(['A to Z']);
 
@@ -100,9 +100,9 @@ export const Courses = () => {
       course.title.toLowerCase().includes(searchText.toLowerCase()) ||
       course.description.toLowerCase().includes(searchText.toLowerCase());
 
-    const categoryMatch = selectedCategory ? course.level === selectedCategory : true;
-    const seriesMatch = selectedSeries ? course.series === selectedSeries : true;
-    const languageMatch = selectedLanguage ? course.language === selectedLanguage : true;
+    const categoryMatch = selectedCategory === 'All Levels' ? true : course.level === selectedCategory;
+    const seriesMatch = selectedSeries === 'All Series' ? true : course.series === selectedSeries;
+    const languageMatch = selectedLanguage === 'All Languages' ? true : course.language === selectedLanguage;
 
     return searchMatch && categoryMatch && seriesMatch && languageMatch;
   });
