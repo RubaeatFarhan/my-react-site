@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, ArrowRight, Zap, Shield, Star, Award, Users, BookOpen, Target, Code, Lock } from 'lucide-react';
+import { Search, ArrowRight, Zap, Shield, Target, Code } from 'lucide-react';
 
 const categoryTabs = ['Beginner', 'Intermediate', 'Advanced'];
 const seriesSections = ['Mastery Series', 'Pro Series', 'Job Series', 'Labs Series'];
@@ -255,7 +255,8 @@ export const Courses = () => {
                         </button>
                       </div>
                     </motion.div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
