@@ -274,7 +274,7 @@ export const Courses = () => {
                     'Threat detection playbooks'
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-                      <span className="mt-1 text-violet-400">�</span>
+                      <span className="mt-1 text-violet-400">•</span>
                       <p className="text-gray-300 text-sm leading-relaxed">{item}</p>
                     </div>
                   ))}
