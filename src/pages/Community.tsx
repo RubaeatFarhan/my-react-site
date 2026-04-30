@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Users, MessageCircle, BookOpen, Award, Zap, Heart } from 'lucide-react';
 
 export const Community = () => {
@@ -211,12 +212,12 @@ export const Community = () => {
             >
               Join Community
             </button>
-            <a
-              href="/courses"
+            <Link
+              to="/course/bug-bounty"
               className="inline-flex items-center justify-center rounded-3xl border border-emerald-400/50 px-8 py-4 text-emerald-400 font-semibold hover:bg-emerald-400/10 transition-all"
             >
               Explore Courses
-            </a>
+            </Link>
           </div>
         </div>
       </section>

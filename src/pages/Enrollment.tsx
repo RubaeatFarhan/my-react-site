@@ -44,10 +44,10 @@ export const Enrollment = () => {
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Course Not Found</h1>
           <button 
-            onClick={() => navigate('/courses')}
+            onClick={() => navigate('/')}
             className="px-6 py-3 bg-cyan-500 text-white rounded-lg font-semibold"
           >
-            Back to Courses
+            Back to Home
           </button>
         </div>
       </div>

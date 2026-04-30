@@ -20,7 +20,7 @@ if (typeof (window as any).chrome !== 'undefined' && (window as any).chrome?.run
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/my-react-site">
       <App />
     </BrowserRouter>
   </StrictMode>,

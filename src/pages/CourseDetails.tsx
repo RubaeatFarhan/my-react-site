@@ -195,10 +195,10 @@ export const CourseDetails = () => {
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Course Not Found</h1>
           <button 
-            onClick={() => navigate('/courses')}
+            onClick={() => navigate('/')}
             className="px-6 py-3 bg-cyan-500 text-white rounded-lg font-semibold"
           >
-            Back to Courses
+            Back to Home
           </button>
         </div>
       </div>
@@ -209,12 +209,12 @@ export const CourseDetails = () => {
     <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden pt-24">
       {/* Back Button */}
       <motion.button
-        onClick={() => navigate('/courses')}
+        onClick={() => navigate('/')}
         whileHover={{ x: -5 }}
         className="ml-6 mb-4 flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
       >
         <ArrowLeft className="w-5 h-5" />
-        Back to Courses
+        Back to Home
       </motion.button>
 
       {/* Hero Section */}

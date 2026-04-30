@@ -1,24 +1,48 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowRight, Users } from 'lucide-react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Users, Menu, X } from 'lucide-react';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCoursesHover, setIsCoursesHover] = useState(false);
+  const [isMobileCoursesOpen, setIsMobileCoursesOpen] = useState(false);
+
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const navLinks = [
-    { label: 'Programs', path: '/' },
-    { label: 'Courses', path: '/courses', badge: '🔥 Trending' },
-    { label: 'Live Classes', path: '/#live' },
+    { label: 'Home', path: '/' },
+    { label: 'Courses', path: '#' },
     { label: 'About', path: '/about' },
     { label: 'Community', path: '/community' },
   ];
 
+  const subNavLinks = [
+    { label: 'Home', href: '#home' },
+    { label: 'Our Journey', href: '#journey' },
+    { label: 'Services', href: '#services' },
+    { label: 'Why Us', href: '#why-us' },
+    { label: 'Testimonials', href: '#testimonials' },
+    { label: 'FAQ', href: '#faq' },
+    { label: 'Contact', href: '#contact' },
+  ];
+
+  const courseLinks = [
+    { name: 'Ethical Hacking', path: '/course/metasploit-framework', description: 'Advanced msfconsole training', image: '/images/CCEH101.png' },
+    { name: 'Bug Bounty Hunting', path: '/course/bug-bounty', description: 'Real-world vulnerability hunting', image: '/images/course2.jpg' },
+    { name: 'Malware Analysis', path: '/course/malware-development', description: 'Reverse engineering & threat intel', image: '/images/course3.jpg' },
+    { name: 'Professional Course', path: '/professional-course', description: 'Full Red/Purple Team package', image: '/images/course4.jpg' },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10">
+    <nav 
+      className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10 shadow-xl shadow-black/20"
+      onMouseLeave={() => setIsCoursesHover(false)}
+    >
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-300">
           <img src="/images/logo.jpg" alt="Cyber Cracker Academy" className="w-10 h-10 rounded-full object-cover border border-white/10 shadow-lg shadow-black/30" />
           <div>
             <div className="font-bold text-2xl tracking-tighter">CYBER CRACKER</div>
@@ -27,34 +51,42 @@ export const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-10 text-sm font-medium">
-          {navLinks.map((link) => (
-            <div key={link.path} className="flex items-center gap-2 group">
-              {link.path.startsWith('/#') ? (
-                <a href={link.path} className="hover:text-emerald-400 transition-colors">
-                  {link.label}
-                </a>
-              ) : (
-                <NavLink
-                  to={link.path}
-                  className={({ isActive }) =>
-                    `transition-colors ${isActive ? 'text-emerald-400' : 'hover:text-emerald-400'}`
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              )}
-              {link.badge && (
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="px-2.5 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs rounded-full font-semibold group-hover:from-amber-600 group-hover:to-orange-600 transition-all"
-                >
-                  {link.badge}
-                </motion.span>
-              )}
-            </div>
-          ))}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          {navLinks.map((link) => {
+            const isCoursesItem = link.label === 'Courses';
+            return (
+              <motion.div
+                key={link.label}
+                whileHover={{ y: -2, scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                className="relative"
+                onMouseEnter={() => isCoursesItem && setIsCoursesHover(true)}
+                onClick={() => isCoursesItem && setIsCoursesHover(!isCoursesHover)}
+              >
+                {link.path === '#' ? (
+                  <button className="inline-flex items-center text-white transition-colors duration-300 hover:text-emerald-400 font-poppins tracking-[0.04em] font-medium cursor-pointer">
+                    {link.label}
+                  </button>
+                ) : (
+                  <NavLink to={link.path} className="inline-flex items-center text-white transition-colors duration-300 hover:text-emerald-400 font-poppins tracking-[0.04em] font-medium">
+                    {({ isActive }) => (
+                      <>
+                        <span className={isActive ? 'text-emerald-400' : ''}>{link.label}</span>
+                        <motion.span
+                          layout
+                          initial={false}
+                          animate={{ scaleX: isActive ? 1 : 0 }}
+                          transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+                          className="absolute left-0 right-0 bottom-[-4px] h-[2px] origin-left bg-emerald-400 rounded-full"
+                        />
+                      </>
+                    )}
+                  </NavLink>
+                )}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* CTA Buttons */}
@@ -76,33 +108,127 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-white"
+        <motion.button
+          className="md:hidden text-white text-2xl focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
+          whileTap={{ scale: 0.95 }}
+          animate={{ rotate: isOpen ? 90 : 0 }}
+          transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+          aria-label="Toggle menu"
         >
-          ☰
-        </button>
+          {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+        </motion.button>
       </div>
+
+      {/* Sub-Navigation Row (Desktop - Home Page Only) */}
+      <AnimatePresence>
+        {isHomePage && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="hidden md:block border-t border-white/5 bg-black/40 backdrop-blur-md overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-6 h-12 flex items-center justify-center gap-8">
+              {subNavLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-[11px] font-bold uppercase tracking-[2px] text-gray-400 hover:text-emerald-400 transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Sub-Navigation Bar (Desktop) */}
+      <motion.div
+        initial={{ height: 0, opacity: 0 }}
+        animate={isCoursesHover ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        className="hidden md:block overflow-hidden bg-white border-t border-slate-200 shadow-2xl"
+        onMouseEnter={() => setIsCoursesHover(true)}
+      >
+        <div className="max-w-7xl mx-auto px-6 py-10">
+          <div className="grid grid-cols-4 gap-8">
+            {courseLinks.map((course) => (
+              <Link
+                key={course.path}
+                to={course.path}
+                className="group flex flex-col gap-4 p-4 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-500/30 hover:bg-white hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-300"
+                onClick={() => setIsCoursesHover(false)}
+              >
+                <div className="aspect-square w-full overflow-hidden rounded-2xl border border-slate-200">
+                  <img 
+                    src={course.image} 
+                    alt={course.name} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+                <div>
+                  <div className="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">{course.name}</div>
+                  <div className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">{course.description}</div>
+                  <div className="mt-4 flex items-center text-[10px] text-emerald-600 font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+                    EXPLORE NOW <ArrowRight className="ml-1.5 w-3.5 h-3.5" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </motion.div>
 
       {/* Mobile Navigation */}
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
+          exit={{ opacity: 0, y: -16 }}
           className="md:hidden bg-black/95 border-t border-white/10 px-6 py-4"
         >
           <div className="space-y-4">
             {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="block text-sm hover:text-emerald-400 transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-                {link.badge && <span className="text-xs ml-2">{link.badge}</span>}
-              </Link>
+              <div key={link.label}>
+                {link.label === 'Courses' ? (
+                  <div className="space-y-3">
+                    <button 
+                      onClick={() => setIsMobileCoursesOpen(!isMobileCoursesOpen)}
+                      className="flex items-center justify-between w-full text-sm text-white font-medium"
+                    >
+                      {link.label}
+                      <motion.span animate={{ rotate: isMobileCoursesOpen ? 180 : 0 }}>▼</motion.span>
+                    </button>
+                    {isMobileCoursesOpen && (
+                      <div className="pl-4 space-y-2 border-l border-white/10 ml-1">
+                        {courseLinks.map((course) => (
+                          <Link
+                            key={course.path}
+                            to={course.path}
+                            className="block text-xs text-gray-400 hover:text-emerald-400 py-1"
+                            onClick={() => {
+                              setIsOpen(false);
+                              setIsMobileCoursesOpen(false);
+                            }}
+                          >
+                            {course.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    to={link.path}
+                    className="block text-sm text-white transition-colors duration-300 hover:text-emerald-400 font-poppins tracking-[0.04em] font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
         </motion.div>

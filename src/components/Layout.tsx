@@ -1,18 +1,24 @@
 import type { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Navbar } from './Navbar';
+import { cn } from '../utils/cn';
 
-export const Layout = ({ children }: { children: ReactNode }) => {
+export const Layout = ({ children, showFooter = true }: { children: ReactNode; showFooter?: boolean }) => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
     <div className="bg-[#0a0a0a] text-white overflow-x-hidden min-h-screen flex flex-col">
       <Navbar />
       
       {/* Main Content */}
-      <main className="flex-1 pt-20">
+      <main className={cn("flex-1", isHomePage ? "pt-[128px]" : "pt-20")}>
         {children}
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 bg-black py-20 mt-32">
+      {showFooter && (
+        <footer className="border-t border-white/10 bg-black py-20 mt-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-12 mb-16">
             <div>
@@ -53,6 +59,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
           </div>
         </div>
       </footer>
+      )}
     </div>
   );
 };
