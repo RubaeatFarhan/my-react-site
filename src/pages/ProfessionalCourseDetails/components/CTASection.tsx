@@ -51,7 +51,7 @@ export default function CTASection() {
         </div>
 
         <p className="text-xs text-primary-300 mt-6">
-          🔒 Secure checkout powered by Stripe
+          🔒 Secure checkout powered by Bkash or Nagad
         </p>
       </div>
     </section>

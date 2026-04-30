@@ -29,10 +29,10 @@ export const Navbar = () => {
   ];
 
   const courseLinks = [
-    { name: 'Ethical Hacking', path: '/course/metasploit-framework', description: 'Advanced msfconsole training', image: '/images/CCEH101.png' },
-    { name: 'Bug Bounty Hunting', path: '/course/bug-bounty', description: 'Real-world vulnerability hunting', image: '/images/course2.jpg' },
-    { name: 'Malware Analysis', path: '/course/malware-development', description: 'Reverse engineering & threat intel', image: '/images/course3.jpg' },
-    { name: 'Professional Course', path: '/professional-course', description: 'Full Red/Purple Team package', image: '/images/course4.jpg' },
+    { name: 'Complete Ethical Hacking Course', path: '/professional-course', description: 'Advanced msfconsole training', image: '/images/CCEH101.png' },
+    { name: 'Bug Bounty Hunting', path: '#', description: 'Real-world vulnerability hunting', image: '/images/course2.jpg', comingSoon: true },
+    { name: 'Malware Analysis', path: '#', description: 'Reverse engineering & threat intel', image: '/images/course3.jpg', comingSoon: true },
+    { name: 'Professional Red Team Course', path: '#', description: 'Full Red/Purple Team package', image: '/images/course4.jpg', comingSoon: true },
   ];
 
   return (
@@ -156,24 +156,49 @@ export const Navbar = () => {
           <div className="grid grid-cols-4 gap-8">
             {courseLinks.map((course) => (
               <Link
-                key={course.path}
-                to={course.path}
-                className="group flex flex-col gap-4 p-4 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-500/30 hover:bg-white hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-300"
-                onClick={() => setIsCoursesHover(false)}
+                key={course.name}
+                to={course.comingSoon ? '#' : course.path}
+                className={`group flex flex-col gap-4 p-4 rounded-3xl bg-slate-50 border border-slate-100 transition-all duration-300 ${
+                  course.comingSoon 
+                    ? 'opacity-70 cursor-not-allowed' 
+                    : 'hover:border-emerald-500/30 hover:bg-white hover:shadow-xl hover:shadow-emerald-500/5'
+                }`}
+                onClick={(e) => {
+                  if (course.comingSoon) {
+                    e.preventDefault();
+                  } else {
+                    setIsCoursesHover(false);
+                  }
+                }}
               >
-                <div className="aspect-square w-full overflow-hidden rounded-2xl border border-slate-200">
+                <div className="aspect-square w-full overflow-hidden rounded-2xl border border-slate-200 relative">
                   <img 
                     src={course.image} 
                     alt={course.name} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className={`w-full h-full object-cover transition-transform duration-500 ${!course.comingSoon && 'group-hover:scale-110'}`}
                   />
+                  {course.comingSoon && (
+                    <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px] flex items-center justify-center">
+                      <span className="px-3 py-1 bg-white/90 text-slate-900 text-[10px] font-bold rounded-full tracking-wider uppercase">
+                        Coming Soon
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div>
-                  <div className="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">{course.name}</div>
-                  <div className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">{course.description}</div>
-                  <div className="mt-4 flex items-center text-[10px] text-emerald-600 font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
-                    EXPLORE NOW <ArrowRight className="ml-1.5 w-3.5 h-3.5" />
+                  <div className={`text-base font-bold text-slate-900 transition-colors ${!course.comingSoon && 'group-hover:text-emerald-600'}`}>
+                    {course.name}
                   </div>
+                  <div className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">{course.description}</div>
+                  {!course.comingSoon ? (
+                    <div className="mt-4 flex items-center text-[10px] text-emerald-600 font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+                      EXPLORE NOW <ArrowRight className="ml-1.5 w-3.5 h-3.5" />
+                    </div>
+                  ) : (
+                    <div className="mt-4 flex items-center text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                      STAY TUNED
+                    </div>
+                  )}
                 </div>
               </Link>
             ))}
@@ -205,15 +230,23 @@ export const Navbar = () => {
                       <div className="pl-4 space-y-2 border-l border-white/10 ml-1">
                         {courseLinks.map((course) => (
                           <Link
-                            key={course.path}
-                            to={course.path}
-                            className="block text-xs text-gray-400 hover:text-emerald-400 py-1"
-                            onClick={() => {
-                              setIsOpen(false);
-                              setIsMobileCoursesOpen(false);
+                            key={course.name}
+                            to={course.comingSoon ? '#' : course.path}
+                            className={`block text-xs py-1 transition-colors ${
+                              course.comingSoon 
+                                ? 'text-gray-600 cursor-not-allowed' 
+                                : 'text-gray-400 hover:text-emerald-400'
+                            }`}
+                            onClick={(e) => {
+                              if (course.comingSoon) {
+                                e.preventDefault();
+                              } else {
+                                setIsOpen(false);
+                                setIsMobileCoursesOpen(false);
+                              }
                             }}
                           >
-                            {course.name}
+                            {course.name} {course.comingSoon && '(Soon)'}
                           </Link>
                         ))}
                       </div>

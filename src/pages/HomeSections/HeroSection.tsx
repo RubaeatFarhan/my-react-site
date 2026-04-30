@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Clock, Users, Award, ArrowRight, Zap, Shield, Lock, Bug, BellRing, XCircle } from 'lucide-react';
 
 interface Course {
@@ -17,6 +18,7 @@ interface Course {
   gradient: string;
   accentColor: string;
   enrollmentOpen: boolean;
+  path?: string;
 }
 
 const courses: Course[] = [
@@ -37,10 +39,11 @@ const courses: Course[] = [
     gradient: 'from-emerald-500/20 via-transparent to-cyan-500/10',
     accentColor: 'text-neon-green',
     enrollmentOpen: true,
+    path: '/professional-course',
   },
   {
     id: 2,
-    title: 'CompTIA Security+ Bootcamp',
+    title: 'Complete Ethical Hacking Course',
     subtitle: 'Foundation of Cybersecurity',
     description:
       'Build a rock-solid cybersecurity foundation covering threats, vulnerabilities, architecture, operations, and incident response. Get certified fast.',
@@ -49,12 +52,13 @@ const courses: Course[] = [
     level: 'Beginner',
     price: '$899',
     originalPrice: '$1,399',
-    badge: 'ENROLLMENT CLOSED',
-    badgeColor: 'bg-gray-600 text-gray-300',
+    badge: 'ENROLLMENT OPEN',
+    badgeColor: 'bg-neon-green text-cyber-900',
     icon: <Shield className="w-8 h-8" />,
     gradient: 'from-blue-500/20 via-transparent to-purple-500/10',
     accentColor: 'text-neon-blue',
-    enrollmentOpen: false,
+    enrollmentOpen: true,
+    path: '/professional-course',
   },
   {
     id: 3,
@@ -228,13 +232,13 @@ export default function HeroSection() {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               {course.enrollmentOpen ? (
                 <>
-                  <a
-                    href="#contact"
+                  <Link
+                    to={course.path || "#contact"}
                     className="group inline-flex items-center gap-2 px-8 py-4 bg-neon-green text-cyber-900 font-bold text-base rounded-xl hover:bg-neon-green/90 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,136,0.4)] hover:scale-105"
                   >
                     Enroll Now — {course.price}
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                   <span className="text-gray-500 line-through text-lg">{course.originalPrice}</span>
                   <span className="text-neon-green font-semibold text-sm">
                     Save {Math.round(
@@ -320,9 +324,12 @@ export default function HeroSection() {
                         <div className="h-full bg-gradient-to-r from-neon-green to-neon-blue rounded-full w-[78%] transition-all duration-1000" />
                       </div>
                     </div>
-                    <button className="w-full py-3.5 bg-neon-green text-cyber-900 font-bold rounded-xl hover:bg-neon-green/90 transition-all hover:shadow-[0_0_20px_rgba(0,255,136,0.4)]">
+                    <Link 
+                      to={course.path || "#"}
+                      className="w-full py-3.5 bg-neon-green text-cyber-900 font-bold rounded-xl hover:bg-neon-green/90 transition-all hover:shadow-[0_0_20px_rgba(0,255,136,0.4)] flex items-center justify-center"
+                    >
                       Enroll in This Course
-                    </button>
+                    </Link>
                   </>
                 ) : (
                   <>

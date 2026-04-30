@@ -1,4 +1,5 @@
-import { Star, Users, Clock, PlayCircle, Globe, BarChart3, Award } from "lucide-react";
+import { useState } from "react";
+import { Star, Users, Clock, PlayCircle, Globe, BarChart3, Award, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { courseData } from "../data/courseData";
 
@@ -23,6 +24,7 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function HeroSection() {
   const navigate = useNavigate();
+  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <section className="relative pt-16 overflow-hidden">
@@ -96,22 +98,38 @@ export default function HeroSection() {
           {/* Right - Price Card */}
           <div className="lg:col-span-2 animate-fade-in-up delay-200">
             <div className="bg-white rounded-2xl shadow-2xl shadow-black/20 overflow-hidden">
-              {/* Video Preview */}
-              <div className="relative group cursor-pointer">
-                <img
-                  src={courseData.heroImage}
-                  alt="Course Preview"
-                  className="w-full aspect-video object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
-                  <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                    <PlayCircle className="w-10 h-10 text-primary-600 fill-primary-600" />
+              {/* Video Preview Section */}
+              <div className="relative aspect-video bg-black">
+                {!isPlaying ? (
+                  <div 
+                    className="relative w-full h-full group cursor-pointer"
+                    onClick={() => setIsPlaying(true)}
+                  >
+                    <img
+                      src={courseData.heroImage}
+                      alt="Course Preview"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+                      <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                        <PlayCircle className="w-10 h-10 text-primary-600 fill-primary-600" />
+                      </div>
+                    </div>
+                    <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded">
+                      Preview this course
+                    </div>
                   </div>
-                </div>
-                <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded">
-                  Preview this course
-                </div>
+                ) : (
+                  <iframe
+                    src={`${courseData.videoUrl}?autoplay=1`}
+                    title="Course Preview"
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                )}
               </div>
+
 
               {/* Price */}
               <div className="p-6 space-y-4">
