@@ -49,28 +49,18 @@ export default function Instructor() {
                 {instructor.bio}
               </p>
 
-              <div className="flex flex-wrap gap-2 mt-5">
-                {["Google", "Meta", "React", "Node.js", "TypeScript", "AWS"].map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 text-xs font-medium text-primary-700 bg-primary-100 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
 
           <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-primary-200/50">
             <div className="text-center p-4 bg-white rounded-xl shadow-sm">
               <Award className="w-6 h-6 text-primary-600 mx-auto mb-2" />
-              <div className="text-lg font-bold text-slate-900">12+</div>
+              <div className="text-lg font-bold text-slate-900">4+</div>
               <div className="text-xs text-slate-500">Years Experience</div>
             </div>
             <div className="text-center p-4 bg-white rounded-xl shadow-sm">
               <Users className="w-6 h-6 text-primary-600 mx-auto mb-2" />
-              <div className="text-lg font-bold text-slate-900">185K+</div>
+              <div className="text-lg font-bold text-slate-900">100+</div>
               <div className="text-xs text-slate-500">Students Taught</div>
             </div>
             <div className="text-center p-4 bg-white rounded-xl shadow-sm">

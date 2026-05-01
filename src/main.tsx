@@ -20,7 +20,7 @@ if (typeof (window as any).chrome !== 'undefined' && (window as any).chrome?.run
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename={import.meta.env.MODE === 'github' ? '/my-react-site' : '/'}>
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </StrictMode>,

@@ -22,9 +22,9 @@ interface Milestone {
 const milestones: Milestone[] = [
   {
     year: '2018',
-    title: 'The Beginning — CyberCracker Founded',
+    title: 'Founded CyberCracker',
     description:
-      'CyberCracker Academy was established with a bold vision: to make world-class cybersecurity education accessible to everyone in Bangladesh and beyond. Starting from a small office with just 3 passionate security researchers, we set out to bridge the massive talent gap in the cybersecurity industry.',
+      'Founded cybercracker in a small room of my house which only 3 members of the team.',
     icon: <Rocket className="w-6 h-6" />,
     accentColor: 'text-neon-green',
     glowColor: 'shadow-neon-green/30',
@@ -52,9 +52,9 @@ const milestones: Milestone[] = [
   },
   {
     year: '2023',
-    title: 'Community Growth — YouTube, Facebook & Telegram',
+    title: 'Community Growth',
     description:
-      'We expanded our reach by launching dedicated channels on YouTube, Facebook, and Telegram to contribute to the global cybersecurity community. Free tutorials, threat breakdowns, live Q&As, and awareness campaigns helped us build a thriving community of 50,000+ cyber enthusiasts worldwide.',
+      '10,000+ cyber security enthusist.',
     icon: <Video className="w-6 h-6" />,
     accentColor: 'text-neon-red',
     glowColor: 'shadow-neon-red/30',
