@@ -42,6 +42,7 @@ export const courseData = {
     bio: "Farhan is a cybersecurity expert with over 5 years of experience in the field. He has worked as a freelancer, and cybersecurity trainer. Now he is a full-time cybersecurity instructor.",
   },
   heroImage: "/images/course-hero.jpg",
+  videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   highlights: [
     "20+ hours of on-demand video content",
     "10+ coding exercises & 4 real-world projects",
