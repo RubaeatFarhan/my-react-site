@@ -2,6 +2,7 @@ import { Navbar as MainNavbar } from "../../components/Navbar";
 import HeroSection from "./components/HeroSection";
 import WhatYouWillLearn from "./components/WhatYouWillLearn";
 import CourseStats from "./components/CourseStats";
+import CoursePreview from "./components/CoursePreview";
 import EliteRoadmap from "./components/EliteRoadmap";
 import Curriculum from "./components/Curriculum";
 import Requirements from "./components/Requirements";
@@ -19,7 +20,7 @@ export const ProfessionalCourseDetails = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white pt-[124px]">
+    <div className="min-h-screen bg-slate-900 pt-[124px]">
       <MainNavbar />
       <CourseSubNav />
       <HeroSection />
@@ -31,6 +32,7 @@ export const ProfessionalCourseDetails = () => {
       <Instructor />
       <Reviews />
       <FAQ />
+      <CoursePreview />
       <CTASection />
       <SiteFooter />
     </div>

@@ -47,8 +47,8 @@ const PAYMENT_CONFIG = {
   },
 } as const;
 
-const COURSE_PRICE = 4999;
-const ORIGINAL_PRICE = 8999;
+const COURSE_PRICE = 1499;
+const ORIGINAL_PRICE = 4999;
 const DISCOUNT = ORIGINAL_PRICE - COURSE_PRICE;
 
 export const ProfessionalCourseOrder = () => {
@@ -72,10 +72,8 @@ export const ProfessionalCourseOrder = () => {
   const validateForm = () => {
     const e: FormErrors = {};
     if (!formData.fullName.trim()) e.fullName = 'Full name is required';
-    if (!formData.email.trim()) e.email = 'Email is required';
-    else if (!validateEmail(formData.email)) e.email = 'Enter a valid email';
-    if (!formData.phone.trim()) e.phone = 'Phone number is required';
-    else if (!validatePhone(formData.phone)) e.phone = 'Enter a valid BD phone number (01XXXXXXXXX)';
+    if (formData.email.trim() && !validateEmail(formData.email)) e.email = 'Enter a valid email';
+    if (formData.phone.trim() && !validatePhone(formData.phone)) e.phone = 'Enter a valid BD phone number (01XXXXXXXXX)';
     if (!formData.paymentMethod) e.paymentMethod = 'Select bKash or Nagad';
     if (!formData.transactionId.trim()) e.transactionId = 'Transaction ID is required';
     else if (formData.transactionId.trim().length < 6) e.transactionId = 'Minimum 6 characters';
@@ -168,6 +166,12 @@ export const ProfessionalCourseOrder = () => {
             >
               <h2 className="text-lg font-semibold text-white">Your Information</h2>
               <p className="mt-1 text-sm text-slate-400">Fill in your details and complete payment.</p>
+              
+              <div className="mt-3 rounded-lg bg-blue-500/10 border border-blue-500/30 p-3">
+                <p className="text-sm text-blue-300">
+                  <span className="font-semibold">Important:</span> After payment, use your transaction ID to join our Facebook group. The transaction ID will be the answer to the membership question. You'll find class routine, syllabus, recordings, assignments, and all resources in the group.
+                </p>
+              </div>
 
               <div className="mt-6 space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -177,15 +181,15 @@ export const ProfessionalCourseOrder = () => {
                     onChange={handleChange} placeholder="John Doe"
                   />
                   <InputField
-                    label="Email" required error={errors.email}
+                    label="Email" error={errors.email}
                     id="email" name="email" type="email" value={formData.email}
-                    onChange={handleChange} placeholder="john@example.com"
+                    onChange={handleChange} placeholder="john@example.com (optional)"
                   />
                 </div>
                 <InputField
-                  label="Phone Number" required error={errors.phone}
+                  label="Phone Number" error={errors.phone}
                   id="phone" name="phone" type="tel" value={formData.phone}
-                  onChange={handleChange} placeholder="01XXXXXXXXX"
+                  onChange={handleChange} placeholder="01XXXXXXXXX (optional)"
                 />
               </div>
 
@@ -407,11 +411,31 @@ export const ProfessionalCourseOrder = () => {
               </div>
               <h3 className="mt-5 text-xl font-bold text-white">Order Confirmed!</h3>
               <p className="mt-2 text-sm text-slate-400">
-                We'll send course access to <span className="font-medium text-slate-200">{formData.email}</span> after verification.
+                Thank you for your enrollment! Next step: Join our Facebook group to access all course materials.
               </p>
-              <div className="mt-5 rounded-xl bg-slate-800/50 p-3 text-left text-sm text-slate-400">
-                <p>Txn ID: <span className="font-mono text-slate-200">{formData.transactionId}</span></p>
-                <p className="mt-1">Amount: <span className="font-semibold text-indigo-400">৳{COURSE_PRICE.toLocaleString()}</span></p>
+              
+              <div className="mt-4 rounded-xl bg-slate-800/50 p-4 text-left text-sm">
+                <p className="font-semibold text-white mb-2">📋 Next Steps:</p>
+                <p className="text-slate-400 mb-3">1. Join our Facebook group using the link below</p>
+                <p className="text-slate-400 mb-3">2. Use your transaction ID as the answer to the membership question</p>
+                <p className="text-slate-400 mb-4">3. Once approved, you'll find class routine, syllabus, recordings, assignments, and all resources in the group</p>
+                
+                <a
+                  href="https://www.facebook.com/share/g/1FxQcDyXDA/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors mb-4"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                  Join Facebook Group
+                </a>
+                
+                <div className="border-t border-slate-700 pt-3 mt-3">
+                  <p className="text-xs text-slate-500">Transaction ID: <span className="font-mono text-slate-300">{formData.transactionId}</span></p>
+                  <p className="text-xs text-slate-500 mt-1">Amount: <span className="font-semibold text-indigo-400">৳{COURSE_PRICE.toLocaleString()}</span></p>
+                </div>
               </div>
               <button
                 onClick={handleDone}

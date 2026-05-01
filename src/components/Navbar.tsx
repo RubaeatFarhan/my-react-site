@@ -29,10 +29,10 @@ export const Navbar = () => {
   ];
 
   const courseLinks = [
-    { name: 'Complete Ethical Hacking Course', path: '/professional-course', description: 'Advanced msfconsole training', image: '/images/complete ethical hacking course.png' },
-    { name: 'Bug Bounty Hunting', path: '#', description: 'Real-world vulnerability hunting', image: '/images/course2.jpg', comingSoon: true },
-    { name: 'Malware Analysis', path: '#', description: 'Reverse engineering & threat intel', image: '/images/course3.jpg', comingSoon: true },
-    { name: 'Professional Red Team Course', path: '#', description: 'Full Red/Purple Team package', image: '/images/course4.jpg', comingSoon: true },
+    { name: 'Complete Ethical Hacking Course', path: '/professional-course', description: 'Advanced cybersecurity training', image: 'dist/images/complete ethical hacking course.png' },
+    { name: 'Bug Bounty Hunting', path: '#', description: 'Real-world vulnerability hunting', image: 'dist/images/bug bounty.png', comingSoon: true },
+    { name: 'Malware Analysis', path: '#', description: 'Reverse engineering & threat intel', image: 'dist/images/malware analysis.png', comingSoon: true },
+    { name: 'Professional Red Team Course', path: '#', description: 'Full Red/Purple Team package', image: 'dist/images/red teaming.png', comingSoon: true },
   ];
 
   return (
@@ -91,20 +91,25 @@ export const Navbar = () => {
 
         {/* CTA Buttons */}
         <div className="flex items-center gap-4">
-          <motion.button
+          <motion.a
+            href="https://www.facebook.com/CyberCrackerAcademy/"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="hidden sm:flex px-5 py-2 text-sm border border-white/30 hover:border-white/70 rounded-full transition-colors items-center gap-2 text-white"
           >
             <Users className="w-4 h-4" /> Consult
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-emerald-500 hover:bg-emerald-600 px-6 py-2.5 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all active:scale-95 text-white"
-          >
-            START LEARNING <ArrowRight className="w-4 h-4" />
-          </motion.button>
+          </motion.a>
+          <Link to="/professional-course">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-emerald-500 hover:bg-emerald-600 px-6 py-2.5 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all active:scale-95 text-white"
+            >
+              START LEARNING <ArrowRight className="w-4 h-4" />
+            </motion.button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}

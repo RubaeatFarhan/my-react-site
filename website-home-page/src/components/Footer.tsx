@@ -1,39 +1,6 @@
 import { Shield, Mail, Phone, MapPin } from 'lucide-react';
 
-const footerLinks = {
-  Programs: [
-    'CompTIA Security+',
-    'Certified Ethical Hacker',
-    'CISSP Certification',
-    'SOC Analyst Training',
-    'Cloud Security',
-    'Malware Analysis',
-  ],
-  Company: [
-    'About Us',
-    'Our Team',
-    'Careers',
-    'Blog',
-    'Press Kit',
-    'Partners',
-  ],
-  Support: [
-    'Help Center',
-    'Contact Us',
-    'Student Portal',
-    'Refund Policy',
-    'Terms of Service',
-    'Privacy Policy',
-  ],
-  Enterprise: [
-    'Corporate Training',
-    'Team Packages',
-    'Custom Programs',
-    'Consulting',
-    'Volume Licensing',
-    'Case Studies',
-  ],
-};
+
 
 export default function Footer() {
   return (
