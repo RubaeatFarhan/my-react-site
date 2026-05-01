@@ -35,13 +35,13 @@ export const courseData = {
   instructor: {
     name: "Rubaeat Farhan",
     title: "Ethical Hacker & Cybersecurity Expert",
-    avatar: "dist/images/instructor.jpg",
+    avatar: "./images/instructor.jpg",
     rating: 4.9,
     students: 100,
     courses: 4,
     bio: "Farhan is a cybersecurity expert with over 5 years of experience in the field. He has worked as a freelancer, and cybersecurity trainer. Now he is a full-time cybersecurity instructor.",
   },
-  heroImage: "dist/images/course-hero.jpg",
+  heroImage: "./images/course-hero.jpg",
   highlights: [
     "20+ hours of on-demand video content",
     "10+ coding exercises & 4 real-world projects",

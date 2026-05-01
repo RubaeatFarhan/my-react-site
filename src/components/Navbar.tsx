@@ -29,10 +29,10 @@ export const Navbar = () => {
   ];
 
   const courseLinks = [
-    { name: 'Complete Ethical Hacking Course', path: '/professional-course', description: 'Advanced cybersecurity training', image: 'dist/images/complete ethical hacking course.png' },
-    { name: 'Bug Bounty Hunting', path: '#', description: 'Real-world vulnerability hunting', image: 'dist/images/bug bounty.png', comingSoon: true },
-    { name: 'Malware Analysis', path: '#', description: 'Reverse engineering & threat intel', image: 'dist/images/malware analysis.png', comingSoon: true },
-    { name: 'Professional Red Team Course', path: '#', description: 'Full Red/Purple Team package', image: 'dist/images/red teaming.png', comingSoon: true },
+    { name: 'Complete Ethical Hacking Course', path: '/professional-course', description: 'Advanced cybersecurity training', image: './images/complete ethical hacking course.png' },
+    { name: 'Bug Bounty Hunting', path: '#', description: 'Real-world vulnerability hunting', image: './images/bug bounty.png', comingSoon: true },
+    { name: 'Malware Analysis', path: '#', description: 'Reverse engineering & threat intel', image: './images/malware analysis.png', comingSoon: true },
+    { name: 'Professional Red Team Course', path: '#', description: 'Full Red/Purple Team package', image: './images/red teaming.png', comingSoon: true },
   ];
 
   return (
@@ -43,7 +43,7 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-300">
-          <img src="/images/logo.jpg" alt="Cyber Cracker Academy" className="w-10 h-10 rounded-full object-cover border border-white/10 shadow-lg shadow-black/30" />
+          <img src="./images/logo.jpg" alt="Cyber Cracker Academy" className="w-10 h-10 rounded-full object-cover border border-white/10 shadow-lg shadow-black/30" />
           <div>
             <div className="font-bold text-2xl tracking-tighter text-white">CYBER CRACKER</div>
             <div className="text-[10px] text-emerald-400 -mt-1 tracking-[2px]">ACADEMY</div>

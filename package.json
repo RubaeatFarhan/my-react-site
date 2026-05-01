@@ -9,7 +9,7 @@
     "build:gh": "tsc -b && vite build --mode github",
     "build:cf": "tsc -b && vite build --mode production",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:gh",
     "deploy": "gh-pages -d dist"
   },
   "homepage": "https://RubaeatFarhan.github.io/my-react-site",

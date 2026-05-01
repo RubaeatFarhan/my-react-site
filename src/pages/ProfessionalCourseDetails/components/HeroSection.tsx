@@ -27,7 +27,7 @@ export default function HeroSection() {
     <section className="relative pt-16 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary-900 to-slate-900" />
-      <div className="absolute inset-0 bg-[url('/images/course-hero.jpg')] bg-cover bg-center opacity-15" />
+      <div className="absolute inset-0 bg-[url('./images/course-hero.jpg')] bg-cover bg-center opacity-15" />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/70 to-slate-900/80" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
@@ -99,7 +99,7 @@ export default function HeroSection() {
               <div className="relative aspect-video bg-black">
                 <div className="relative w-full h-full">
                   <img
-                    src="dist/images/complete ethical hacking course.png"
+                    src="./images/complete ethical hacking course.png"
                     alt="Course Preview"
                     className="w-full h-full object-cover"
                   />
