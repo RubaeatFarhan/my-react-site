@@ -2,10 +2,10 @@ import { useEffect, useState, useRef } from 'react';
 import { GraduationCap, ShieldCheck, Building2, Trophy } from 'lucide-react';
 
 const stats = [
-  { icon: <GraduationCap className="w-7 h-7" />, value: 15000, suffix: '+', label: 'Students Trained', color: 'text-neon-green' },
+  { icon: <GraduationCap className="w-7 h-7" />, value: 500, suffix: '+', label: 'Students Trained', color: 'text-neon-green' },
   { icon: <ShieldCheck className="w-7 h-7" />, value: 98, suffix: '%', label: 'Certification Pass Rate', color: 'text-neon-blue' },
-  { icon: <Building2 className="w-7 h-7" />, value: 500, suffix: '+', label: 'Corporate Partners', color: 'text-neon-purple' },
-  { icon: <Trophy className="w-7 h-7" />, value: 50, suffix: '+', label: 'Industry Awards', color: 'text-neon-cyan' },
+  { icon: <Building2 className="w-7 h-7" />, value: 5, suffix: '+', label: 'Corporate Partners', color: 'text-neon-purple' },
+  { icon: <Trophy className="w-7 h-7" />, value: 1, suffix: '+', label: 'Industry Awards', color: 'text-neon-cyan' },
 ];
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
