@@ -29,10 +29,10 @@ export const Navbar = () => {
   ];
 
   const courseLinks = [
-    { name: 'Complete Ethical Hacking Course', path: '/professional-course', description: 'Advanced cybersecurity training', image: './images/complete ethical hacking course.png' },
-    { name: 'Bug Bounty Hunting', path: '#', description: 'Real-world vulnerability hunting', image: './images/bug bounty.png', comingSoon: true },
-    { name: 'Malware Analysis', path: '#', description: 'Reverse engineering & threat intel', image: './images/malware analysis.png', comingSoon: true },
-    { name: 'Professional Red Team Course', path: '#', description: 'Full Red/Purple Team package', image: './images/red teaming.png', comingSoon: true },
+    { name: 'Complete Ethical Hacking Course', path: '/professional-course', description: 'Advanced cybersecurity training', image: './images/complet ethical hacking course.png' },
+    { name: 'Bug Bounty Hunting', path: '#', description: 'Real-world vulnerability hunting', image: './images/metasploit-course-icon.png', comingSoon: true },
+    { name: 'Malware Analysis', path: '#', description: 'Reverse engineering & threat intel', image: './images/metasploit-course-thumbnail.png', comingSoon: true },
+    { name: 'Professional Red Team Course', path: '#', description: 'Full Red/Purple Team package', image: './images/cceh logo.png', comingSoon: true },
   ];
 
   return (

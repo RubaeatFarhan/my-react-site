@@ -99,7 +99,7 @@ export default function HeroSection() {
               <div className="relative aspect-video bg-black">
                 <div className="relative w-full h-full">
                   <img
-                    src="./images/complete ethical hacking course.png"
+                    src="./images/complet ethical hacking course.png"
                     alt="Course Preview"
                     className="w-full h-full object-cover"
                   />
