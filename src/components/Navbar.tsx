@@ -29,7 +29,7 @@ export const Navbar = () => {
   ];
 
   const courseLinks = [
-    { name: 'Complete Ethical Hacking Course', path: '/professional-course', description: 'Advanced msfconsole training', image: '/images/CCEH101.png' },
+    { name: 'Complete Ethical Hacking Course', path: '/professional-course', description: 'Advanced msfconsole training', image: '/images/complete ethical hacking course.png' },
     { name: 'Bug Bounty Hunting', path: '#', description: 'Real-world vulnerability hunting', image: '/images/course2.jpg', comingSoon: true },
     { name: 'Malware Analysis', path: '#', description: 'Reverse engineering & threat intel', image: '/images/course3.jpg', comingSoon: true },
     { name: 'Professional Red Team Course', path: '#', description: 'Full Red/Purple Team package', image: '/images/course4.jpg', comingSoon: true },

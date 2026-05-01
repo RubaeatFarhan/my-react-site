@@ -11,7 +11,7 @@ const courses = [
     reviews: 842,
     price: '৳899',
     originalPrice: '৳1,399',
-    image: '/images/complet ethical hacking course.png',
+    image: '/images/complete ethical hacking course.png',
     tags: ['Threats', 'Vulnerabilities', 'Architecture'],
     popular: true,
     path: '/professional-course',
