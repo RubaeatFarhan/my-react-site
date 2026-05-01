@@ -1,15 +1,17 @@
-import Navbar from "./components/Navbar";
+import { Navbar as MainNavbar } from "../../components/Navbar";
 import HeroSection from "./components/HeroSection";
 import WhatYouWillLearn from "./components/WhatYouWillLearn";
 import CourseStats from "./components/CourseStats";
+import EliteRoadmap from "./components/EliteRoadmap";
 import Curriculum from "./components/Curriculum";
 import Requirements from "./components/Requirements";
 import Instructor from "./components/Instructor";
 import Reviews from "./components/Reviews";
 import FAQ from "./components/FAQ";
 import CTASection from "./components/CTASection";
-import Footer from "./components/Footer";
+import SiteFooter from "../../components/SiteFooter";
 import { useEffect } from "react";
+import CourseSubNav from "./components/CourseSubNav";
 
 export const ProfessionalCourseDetails = () => {
   useEffect(() => {
@@ -17,18 +19,20 @@ export const ProfessionalCourseDetails = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white pt-[100px]">
-      <Navbar />
+    <div className="min-h-screen bg-white pt-[124px]">
+      <MainNavbar />
+      <CourseSubNav />
       <HeroSection />
       <CourseStats />
       <WhatYouWillLearn />
+      <EliteRoadmap />
       <Curriculum />
       <Requirements />
       <Instructor />
       <Reviews />
       <FAQ />
       <CTASection />
-      <Footer />
+      <SiteFooter />
     </div>
   );
 };

@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
-export default function Navbar() {
+interface NavbarProps {
+  showCourseSectionNav?: boolean;
+}
+
+export default function Navbar({ showCourseSectionNav = true }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isCoursesHover, setIsCoursesHover] = useState(false);
 
@@ -131,28 +135,25 @@ export default function Navbar() {
       )}
 
       {/* ── BOTTOM BAR: Course Section Anchor Links ── */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="hidden md:flex items-center justify-between h-11">
-            {/* Course section anchors */}
-            <div className="flex items-center gap-6">
-              {courseNavLinks.map((link) => (
-                <a
-                  key={link.anchor}
-                  href={link.anchor}
-                  className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors py-2 border-b-2 border-transparent hover:border-indigo-500"
-                >
-                  {link.label}
-                </a>
-              ))}
+      {showCourseSectionNav && (
+        <div className="bg-white border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="hidden md:flex items-center h-11">
+              <div className="flex items-center gap-6">
+                {courseNavLinks.map((link) => (
+                  <a
+                    key={link.anchor}
+                    href={link.anchor}
+                    className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors py-2 border-b-2 border-transparent hover:border-indigo-500"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
             </div>
-            {/* Sign In — far right */}
-            <button className="text-sm font-medium text-slate-700 hover:text-indigo-600 transition-colors px-4 py-1.5 rounded-lg hover:bg-slate-100">
-              Sign In
-            </button>
           </div>
         </div>
-      </div>
+      )}
 
       {/* ── MOBILE DROPDOWN MENU ── */}
       {mobileOpen && (
@@ -200,25 +201,26 @@ export default function Navbar() {
               </div>
             ))}
 
-            <div className="border-t border-slate-100 my-3" />
+            {showCourseSectionNav && (
+              <>
+                <div className="border-t border-slate-100 my-3" />
 
-            {/* Course section anchors */}
-            <div className="text-xs uppercase tracking-widest text-slate-400 font-semibold px-2 mb-2">Course Sections</div>
-            {courseNavLinks.map((link) => (
-              <a
-                key={link.anchor}
-                href={link.anchor}
-                className="block px-4 py-2.5 text-sm font-medium text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+                {/* Course section anchors */}
+                <div className="text-xs uppercase tracking-widest text-slate-400 font-semibold px-2 mb-2">Course Sections</div>
+                {courseNavLinks.map((link) => (
+                  <a
+                    key={link.anchor}
+                    href={link.anchor}
+                    className="block px-4 py-2.5 text-sm font-medium text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </>
+            )}
 
             <div className="pt-3 border-t border-slate-100 mt-3 flex flex-col gap-2">
-              <button className="text-sm font-medium text-slate-700 px-4 py-2.5 rounded-lg hover:bg-slate-100 transition-colors text-left">
-                Sign In
-              </button>
               <button className="text-sm font-semibold text-white bg-emerald-500 hover:bg-emerald-600 px-4 py-2.5 rounded-lg transition-all">
                 START LEARNING
               </button>

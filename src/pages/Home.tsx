@@ -7,7 +7,7 @@ import TestimonialsSection from './HomeSections/TestimonialsSection';
 import PartnersSection from './HomeSections/PartnersSection';
 import FAQSection from './HomeSections/FAQSection';
 import CTASection from './HomeSections/CTASection';
-import HomeFooter from './HomeSections/HomeFooter';
+import SiteFooter from '../components/SiteFooter';
 
 export const Home = () => {
   return (
@@ -21,7 +21,7 @@ export const Home = () => {
       <PartnersSection />
       <FAQSection />
       <CTASection />
-      <HomeFooter />
+      <SiteFooter />
     </div>
   );
 };

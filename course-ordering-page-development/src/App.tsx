@@ -156,7 +156,7 @@ export default function App() {
               Premium Course Enrollment
             </span>
             <h1 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Complete Web Development Masterclass
+              Professional Ethical Hacking Course
             </h1>
             <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg">
               Pay securely using <span className="font-semibold text-pink-400">bKash</span> or{' '}
@@ -167,7 +167,7 @@ export default function App() {
                 <svg className="h-4 w-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
-                52 hours video
+                20+ hours video
               </div>
               <div className="flex items-center gap-2">
                 <svg className="h-4 w-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
@@ -234,7 +234,7 @@ export default function App() {
                 type="tel"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="01XXXXXXXXX"
+                placeholder="01740570244"
               />
             </div>
 
@@ -261,11 +261,10 @@ export default function App() {
                         setFormData((prev) => ({ ...prev, paymentMethod: key }));
                         setErrors((prev) => ({ ...prev, paymentMethod: undefined }));
                       }}
-                      className={`relative flex items-center gap-4 rounded-xl border p-4 text-left transition-all ${
-                        active
-                          ? `${cfg.border} ${cfg.bgLight}/10 ring-1 ${cfg.ring}/40`
-                          : 'border-slate-700/50 bg-slate-800/30 hover:border-slate-600'
-                      }`}
+                      className={`relative flex items-center gap-4 rounded-xl border p-4 text-left transition-all ${active
+                        ? `${cfg.border} ${cfg.bgLight}/10 ring-1 ${cfg.ring}/40`
+                        : 'border-slate-700/50 bg-slate-800/30 hover:border-slate-600'
+                        }`}
                     >
                       <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${active ? cfg.bg : 'bg-slate-700'} text-white font-bold text-sm shadow-lg`}>
                         {cfg.label}
@@ -380,8 +379,8 @@ export default function App() {
                   SM
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-white">Web Development Masterclass</p>
-                  <p className="mt-0.5 text-xs text-slate-500">52h &bull; Certificate &bull; Lifetime</p>
+                  <p className="text-sm font-medium text-white">Ethical Hacking Master Course</p>
+                  <p className="mt-0.5 text-xs text-slate-500">20+ hours video &bull; Certificate &bull; Lifetime</p>
                 </div>
               </div>
 
@@ -430,7 +429,7 @@ export default function App() {
       {/* ===== FOOTER ===== */}
       <footer className="border-t border-white/5 bg-slate-950/50">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4 py-6 text-xs text-slate-500 sm:flex-row sm:justify-between sm:px-6">
-          <p>&copy; 2024 SkillMaster. Secure course ordering via bKash & Nagad.</p>
+          <p>&copy; Cyber Cracker Academy 2026. Secure course ordering via bKash & Nagad.</p>
           <div className="flex gap-5">
             <a href="#" className="hover:text-slate-300 transition-colors">Privacy</a>
             <a href="#" className="hover:text-slate-300 transition-colors">Terms</a>
@@ -509,11 +508,10 @@ function InputField({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`w-full rounded-xl border bg-slate-800/50 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-all focus:ring-2 ${
-          error
-            ? 'border-red-500/50 focus:ring-red-500/30'
-            : 'border-slate-700/50 focus:border-indigo-500/50 focus:ring-indigo-500/20'
-        }`}
+        className={`w-full rounded-xl border bg-slate-800/50 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-all focus:ring-2 ${error
+          ? 'border-red-500/50 focus:ring-red-500/30'
+          : 'border-slate-700/50 focus:border-indigo-500/50 focus:ring-indigo-500/20'
+          }`}
       />
       {error && <p className="mt-1 text-sm text-red-400">{error}</p>}
     </div>

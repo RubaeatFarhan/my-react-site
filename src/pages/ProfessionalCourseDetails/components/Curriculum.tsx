@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, PlayCircle, Lock, Clock } from "lucide-react";
+import { ChevronDown, PlayCircle, Lock, Clock, Download } from "lucide-react";
 import { modules } from "../data/courseData";
 
 function ModuleAccordion({ module, isOpen, onToggle }: {
@@ -78,18 +78,29 @@ export default function Curriculum() {
   };
 
   const displayedModules = showAll ? modules : modules.slice(0, 5);
-  const totalLessons = modules.reduce((acc, m) => acc + m.lessons.length, 0);
 
   return (
     <section id="curriculum" className="py-16 lg:py-20 bg-slate-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
-            Course Curriculum
-          </h2>
+          <div className="mb-3 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <h2 className="text-2xl lg:text-3xl font-bold text-slate-900">
+              Level 1 Curriculum
+            </h2>
+            <a
+              href="#"
+              className="inline-flex items-center gap-2 rounded-lg border border-primary-200 bg-white px-4 py-2 text-sm font-semibold text-primary-700 transition-all hover:border-primary-300 hover:bg-primary-50"
+            >
+              <Download className="h-4 w-4" />
+              Download Syllabus
+            </a>
+          </div>
           <p className="text-slate-500">
-            {modules.length} modules • {totalLessons} lessons • 63.5 hours total length
+            16 Modules • 120 Lectures • 20+ hours length
           </p>
+          <div className="mt-3 inline-block px-4 py-1.5 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-100">
+            Note: Only minimal numbers are shown here. For more details, download the full syllabus.
+          </div>
         </div>
 
         <div className="flex justify-end mb-4">

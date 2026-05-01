@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../ProfessionalCourseDetails/components/Navbar';
+import { Navbar as MainNavbar } from '../../components/Navbar';
 
 type PaymentMethodKey = 'bkash' | 'nagad';
 type PaymentMethod = PaymentMethodKey | '';
@@ -27,7 +27,7 @@ interface FormErrors {
 const PAYMENT_CONFIG = {
   bkash: {
     name: 'bKash',
-    number: '01XXXXXXXXX',
+    number: '01740570244',
     bg: 'bg-pink-500',
     bgLight: 'bg-pink-50',
     text: 'text-pink-400',
@@ -37,7 +37,7 @@ const PAYMENT_CONFIG = {
   },
   nagad: {
     name: 'Nagad',
-    number: '01XXXXXXXXX',
+    number: '01740570244',
     bg: 'bg-orange-500',
     bgLight: 'bg-orange-50',
     text: 'text-orange-400',
@@ -112,11 +112,11 @@ export const ProfessionalCourseOrder = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      {/* ── NAVBAR (with main nav + course section links) ── */}
-      <Navbar />
+      {/* ── NAVBAR (shared main navigation) ── */}
+      <MainNavbar />
 
-      {/* ── PAGE CONTENT (offset for fixed dual-tier navbar) ── */}
-      <div className="pt-[100px]">
+      {/* ── PAGE CONTENT (offset for fixed navbar) ── */}
+      <div className="pt-20">
 
         {/* ===== HERO ===== */}
         <section className="relative overflow-hidden border-b border-white/5">
@@ -133,14 +133,14 @@ export const ProfessionalCourseOrder = () => {
                 Premium Course Enrollment
               </span>
               <h1 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                Complete Full-Stack Web Development Bootcamp 2025
+                Ethical Hacking Course - Level 1
               </h1>
               <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg">
                 Pay securely using <span className="font-semibold text-pink-400">bKash</span> or{' '}
                 <span className="font-semibold text-orange-400">Nagad</span>. Get instant access after verification.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
-                {['63.5 hours video', 'Lifetime access', 'Certificate included'].map((item) => (
+                {['20+ hours video', 'Lifetime access', 'Certificate included'].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <svg className="h-4 w-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -323,8 +323,8 @@ export const ProfessionalCourseOrder = () => {
                     CC
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-white">Full-Stack Web Development Bootcamp</p>
-                    <p className="mt-0.5 text-xs text-slate-500">63.5h &bull; Certificate &bull; Lifetime</p>
+                    <p className="text-sm font-medium text-white">Ethical Hacking Course - Level 1</p>
+                    <p className="mt-0.5 text-xs text-slate-500">20+ hours &bull; Certificate &bull; Lifetime</p>
                   </div>
                 </div>
 

@@ -45,7 +45,7 @@ export const Navbar = () => {
         <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-300">
           <img src="/images/logo.jpg" alt="Cyber Cracker Academy" className="w-10 h-10 rounded-full object-cover border border-white/10 shadow-lg shadow-black/30" />
           <div>
-            <div className="font-bold text-2xl tracking-tighter">CYBER CRACKER</div>
+            <div className="font-bold text-2xl tracking-tighter text-white">CYBER CRACKER</div>
             <div className="text-[10px] text-emerald-400 -mt-1 tracking-[2px]">ACADEMY</div>
           </div>
         </Link>
@@ -94,14 +94,14 @@ export const Navbar = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="hidden sm:flex px-5 py-2 text-sm border border-white/30 hover:border-white/70 rounded-full transition-colors items-center gap-2"
+            className="hidden sm:flex px-5 py-2 text-sm border border-white/30 hover:border-white/70 rounded-full transition-colors items-center gap-2 text-white"
           >
             <Users className="w-4 h-4" /> Consult
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-emerald-500 hover:bg-emerald-600 px-6 py-2.5 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all active:scale-95"
+            className="bg-emerald-500 hover:bg-emerald-600 px-6 py-2.5 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all active:scale-95 text-white"
           >
             START LEARNING <ArrowRight className="w-4 h-4" />
           </motion.button>

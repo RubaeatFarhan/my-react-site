@@ -41,11 +41,11 @@ export default function CTASection() {
             onClick={() => navigate('/professional-course/order')}
             className="group bg-white hover:bg-slate-100 text-primary-700 font-bold text-lg px-10 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all flex items-center gap-2"
           >
-            Enroll Now — ${courseData.discountPrice}
+            Enroll Now — ৳{courseData.discountPrice}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
           <div className="text-sm text-primary-300">
-            <span className="line-through">${courseData.price}</span>
+            <span className="line-through">৳{courseData.price}</span>
             <span className="text-accent-400 font-semibold ml-2">{courseData.discountPercent}% off</span>
           </div>
         </div>

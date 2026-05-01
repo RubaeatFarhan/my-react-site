@@ -1,9 +1,9 @@
 import { Clock, Monitor, FileText, Download, Trophy, Smartphone } from "lucide-react";
 
 const stats = [
-  { icon: Clock, label: "Total Hours", value: "63.5", sublabel: "On-demand video" },
-  { icon: FileText, label: "Exercises", value: "45+", sublabel: "Coding challenges" },
-  { icon: Monitor, label: "Projects", value: "12", sublabel: "Real-world apps" },
+  { icon: Clock, label: "Total Hours", value: "20", sublabel: "On-demand video" },
+  { icon: FileText, label: "Exercises", value: "8", sublabel: "Coding challenges" },
+  { icon: Monitor, label: "Labs", value: "4", sublabel: "Hands-on practice" },
   { icon: Download, label: "Resources", value: "200+", sublabel: "Downloadable files" },
   { icon: Trophy, label: "Certificate", value: "Yes", sublabel: "Upon completion" },
   { icon: Smartphone, label: "Access", value: "Lifetime", sublabel: "Any device" },

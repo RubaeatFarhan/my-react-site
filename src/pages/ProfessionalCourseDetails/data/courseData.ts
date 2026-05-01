@@ -20,15 +20,15 @@ export interface FAQ {
 }
 
 export const courseData = {
-  title: "CompleteEthical Hacking Course - Beginner to Advanced",
+  title: "Complete Ethical Hacking Course - Beginner to Advanced",
   subtitle:
     "Master ethical hacking, penetration testing, and cybersecurity — build production-ready security skills from scratch",
   rating: 4.8,
-  totalRatings: 128,
+  totalRatings: 12,
   students: 35,
   lastUpdated: "April 2026",
   language: "Bangla",
-  subtitles: ["Bangla"],
+  subtitles: ["Bangla", "English"],
   price: 4999,
   discountPrice: 1499,
   discountPercent: 70,
@@ -42,7 +42,6 @@ export const courseData = {
     bio: "Farhan is a cybersecurity expert with over 5 years of experience in the field. He has worked as a freelancer, and cybersecurity trainer. Now he is a full-time cybersecurity instructor.",
   },
   heroImage: "/images/course-hero.jpg",
-  videoUrl: "https://www.youtube.com/embed/U7KiygxTXuQ",
   highlights: [
     "20+ hours of on-demand video content",
     "10+ coding exercises & 4 real-world projects",
@@ -187,6 +186,7 @@ export const modules: Module[] = [
       { title: "Brute Force & Dictionary Attacks", duration: "20:00" },
       { title: "Hydra & Medusa Tools", duration: "22:00" },
       { title: "Password Hashing & John the Ripper", duration: "25:00" },
+      { title: "Online and Offline Attacks", duration: "12:00" },
     ],
   },
   {

@@ -8,8 +8,8 @@ import EventsSection from './components/EventsSection';
 import ResourcesSection from './components/ResourcesSection';
 import AchievementsSection from './components/AchievementsSection';
 import NewsletterSection from './components/NewsletterSection';
-import Footer from './components/Footer';
 import { Navbar as MainNavbar } from '../../components/Navbar';
+import SiteFooter from '../../components/SiteFooter';
 
 function ScrollProgress() {
   const [progress, setProgress] = useState(0);
@@ -74,7 +74,7 @@ export const CyberCommunity = () => {
         <AchievementsSection />
         <NewsletterSection />
       </main>
-      <Footer />
+      <SiteFooter />
       <BackToTop />
     </div>
   );

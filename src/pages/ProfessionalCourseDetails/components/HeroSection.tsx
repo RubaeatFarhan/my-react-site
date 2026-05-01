@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Star, Users, Clock, PlayCircle, Globe, BarChart3, Award, X } from "lucide-react";
+import { Star, Users, Clock, PlayCircle, Globe, BarChart3, Award } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { courseData } from "../data/courseData";
 
@@ -9,13 +9,12 @@ function StarRating({ rating }: { rating: number }) {
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          className={`w-4 h-4 ${
-            star <= Math.floor(rating)
+          className={`w-4 h-4 ${star <= Math.floor(rating)
               ? "text-accent-400 fill-accent-400"
               : star - 0.5 <= rating
-              ? "text-accent-400 fill-accent-400"
-              : "text-slate-300"
-          }`}
+                ? "text-accent-400 fill-accent-400"
+                : "text-slate-300"
+            }`}
         />
       ))}
     </div>
@@ -101,7 +100,7 @@ export default function HeroSection() {
               {/* Video Preview Section */}
               <div className="relative aspect-video bg-black">
                 {!isPlaying ? (
-                  <div 
+                  <div
                     className="relative w-full h-full group cursor-pointer"
                     onClick={() => setIsPlaying(true)}
                   >
@@ -135,10 +134,10 @@ export default function HeroSection() {
               <div className="p-6 space-y-4">
                 <div className="flex items-end gap-3">
                   <span className="text-4xl font-extrabold text-slate-900">
-                    ${courseData.discountPrice}
+                    ৳{courseData.discountPrice}
                   </span>
                   <span className="text-lg text-slate-400 line-through mb-1">
-                    ${courseData.price}
+                    ৳{courseData.price}
                   </span>
                   <span className="text-sm font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded mb-1">
                     {courseData.discountPercent}% off
@@ -147,7 +146,7 @@ export default function HeroSection() {
 
                 <div className="flex items-center gap-2 text-sm text-red-600 font-medium">
                   <Clock className="w-4 h-4" />
-                  <span>2 days left at this price!</span>
+                  <span>Limited to only 100 students! </span>
                 </div>
 
                 <button
@@ -157,9 +156,14 @@ export default function HeroSection() {
                   Enroll Now
                 </button>
 
-                <button className="w-full border-2 border-slate-200 hover:border-primary-300 text-slate-700 font-semibold py-3 rounded-xl hover:bg-primary-50 transition-all">
-                  Add to Wishlist
-                </button>
+                <a
+                  href="https://drive.google.com/file/d/1d4BQKqfmqsj4xSj91U3gdDtVwzMXWvBY/view?fbclid=IwY2xjawRhIk1leHRuA2FlbQIxMABicmlkETFZQ090V0FFOG5ZRlF6dmlGc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHmtVwLtlSL7KS3EiHQV6M5LeMxe-WdIrYU9NcwLsvl1vUJmmFcu_7O7_JyL6_aem_ocUpX6h0arxYfBLkF-neQg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex justify-center items-center w-full border-2 border-slate-200 hover:border-primary-300 text-slate-700 font-semibold py-3 rounded-xl hover:bg-primary-50 transition-all"
+                >
+                  Download syllabus
+                </a>
 
                 <p className="text-center text-xs text-slate-500">
                   30-Day Money-Back Guarantee

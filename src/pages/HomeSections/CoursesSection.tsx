@@ -9,8 +9,8 @@ const courses = [
     students: '5,100+',
     rating: 4.9,
     reviews: 842,
-    price: '$899',
-    originalPrice: '$1,399',
+    price: '৳899',
+    originalPrice: '৳1,399',
     image: '/images/complet ethical hacking course.png',
     tags: ['Threats', 'Vulnerabilities', 'Architecture'],
     popular: true,
@@ -23,8 +23,8 @@ const courses = [
     students: '2,450+',
     rating: 4.8,
     reviews: 634,
-    price: '$1,299',
-    originalPrice: '$1,899',
+    price: '৳1,299',
+    originalPrice: '৳1,899',
     image: '🐛',
     tags: ['Pen Testing', 'Exploits', 'Recon'],
     popular: false,
@@ -37,8 +37,8 @@ const courses = [
     students: '1,800+',
     rating: 4.9,
     reviews: 421,
-    price: '$2,499',
-    originalPrice: '$3,499',
+    price: '৳2,499',
+    originalPrice: '৳3,499',
     image: '🏆',
     tags: ['Security Mgmt', 'Risk', 'Governance'],
     popular: false,
@@ -50,8 +50,8 @@ const courses = [
     students: '3,300+',
     rating: 4.7,
     reviews: 589,
-    price: '$999',
-    originalPrice: '$1,599',
+    price: '৳999',
+    originalPrice: '৳1,599',
     image: '⚡',
     tags: ['SIEM', 'Threat Hunting', 'Forensics'],
     popular: true,
@@ -63,8 +63,8 @@ const courses = [
     students: '1,200+',
     rating: 4.8,
     reviews: 312,
-    price: '$1,799',
-    originalPrice: '$2,499',
+    price: '৳1,799',
+    originalPrice: '৳2,499',
     image: '☁️',
     tags: ['AWS', 'Azure', 'Zero Trust'],
     popular: false,
@@ -81,8 +81,8 @@ const courses = [
     students: '0+',
     rating: 5.0,
     reviews: 0,
-    price: '$2,999',
-    originalPrice: '$3,999',
+    price: '৳2,999',
+    originalPrice: '৳3,999',
     image: '🛡️',
     tags: ['Red Teaming', 'Adversary Simulation', 'Post-Exploitation'],
     popular: false,
@@ -136,7 +136,7 @@ export default function CoursesSection() {
                 <div className="h-40 bg-gradient-to-br from-cyber-700 to-cyber-800 flex items-center justify-center text-6xl relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-neon-green/5 to-neon-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
                   
-                  {course.image.includes('.png') || course.image.includes('.jpg') ? (
+                  {course.image && (course.image.includes('.png') || course.image.includes('.jpg')) ? (
                     <img 
                       src={course.image} 
                       alt={course.title} 
@@ -160,7 +160,7 @@ export default function CoursesSection() {
                 <div className="p-6">
                   {/* Level badge */}
                   <div className="flex items-center justify-between mb-3">
-                    <span className={`px-2.5 py-1 text-xs font-medium rounded-full border ${levelColor[course.level]}`}>
+                    <span className={`px-2.5 py-1 text-xs font-medium rounded-full border ${course.level ? levelColor[course.level] : ''}`}>
                       {course.level}
                     </span>
                     <div className="flex items-center gap-1">
