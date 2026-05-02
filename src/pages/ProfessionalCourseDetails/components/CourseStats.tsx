@@ -2,7 +2,7 @@ import { Clock, Monitor, FileText, Download, Trophy, Smartphone } from "lucide-r
 
 const stats = [
   { icon: Clock, label: "Total Hours", value: "20", sublabel: "On-demand video" },
-  { icon: FileText, label: "Exercises", value: "8", sublabel: "Coding challenges" },
+  { icon: FileText, label: "Assignments", value: "8", sublabel: "60+ Exercises" },
   { icon: Monitor, label: "Labs", value: "4", sublabel: "Hands-on practice" },
   { icon: Download, label: "Resources", value: "200+", sublabel: "Downloadable files" },
   { icon: Trophy, label: "Certificate", value: "Yes", sublabel: "Upon completion" },

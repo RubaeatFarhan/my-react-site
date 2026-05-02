@@ -20,7 +20,7 @@ export interface FAQ {
 }
 
 export const courseData = {
-  title: "Complete Ethical Hacking Course - Beginner to Advanced",
+  title: "Become a hacker from zero—even if you have no experience",
   subtitle:
     "Master ethical hacking, penetration testing, and cybersecurity — build production-ready security skills from scratch",
   rating: 4.8,
@@ -44,7 +44,8 @@ export const courseData = {
   heroImage: "./images/course-hero.jpg",
   highlights: [
     "20+ hours of on-demand video content",
-    "10+ coding exercises & 4 real-world projects",
+    "8 assignments with 60+ Exercises",
+    "4 Mega Doubt solving class",
     "Certificate of completion",
     "Lifetime access with free updates",
     "30-day money-back guarantee",

@@ -1,4 +1,4 @@
-import { Star, Users, Clock, Globe, BarChart3, Award } from "lucide-react";
+import { Star, Users, Clock, Globe, BarChart3, Award, Radio, Archive } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { courseData } from "../data/courseData";
 
@@ -103,8 +103,16 @@ export default function HeroSection() {
                     alt="Course Preview"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded">
-                    Course Overview
+                  <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                    <div className="bg-black/70 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded flex items-center gap-1.5">
+                      Course Overview
+                    </div>
+                    <div className="bg-red-600/90 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded flex items-center gap-1">
+                      <Radio className="w-3 h-3" /> Live
+                    </div>
+                    <div className="bg-blue-600/90 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded flex items-center gap-1">
+                      <Archive className="w-3 h-3" /> Archive
+                    </div>
                   </div>
                 </div>
               </div>
