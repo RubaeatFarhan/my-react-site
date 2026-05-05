@@ -49,7 +49,7 @@ export const courseData = {
     "Certificate of completion",
     "Lifetime access with free updates",
     "30-day money-back guarantee",
-    "Access on mobile, tablet & TV",
+    "3-4 Months long program",
   ],
   whatYouWillLearn: [
     "Ethical Hacking-এর Foundation ও Hacker Mindset তৈরি হবে",
