@@ -10,7 +10,7 @@ export default function WhatYouWillLearn() {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center">
             <Target className="w-5 h-5 text-white" />
           </div>
-          <h2 className="text-2xl lg:text-3xl font-bold text-slate-900">
+          <h2 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             What you'll learn
           </h2>
         </div>

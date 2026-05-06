@@ -7,17 +7,29 @@ export default function CurrentBatch() {
   return (
     <div className="space-y-8">
       {/* Current Batch Section */}
-      <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-lg">
-        <div className="flex items-center gap-2 mb-4">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center">
-            <Flame className="w-4 h-4 text-white animate-pulse" />
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 p-[2px] shadow-2xl hover:shadow-orange-500/30 transition-all duration-300 group">
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-400/20 via-red-400/20 to-pink-400/20 animate-pulse"></div>
+        <div className="relative bg-white rounded-2xl p-5">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <div className="relative">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
+                  <Flame className="w-5 h-5 text-white animate-pulse" />
+                </div>
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full animate-ping"></div>
+              </div>
+              <div>
+                <h3 className="text-sm font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent uppercase tracking-wider">
+                  Current Batch
+                </h3>
+                <span className="text-xs text-orange-600 font-semibold bg-orange-50 px-2 py-0.5 rounded-full inline-block mt-0.5">
+                  🔥 Enrolling Now
+                </span>
+              </div>
+            </div>
           </div>
-          <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
-            Current Batch
-          </h3>
-        </div>
 
-        {/* Batch Name */}
+          {/* Batch Name */}
         <div className="bg-gradient-to-r from-primary-50 to-accent-50 rounded-xl p-4 mb-4 border border-primary-200">
           <div className="flex items-center gap-2 mb-2">
             <div className="bg-gradient-to-br from-primary-500 to-primary-600 p-1.5 rounded-lg">
@@ -68,6 +80,7 @@ export default function CurrentBatch() {
             <span>Join batch after enrollment</span>
           </div>
         </div>
+        </div>
       </div>
 
       {/* Course Content Stats */}
@@ -76,7 +89,7 @@ export default function CurrentBatch() {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center">
             <MonitorPlay className="w-4 h-4 text-white" />
           </div>
-          <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
+          <h3 className="text-sm font-bold bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent uppercase tracking-wider">
             Course Content
           </h3>
         </div>

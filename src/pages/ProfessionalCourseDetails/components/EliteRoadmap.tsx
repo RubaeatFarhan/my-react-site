@@ -130,7 +130,7 @@ export default function EliteRoadmap() {
           >
             Cyber Cracker{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-fuchsia-400">
-              Elite Roadmap
+              Hacker Pathway
             </span>
           </motion.h2>
           <motion.p

@@ -131,7 +131,7 @@ export const ProfessionalCourseOrder = () => {
                 Premium Course Enrollment
               </span>
               <h1 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                Ethical Hacking Course - Level 1
+                [CyberCracker] Hacker Pathway – Level 1 (Batch 01 | May)
               </h1>
               <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg">
                 Pay securely using <span className="font-semibold text-pink-400">bKash</span> or{' '}
@@ -327,7 +327,7 @@ export const ProfessionalCourseOrder = () => {
                     CC
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-white">Ethical Hacking Course - Level 1</p>
+                    <p className="text-sm font-medium text-white">Hacker Pathway – Level 1 (Batch 01)</p>
                     <p className="mt-0.5 text-xs text-slate-500">20+ hours &bull; Certificate &bull; Lifetime</p>
                   </div>
                 </div>

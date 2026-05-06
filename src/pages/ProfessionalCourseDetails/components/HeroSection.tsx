@@ -134,7 +134,7 @@ export default function HeroSection() {
 
                 <div className="flex items-center gap-2 text-sm text-red-600 font-medium">
                   <Clock className="w-4 h-4" />
-                  <span>Limited to only 100 students! </span>
+                  <span>Limited to only 50 students! </span>
                 </div>
 
                 <button
