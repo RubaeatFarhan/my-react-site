@@ -6,6 +6,7 @@ const features = [
   { key: 'assignments', title: 'Assignment Handbook', emoji: '📝', desc: 'Guides, rubrics and sample answers for all assignments.' },
   { key: 'live', title: 'Live Classes', emoji: '🎥', desc: 'Interactive live sessions with Q&A and doubt-solving.' , badge: 'Live'},
   { key: 'resources', title: 'Resources', emoji: '📚', desc: 'Slides, cheatsheets, tools and external references.' },
+  { key: 'whatsapp', title: 'WhatsApp Private Support', emoji: '💬', desc: 'Private WhatsApp group and direct instructor support for quick help.', badge: '24/7' },
   { key: 'archive', title: 'Previous Years Archive', emoji: '🗃️', desc: 'Recorded past classes and archived materials.' },
   { key: 'recorded', title: 'New Recorded Classes', emoji: '🔴', desc: 'Freshly recorded lessons from recent batches.' , badge: 'New'},
 ];
