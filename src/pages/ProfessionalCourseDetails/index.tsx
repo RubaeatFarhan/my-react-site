@@ -7,6 +7,7 @@ import CoursePreview from "./components/CoursePreview";
 import EliteRoadmap from "./components/EliteRoadmap";
 import Curriculum from "./components/Curriculum";
 import Requirements from "./components/Requirements";
+import FeaturesSection from "./components/FeaturesSection";
 import HowToEnroll from "./components/HowToEnroll";
 import Instructor from "./components/Instructor";
 import Reviews from "./components/Reviews";
@@ -70,6 +71,7 @@ export const ProfessionalCourseDetails = () => {
       </section>
       <EliteRoadmap />
       <Curriculum />
+      <FeaturesSection />
       <Requirements />
       <HowToEnroll />
       <Instructor />

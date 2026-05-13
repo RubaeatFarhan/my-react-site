@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Navbar as MainNavbar } from '../../components/Navbar';
+import SiteFooter from '../../components/SiteFooter';
 
 type PaymentMethodKey = 'bkash' | 'nagad';
 type PaymentMethod = PaymentMethodKey | '';
@@ -47,7 +48,7 @@ const PAYMENT_CONFIG = {
   },
 } as const;
 
-const COURSE_PRICE = 1499;
+const COURSE_PRICE = 2499;
 const ORIGINAL_PRICE = 4999;
 const DISCOUNT = ORIGINAL_PRICE - COURSE_PRICE;
 
@@ -192,6 +193,8 @@ export const ProfessionalCourseOrder = () => {
                   onChange={handleChange} placeholder="01XXXXXXXXX (optional)"
                 />
               </div>
+
+              {/* ---- ENROLLMENT VIDEO removed from here; moved to summary column ---- */}
 
               {/* ---- PAYMENT METHOD ---- */}
               <div className="mt-8">
@@ -366,6 +369,21 @@ export const ProfessionalCourseOrder = () => {
                 </div>
               </div>
 
+              {/* ---- ENROLLMENT VIDEO (moved here) ---- */}
+              <div className="mt-4 rounded-2xl border border-slate-700/40 bg-slate-800 p-4">
+                <h4 className="text-sm font-semibold text-white mb-2">Enrollment Guide</h4>
+                <p className="text-xs text-slate-400 mb-3">Quick walkthrough — complete enrollment steps</p>
+                <div className="aspect-video rounded-lg overflow-hidden">
+                  <iframe
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/GygxdwZBLDo"
+                    title="How to Enroll"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+
               <div className="flex items-center justify-center gap-4 rounded-2xl border border-slate-700/50 bg-slate-800/20 px-5 py-3 text-xs text-slate-500">
                 <span className="flex items-center gap-1">🔒 SSL Encrypted</span>
                 <span className="flex items-center gap-1">✅ Manual Verification</span>
@@ -375,16 +393,7 @@ export const ProfessionalCourseOrder = () => {
         </section>
 
         {/* ===== FOOTER ===== */}
-        <footer className="border-t border-white/5 bg-slate-950/50">
-          <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4 py-6 text-xs text-slate-500 sm:flex-row sm:justify-between sm:px-6">
-            <p>&copy; 2025 Cyber Cracker Academy. Secure course ordering via bKash &amp; Nagad.</p>
-            <div className="flex gap-5">
-              <a href="#" className="hover:text-slate-300 transition-colors">Privacy</a>
-              <a href="#" className="hover:text-slate-300 transition-colors">Terms</a>
-              <a href="#" className="hover:text-slate-300 transition-colors">Support</a>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
       </div>
 
       {/* ===== SUCCESS MODAL ===== */}
