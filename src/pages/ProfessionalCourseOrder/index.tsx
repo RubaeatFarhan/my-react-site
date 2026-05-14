@@ -48,7 +48,7 @@ const PAYMENT_CONFIG = {
   },
 } as const;
 
-const COURSE_PRICE = 2499;
+const COURSE_PRICE = 1499;
 const ORIGINAL_PRICE = 4999;
 const DISCOUNT = ORIGINAL_PRICE - COURSE_PRICE;
 

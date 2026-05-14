@@ -30,8 +30,8 @@ export const courseData = {
   language: "Bangla",
   subtitles: ["Bangla", "English"],
   price: 4999,
-  discountPrice: 2499,
-  discountPercent: 50,
+  discountPrice: 1499,
+  discountPercent: 70,
   instructor: {
     name: "Rubaeat Farhan",
     title: "Ethical Hacker & Cybersecurity Expert",

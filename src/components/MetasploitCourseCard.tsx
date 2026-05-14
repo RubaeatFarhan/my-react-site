@@ -8,7 +8,7 @@ export const MetasploitCourseCard = ({ onEnroll, onDetails }: { onEnroll?: () =>
     description: 'Master Metasploit Framework from basics to advanced exploitation. Complete hands-on course with ethical pentesting focus.',
     thumbnail: '/images/metasploit-course-thumbnail.png',
     icon: '/images/metasploit-course-icon.png',
-    price: 2499,
+    price: 1499,
     duration: '12 Weeks',
     students: 421,
     rating: 4.85,
